@@ -10,7 +10,7 @@ async function page(path) {
 }
 
 async function main() {
-    const roots = new Set();
+    const roots = new Set(['/episodios/']);
     for (const sitemap of ['tags', 'authors']) {
         const xml = await page(`/sitemap-${sitemap}.xml`);
         for (const match of xml.matchAll(/<loc>(.*?)<\/loc>/g)) roots.add(new URL(match[1]).pathname);

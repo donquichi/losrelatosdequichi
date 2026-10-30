@@ -3,7 +3,7 @@
     * navigationLayout ("Stacked", "Logo on the left", "Logo in the middle")
 --}}
 
-<header id="gh-head" class="gh-head gh-outer is-head-stacked{{#if isTransparent}} is-head-transparent{{/if}}">
+<header id="gh-head" class="gh-head gh-outer is-head-stacked quichi-has-navigation{{#if isTransparent}} is-head-transparent{{/if}}">
     <div class="gh-head-inner{{#unless fullWidth}} gh-inner{{/unless}}">
 
         <div class="gh-head-brand">
@@ -23,8 +23,18 @@
 
         </div>
 
-        <nav class="gh-head-menu quichi-nav">
-            <ul class="nav"></ul>
+        <details class="quichi-mobile-menu">
+            <summary aria-label="Menú principal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <span>Menú</span>
+            </summary>
+            <nav aria-label="Navegación móvil">
+                <ul class="quichi-nav-links">{{> "components/navigation-links"}}</ul>
+            </nav>
+        </details>
+
+        <nav class="gh-head-menu quichi-nav quichi-desktop-menu" aria-label="Navegación principal">
+            <ul class="quichi-nav-links">{{> "components/navigation-links"}}</ul>
         </nav>
 
         <div class="gh-head-actions">

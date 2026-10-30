@@ -13,7 +13,7 @@ async function request(path) {
 }
 
 async function main() {
-    const paths = new Set(['/','/page/2/']);
+    const paths = new Set(['/','/page/2/','/episodios/']);
     for (const sitemap of ['posts', 'pages', 'tags', 'authors']) {
         const xml = await (await request(`/sitemap-${sitemap}.xml`)).text();
         for (const match of xml.matchAll(/<loc>(.*?)<\/loc>/g)) {
@@ -23,6 +23,7 @@ async function main() {
 
     const representative = new Set([
         '/',
+        '/episodios/',
         '/el-proyecto-de-las-sombras-el-experimento-que-cambiaba-lo-que-las-personas-veian/',
         '/scp-1867-el-caracol-que-aseguraba-haber-explorado-el-mundo/',
         '/tag/scp-foundation/',

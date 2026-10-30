@@ -3003,27 +3003,33 @@ header#gh-head.quichi-head .quichi-desktop-logo{
 }
 
 /* Final tag archive styling */
-.tag-template .gh-archive-title{
+.tag-template .gh-archive-title,
+.quichi-episodes-archive .gh-archive-title{
     color:#B30000 !important;
 }
 
-.tag-template .gh-archive-description{
+.tag-template .gh-archive-description,
+.quichi-episodes-archive .gh-archive-description{
     color:#fff !important;
 }
 
-.tag-template .quichi-episode-card-tag{
+.tag-template .quichi-episode-card-tag,
+.quichi-episodes-archive .quichi-episode-card-tag{
     color:#B30000 !important;
 }
 
-.tag-template .quichi-episode-card-title{
+.tag-template .quichi-episode-card-title,
+.quichi-episodes-archive .quichi-episode-card-title{
     color:#fff !important;
 }
 
-.tag-template .quichi-episode-card-meta{
+.tag-template .quichi-episode-card-meta,
+.quichi-episodes-archive .quichi-episode-card-meta{
     color:#cfcfcf !important;
 }
 
-.tag-template .quichi-episode-card-button{
+.tag-template .quichi-episode-card-button,
+.quichi-episodes-archive .quichi-episode-card-button{
     color:#B30000 !important;
 }
 
@@ -3281,4 +3287,79 @@ body.page-template .gh-content ol{
     .quichi-pagination { gap:8px; padding:24px 0 32px; }
     .quichi-pagination a { padding:10px 12px; font-size:1.3rem; }
     .quichi-pagination-status { font-size:1.2rem; }
+}
+
+/* Navigation matches the existing centered logo, dark background and red accents. */
+header#gh-head.is-head-stacked .quichi-nav-links {
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:24px;
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+header#gh-head.is-head-stacked .quichi-nav-links li { margin:0; padding:0; }
+header#gh-head.is-head-stacked .quichi-nav-links a {
+    display:inline-flex;
+    align-items:center;
+    min-height:44px;
+    padding:8px 0;
+    color:#eee !important;
+    font-size:1.25rem !important;
+    font-weight:800;
+    letter-spacing:.8px;
+    line-height:1.4;
+    text-transform:uppercase;
+    text-decoration:none;
+}
+header#gh-head.is-head-stacked .quichi-nav-links a:hover,
+header#gh-head.is-head-stacked .quichi-nav-links a[aria-current="page"] { color:#e53935 !important; }
+header#gh-head.is-head-stacked .quichi-nav-links a:focus-visible,
+header#gh-head.is-head-stacked .quichi-mobile-menu summary:focus-visible { outline:2px solid #e53935; outline-offset:4px; }
+header#gh-head.is-head-stacked .quichi-mobile-menu { display:none !important; }
+#categorias { scroll-margin-top:24px; }
+@media(min-width:768px) and (max-width:1100px) {
+    header#gh-head.is-head-stacked.quichi-has-navigation .gh-head-actions {
+        position:static !important;
+        justify-content:center !important;
+        margin-top:12px !important;
+    }
+}
+@media(max-width:767px) {
+    header#gh-head.is-head-stacked .quichi-desktop-menu { display:none !important; }
+    header#gh-head.is-head-stacked .quichi-mobile-menu { display:block !important; width:100%; }
+    header#gh-head.is-head-stacked .quichi-mobile-menu summary {
+        position:absolute;
+        left:24px;
+        top:68px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:3px;
+        width:44px;
+        min-height:44px;
+        border:1px solid rgba(179,0,0,.6);
+        border-radius:4px;
+        background:#080808;
+        color:#fff;
+        font-size:1.1rem;
+        line-height:1;
+        cursor:pointer;
+        list-style:none;
+    }
+    header#gh-head.is-head-stacked .quichi-mobile-menu summary::-webkit-details-marker { display:none; }
+    header#gh-head.is-head-stacked .quichi-mobile-menu[open] summary { color:#e53935; border-color:#b30000; }
+    header#gh-head.is-head-stacked .quichi-mobile-menu nav {
+        margin-top:12px;
+        padding:8px 0;
+        border-top:1px solid rgba(179,0,0,.4);
+        border-bottom:1px solid rgba(255,255,255,.1);
+        background:#080808;
+    }
+    header#gh-head.is-head-stacked .quichi-mobile-menu .quichi-nav-links { flex-direction:column; gap:0; }
+    header#gh-head.is-head-stacked .quichi-mobile-menu .quichi-nav-links li { width:100%; text-align:center; }
+    header#gh-head.is-head-stacked .quichi-mobile-menu .quichi-nav-links a { justify-content:center; width:100%; padding:12px 8px; }
 }

@@ -1,0 +1,14 @@
+# Public route configuration. Existing episode URLs remain at /{slug}/.
+routes:
+  /episodios/:
+    controller: channel
+    template: episodios
+
+collections:
+  /:
+    permalink: /{slug}/
+    template: index
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/
