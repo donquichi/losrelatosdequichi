@@ -1,0 +1,3 @@
+# Preserve the old category address and its RSS/subpaths after consolidation.
+301:
+  "^/tag/casos-oscuros(/.*)?$": "/tag/casos-oscuros-desapariciones$1"

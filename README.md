@@ -35,8 +35,8 @@ Ghost 6 validation passed with no errors or warnings after removing unused inher
 
 - [x] Restore visible category pagination. The SCP archive now exposes all 34 episodes across three pages, with Anterior/Siguiente links and a page counter.
 - [x] Add a main navigation menu: Inicio, Episodios, Categorías, Sobre mí; provide a usable mobile menu.
-- [x] Make all current categories discoverable. Raised the homepage category query cap from ten to 100, restoring the SCP card and showing all 11 published categories. Existing grid styling is preserved. Revisit category pagination if the site approaches 100 categories.
-- [ ] Review and consolidate the two similar dark-cases/disappearances categories; preserve existing URLs with redirects when needed.
+- [x] Make all current categories discoverable. Raised the homepage category query cap from ten to 100, restoring the SCP card. The site now has ten public categories after the consolidation below. Existing grid styling is preserved. Revisit category pagination if the site approaches 100 categories.
+- [x] Consolidate the two dark-cases/disappearances categories as “Casos Oscuros y Desapariciones,” preserving all seven episodes and redirecting the old category URL.
 - [x] Label recommendations honestly instead of calling randomly selected posts popular. The bounded lists are now titled “Descubre otros relatos”; measured popularity or editorial curation can be added later.
 
 Pagination was deployed October 30, 2026 after backing up the current theme. It uses Ghost's built-in pagination and page URL helpers, with Spanish labels, keyboard focus styles, and phone-sized controls. The shared infinite-scroll hook was removed from archive lists so page navigation does not depend on JavaScript. The same list component also restores pagination on author archives. Single-page categories do not show unnecessary controls.
@@ -46,6 +46,12 @@ Verification followed all 11 category archives and the author archive: 23 archiv
 Navigation was added October 30, 2026, preserving the centered logo, black background, red accents, existing typography, social icons, and episode card layout. Desktop links sit beneath the logo. Phones use a native expandable Menú control with keyboard support; it does not depend on JavaScript. Categorías links to the homepage's `#categorias` section, including the SCP card. Sobre mí opens the existing introduction page.
 
 The new `/episodios/` channel lists all published episodes, automatically paginated at 12 per page. It uses the same cards and colors as category archives, without changing individual episode URLs or the homepage collection. The public routing configuration is tracked in `ghost/routes.yaml` and must be deployed with the theme when setting up another instance. Both the theme and previous route configuration were backed up before deployment. Validation covered all 99 episodes across nine archive pages, 117 page URLs, 40 representative WebP image URLs, all ten category artwork files, and existing archives. Browser checks covered desktop, tablet, and 320/390-pixel phone layouts, navigation destinations, and opening/closing the mobile menu with keyboard support.
+
+The category consolidation was completed October 30, 2026. Two episodes were moved into the existing five-episode category through Ghost's Admin API, preserving their tag order and other tags. The empty duplicate was removed, and the surviving category was named “Casos Oscuros y Desapariciones.” Missing category metadata was preserved from the removed tag. All seven episode URLs, statuses, and publication dates were verified against a private backup; the published episode total remains 99. Public regression checks passed for 116 page URLs and all archive pagination after the duplicate was removed. The homepage now shows one combined card, with the existing colors and layout.
+
+The canonical category URL is `/tag/casos-oscuros-desapariciones/`. The old `/tag/casos-oscuros/` URL, its RSS address, and subpaths permanently redirect to the canonical category using the public configuration in `ghost/redirects.yaml`. The category and RSS redirect destinations were checked successfully. Category assignments are stored in Ghost's database; pulling this theme repository does not perform the content migration on another instance. Private backups and migration records remain outside this repository.
+
+For future publishing, reuse the existing category with slug `casos-oscuros-desapariciones` and name “Casos Oscuros y Desapariciones.” Automated publishers should resolve that slug to the existing tag instead of creating new categories from variant names. The external publishing workflow was not inspected or modified during this merge.
 
 ### Mobile design and readability
 
