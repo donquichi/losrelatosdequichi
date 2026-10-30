@@ -29,15 +29,19 @@ Audit date: October 30, 2026. The audit checked 116 URLs directly through Ghost,
 
 Deployed October 30, 2026. The original theme was backed up before deployment. Category artwork went from 6,341,053 bytes to 288,174 bytes (about 95% smaller); original PNGs are retained. The first hero WebP was 46,124 bytes versus the previous 1,133,162-byte PNG. Homepage HTML decreased from 96,537 to 45,258 bytes, and initial image elements decreased from 110 to 16. These are asset and markup reductions, not measured whole-page loading-time improvements.
 
-Ghost 6 validation passed with no errors or warnings after removing unused inherited settings. Post-deployment checks passed for 116 published URLs, 33 representative WebP image URLs, and all ten category artwork files. Representative episode pages rendered four related cards and five recommendations. Desktop and phone screenshots were inspected, and search results plus video/audio player rendering were checked. Category pagination remains the next separate change.
+Ghost 6 validation passed with no errors or warnings after removing unused inherited settings. Post-deployment checks passed for 116 published URLs, 33 representative WebP image URLs, and all ten category artwork files. Representative episode pages rendered four related cards and five recommendations. Desktop and phone screenshots were inspected, and search results plus video/audio player rendering were checked.
 
 ### Browsing and navigation
 
-- [ ] Restore visible category pagination. The SCP archive showed 12 of 34 episodes with no visible next-page control.
+- [x] Restore visible category pagination. The SCP archive now exposes all 34 episodes across three pages, with Anterior/Siguiente links and a page counter.
 - [ ] Add a main navigation menu: Inicio, Episodios, Categorías, Sobre mí; provide a usable mobile menu.
 - [ ] Make all categories discoverable. The alphabetical ten-category homepage limit omitted SCP.
 - [ ] Review and consolidate the two similar dark-cases/disappearances categories; preserve existing URLs with redirects when needed.
 - [x] Label recommendations honestly instead of calling randomly selected posts popular. The bounded lists are now titled “Descubre otros relatos”; measured popularity or editorial curation can be added later.
+
+Pagination was deployed October 30, 2026 after backing up the current theme. It uses Ghost's built-in pagination and page URL helpers, with Spanish labels, keyboard focus styles, and phone-sized controls. The shared infinite-scroll hook was removed from archive lists so page navigation does not depend on JavaScript. The same list component also restores pagination on author archives. Single-page categories do not show unnecessary controls.
+
+Verification followed all 11 category archives and the author archive: 23 archive pages in total. The SCP pages contained 12, 12, and 10 different episodes; Paranormales contained 12 and 1; the author archive exposed all 99 episodes across nine pages. Checks found no duplicate episode cards within an archive, missing next links, wrong previous links, or incorrect page counters. Desktop and phone screenshots and actual browser navigation were inspected. The next roadmap item is the main navigation menu.
 
 ### Mobile design and readability
 
@@ -68,4 +72,4 @@ Back up the active theme before deploying. Check the homepage, an episode page a
 
 ## Development checks
 
-Validate theme compatibility with `npx --yes gscan@5.4.3 theme/V64 --v6`. The `scripts/check-origin.cjs` script checks sitemap pages and representative optimized images using Node's built-in fetch. Run it where the Ghost origin is reachable (default `http://127.0.0.1:2368`), or set the `ORIGIN` environment variable. It requires no credentials and makes no website changes. Allow Ghost to finish startup before running the check. Browser inspection is still required because HTTP checks do not establish visual correctness or full media playback.
+Validate theme compatibility with `npx --yes gscan@5.4.3 theme/V64 --v6`. The `scripts/check-origin.cjs` script checks sitemap pages and representative optimized images using Node's built-in fetch. The `scripts/check-pagination.cjs` script follows category and author page links, checks page counters and previous links, and detects missing next links, loops, and duplicate episode cards. Run these scripts where the Ghost origin is reachable (default `http://127.0.0.1:2368`), or set the `ORIGIN` environment variable. They require no credentials and make no website changes. Allow Ghost to finish startup before running checks. Browser inspection is still required because HTTP checks do not establish visual correctness or full media playback.

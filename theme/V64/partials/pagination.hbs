@@ -1,0 +1,15 @@
+{{#match pages ">" 1}}
+    <nav class="quichi-pagination" aria-label="Paginación de episodios">
+        <span class="quichi-pagination-previous">
+            {{#if prev}}
+                <a href="{{page_url prev}}" rel="prev" aria-label="Página anterior de episodios">Anterior</a>
+            {{/if}}
+        </span>
+        <span class="quichi-pagination-status">Página {{page}} de {{pages}}</span>
+        <span class="quichi-pagination-next">
+            {{#if next}}
+                <a href="{{page_url next}}" rel="next" aria-label="Página siguiente de episodios">Siguiente</a>
+            {{/if}}
+        </span>
+    </nav>
+{{/match}}

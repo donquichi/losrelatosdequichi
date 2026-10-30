@@ -36,7 +36,8 @@
 
 
         {{#if hasPagination}}
-            <div class="gh-list-feed gh-feed">
+            {{!-- Explicit page links replace the shared infinite-scroll hook. --}}
+            <div class="gh-list-feed">
                 {{#foreach posts}}
                     {{> components/list-item
                         showPrimaryTag=../showPrimaryTag
@@ -45,6 +46,7 @@
                         showPublishedAt=../showPublishedAt}}
                 {{/foreach}}
             </div>
+            {{pagination}}
         {{else}}
             <div class="gh-list-feed">
                 {{#if slug}}

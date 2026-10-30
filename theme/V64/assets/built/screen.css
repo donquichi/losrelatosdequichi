@@ -9064,3 +9064,39 @@ body.page-template .gh-content ol{
     margin:0 !important;
     padding:0 !important;
 }
+
+/* Explicit archive pagination: keep all episodes reachable without JavaScript. */
+.quichi-pagination {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+    align-items:center;
+    gap:16px;
+    width:100%;
+    padding:32px 0 40px;
+    border-top:1px solid rgba(255,255,255,.12);
+    margin-top:32px;
+}
+.quichi-pagination-previous { justify-self:start; }
+.quichi-pagination-next { justify-self:end; }
+.quichi-pagination a {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:44px;
+    padding:10px 16px;
+    border:1px solid #b30000;
+    border-radius:4px;
+    background:#b30000;
+    color:#fff;
+    font-size:1.4rem;
+    line-height:1.4;
+    text-decoration:none;
+}
+.quichi-pagination a:hover { background:#d00000; border-color:#d00000; }
+.quichi-pagination a:focus-visible { outline:2px solid #fff; outline-offset:4px; }
+.quichi-pagination-status { color:#ddd; font-size:1.3rem; text-align:center; }
+@media(max-width:479px) {
+    .quichi-pagination { gap:8px; padding:24px 0 32px; }
+    .quichi-pagination a { padding:10px 12px; font-size:1.3rem; }
+    .quichi-pagination-status { font-size:1.2rem; }
+}
