@@ -5,7 +5,6 @@ Version control for the custom code used by the Los Relatos de Quichi Ghost webs
 ## Setup status
 
 - GitHub repository: https://github.com/donquichi/losrelatosdequichi
-- Server: `raulquichi`
 - Ghost installation path and active theme: pending server inspection.
 - Automatic deployment: not configured yet.
 
