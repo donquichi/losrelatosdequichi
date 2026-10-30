@@ -81,7 +81,7 @@
                     <h2>Categorias</h2>
 
                     <div class="quichi-category-grid">
-                        {{#get "tags" include="count.posts" order="name asc" limit="10"}}
+                        {{#get "tags" include="count.posts" order="name asc" limit="100"}}
                             {{#foreach tags}}
                                 <a href="{{url}}" class="quichi-category-card quichi-category-{{slug}} {{#unless feature_image}}no-image{{/unless}}">
                                     {{#if feature_image}}

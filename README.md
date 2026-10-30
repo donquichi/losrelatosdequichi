@@ -35,7 +35,7 @@ Ghost 6 validation passed with no errors or warnings after removing unused inher
 
 - [x] Restore visible category pagination. The SCP archive now exposes all 34 episodes across three pages, with Anterior/Siguiente links and a page counter.
 - [ ] Add a main navigation menu: Inicio, Episodios, Categorías, Sobre mí; provide a usable mobile menu.
-- [ ] Make all categories discoverable. The alphabetical ten-category homepage limit omitted SCP.
+- [x] Make all current categories discoverable. Raised the homepage category query cap from ten to 100, restoring the SCP card and showing all 11 published categories. Existing grid styling is preserved. Revisit category pagination if the site approaches 100 categories.
 - [ ] Review and consolidate the two similar dark-cases/disappearances categories; preserve existing URLs with redirects when needed.
 - [x] Label recommendations honestly instead of calling randomly selected posts popular. The bounded lists are now titled “Descubre otros relatos”; measured popularity or editorial curation can be added later.
 
