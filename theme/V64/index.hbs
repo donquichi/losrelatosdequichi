@@ -8,13 +8,13 @@
             {{#get "posts" limit="3" include="tags"}}
                 {{#foreach posts}}
 
-                    <article class="quichi-slide {{#if feature_image}}has-image{{/if}}" style="{{#if feature_image}}background-image:url('{{img_url feature_image size="xxl"}}'){{/if}}">
+                    <article class="quichi-slide {{#if feature_image}}has-image{{/if}}" style="{{#if feature_image}}background-image:url('{{img_url feature_image size="l" format="webp"}}'){{/if}}">
 
                         <div class="quichi-overlay"></div>
 
                         {{#if feature_image}}
                             <div class="quichi-slide-media">
-                                <img src="{{img_url feature_image size="xl"}}" alt="{{title}}">
+                                <img src="{{img_url feature_image size="l" format="webp"}}" alt="{{title}}" decoding="async" loading="{{#if @first}}eager{{else}}lazy{{/if}}" fetchpriority="{{#if @first}}high{{else}}low{{/if}}">
                             </div>
                         {{/if}}
 
@@ -53,7 +53,7 @@
                             <article class="quichi-feature-episode">
                                 {{#if feature_image}}
                                     <a href="{{url}}" class="quichi-feature-image">
-                                        <img src="{{img_url feature_image size="m"}}" alt="{{title}}">
+                                        <img src="{{img_url feature_image size="m" format="webp"}}" alt="{{title}}" loading="lazy" decoding="async">
                                         <span class="quichi-play">Play</span>
                                     </a>
                                 {{/if}}
@@ -85,7 +85,7 @@
                             {{#foreach tags}}
                                 <a href="{{url}}" class="quichi-category-card quichi-category-{{slug}} {{#unless feature_image}}no-image{{/unless}}">
                                     {{#if feature_image}}
-                                        <img src="{{img_url feature_image size="s"}}" alt="{{name}}">
+                                        <img src="{{img_url feature_image size="s" format="webp"}}" alt="{{name}}" loading="lazy" decoding="async">
                                     {{/if}}
 
                                     <span>{{name}}</span>
@@ -105,7 +105,7 @@
                                 <article class="quichi-episode-row">
                                     {{#if feature_image}}
                                         <a href="{{url}}" class="quichi-row-image">
-                                            <img src="{{img_url feature_image size="s"}}" alt="{{title}}">
+                                            <img src="{{img_url feature_image size="s" format="webp"}}" alt="{{title}}" loading="lazy" decoding="async">
                                             <span class="quichi-play small">Play</span>
                                         </a>
                                     {{/if}}
@@ -131,16 +131,16 @@
             <aside class="quichi-home-sidebar">
 
                 <div class="quichi-sidebar-box quichi-home-popular">
-                    <h3>Episodios populares</h3>
+                    <h3>Descubre otros relatos</h3>
 
                     <div class="quichi-popular-list">
-                        {{#get "posts" limit="all" include="tags"}}
+                        {{#get "posts" limit="5" include="tags" order="published_at desc"}}
                             {{#foreach posts}}
                                 <a href="{{url}}" class="quichi-popular-item {{#unless feature_image}}no-image{{/unless}}">
-                                    <span class="quichi-popular-number"></span>
+                                    <span class="quichi-popular-number">{{@number}}</span>
 
                                     {{#if feature_image}}
-                                        <img src="{{img_url feature_image size="s"}}" alt="{{title}}">
+                                        <img src="{{img_url feature_image size="s" format="webp"}}" alt="{{title}}" loading="lazy" decoding="async">
                                     {{/if}}
 
                                     <strong>{{title}}</strong>
@@ -149,38 +149,6 @@
                         {{/get}}
                     </div>
 
-                    <script>
-                        (function () {
-                            var list = document.currentScript.previousElementSibling;
-
-                            if (!list) {
-                                return;
-                            }
-
-                            var items = Array.prototype.slice.call(list.querySelectorAll(".quichi-popular-item"));
-
-                            list.innerHTML = "";
-
-                            for (var index = items.length - 1; index > 0; index -= 1) {
-                                var randomIndex = Math.floor(Math.random() * (index + 1));
-                                var current = items[index];
-                                items[index] = items[randomIndex];
-                                items[randomIndex] = current;
-                            }
-
-                            items.forEach(function (item, index) {
-                                if (index < 5) {
-                                    var number = item.querySelector(".quichi-popular-number");
-
-                                    if (number) {
-                                        number.textContent = index + 1;
-                                    }
-
-                                    list.appendChild(item);
-                                }
-                            });
-                        }());
-                    </script>
                 </div>
 
             </aside>

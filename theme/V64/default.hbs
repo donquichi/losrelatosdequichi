@@ -8,9 +8,13 @@
     <link rel="stylesheet" href="{{asset "built/screen.css"}}">
 
     {{#is "home"}}
-        {{#if @site.cover_image}}
-            <link rel="preload" as="image" href="{{@site.cover_image}}">
-        {{/if}}
+        {{#get "posts" limit="1"}}
+            {{#foreach posts}}
+                {{#if feature_image}}
+                    <link rel="preload" as="image" href="{{img_url feature_image size="l" format="webp"}}" fetchpriority="high">
+                {{/if}}
+            {{/foreach}}
+        {{/get}}
     {{/is}}
 
     <style>
@@ -62,7 +66,7 @@
         <div class="gh-inner quichi-footer-inner">
             <a class="quichi-footer-logo" href="{{@site.url}}">
                 {{#if @site.logo}}
-                    <img src="{{@site.logo}}" alt="{{@site.title}}">
+                    <img src="{{img_url @site.logo size="m" format="webp"}}" decoding="async" loading="lazy" alt="{{@site.title}}">
                 {{else}}
                     {{@site.title}}
                 {{/if}}

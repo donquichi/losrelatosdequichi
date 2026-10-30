@@ -10,7 +10,11 @@
         {{#if feature_image}}
             <img
                 class="quichi-post-hero-image"
-                src="{{img_url feature_image size="xl"}}"
+                src="{{img_url feature_image size="xl" format="webp"}}"
+                srcset="{{img_url feature_image size="s" format="webp"}} 300w, {{img_url feature_image size="m" format="webp"}} 720w, {{img_url feature_image size="xl" format="webp"}} 1200w"
+                sizes="100vw"
+                fetchpriority="high"
+                decoding="async"
                 alt="{{title}}"
             >
         {{/if}}
@@ -110,49 +114,19 @@
                         <h2>Archivos relacionados</h2>
                     </div>
                     <div class="quichi-related-grid">
-                        {{#primary_tag}}
-                            {{#get "posts" filter="tag:{{slug}}" limit="all" include="tags"}}
+                        {{#if primary_tag}}
+                            {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" limit="4" include="tags"}}
                                 {{#foreach posts}}
                                     <a href="{{url}}" class="quichi-related-card">
                                         {{#if feature_image}}
-                                            <img src="{{img_url feature_image size="s"}}" alt="{{title}}">
+                                            <img src="{{img_url feature_image size="s" format="webp"}}" alt="{{title}}" loading="lazy" decoding="async">
                                         {{/if}}
                                         <span>{{title}}</span>
                                     </a>
                                 {{/foreach}}
                             {{/get}}
-                        {{/primary_tag}}
+                        {{/if}}
                     </div>
-                    <script>
-                        (function () {
-                            var grid = document.currentScript.previousElementSibling;
-                            if (!grid) {
-                                return;
-                            }
-
-                            var cards = Array.prototype.slice.call(grid.querySelectorAll(".quichi-related-card")).filter(function (card) {
-                                var cardPath = new URL(card.href, window.location.origin).pathname.replace(/\/$/, "");
-                                var currentPath = window.location.pathname.replace(/\/$/, "");
-
-                                return cardPath !== currentPath;
-                            });
-
-                            grid.innerHTML = "";
-
-                            for (var index = cards.length - 1; index > 0; index -= 1) {
-                                var randomIndex = Math.floor(Math.random() * (index + 1));
-                                var current = cards[index];
-                                cards[index] = cards[randomIndex];
-                                cards[randomIndex] = current;
-                            }
-
-                            cards.forEach(function (card, index) {
-                                if (index < 4) {
-                                    grid.appendChild(card);
-                                }
-                            });
-                        }());
-                    </script>
                 </section>
 
                 {{#if comments}}

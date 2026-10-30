@@ -44,7 +44,10 @@
         "custom": {
             "style": {
                 "type": "select",
-                "options": ["Elegant", "Playful"],
+                "options": [
+                    "Elegant",
+                    "Playful"
+                ],
                 "default": "Elegant"
             },
             "background_color": {
@@ -53,34 +56,25 @@
             },
             "navigation_layout": {
                 "type": "select",
-                "options": ["Logo on the left", "Logo in the middle", "Stacked"],
+                "options": [
+                    "Logo on the left",
+                    "Logo in the middle",
+                    "Stacked"
+                ],
                 "default": "Logo in the middle"
             },
             "email_signup_text": {
                 "type": "text",
                 "default": "Subscribe for daily recipes. No spam, just food."
             },
-            "footer_text": {
-                "type": "text"
-            },
-            "primary_header": {
-                "type": "text",
-                "default": "Delicious meals in under 15 minutes",
-                "group": "homepage"
-            },
-            "secondary_header": {
-                "type": "text",
-                "default": "A new recipe everyday, directly in your inbox.",
-                "group": "homepage"
-            },
             "header_action": {
                 "type": "select",
-                "options": ["Subscribe", "Search", "No action"],
+                "options": [
+                    "Subscribe",
+                    "Search",
+                    "No action"
+                ],
                 "default": "Subscribe",
-                "group": "homepage"
-            },
-            "enter_tag_slugs_for_homepage_sections": {
-                "type": "text",
                 "group": "homepage"
             }
         }

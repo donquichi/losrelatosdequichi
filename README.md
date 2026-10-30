@@ -10,7 +10,7 @@ Version control for the custom code used by the Los Relatos de Quichi Ghost webs
 
 ## Repository scope
 
-Track the site's custom theme and deployment scripts once the live installation has been inspected. Keep Ghost's database, uploaded media, credentials, production configuration, and installed dependencies on the server and out of this public repository.
+Track the site's custom theme and deployment scripts. Keep Ghost's database, uploaded media, credentials, production configuration, and installed dependencies on the server and out of this public repository.
 
 Before enabling deployment, back up the live theme, identify the deployment user and destination, and validate the theme. Deployment should update only the confirmed custom theme; Ghost core updates and database changes need a separate process.
 
@@ -20,12 +20,16 @@ Audit date: October 30, 2026. The audit checked 116 URLs directly through Ghost,
 
 ### First pass: performance while preserving the design
 
-- [ ] Remove the unused approximately 1.67 MB homepage cover-image preload.
-- [ ] Serve compressed WebP hero and thumbnail images, with responsive sizes where useful.
-- [ ] Replace the ten category PNG backgrounds (approximately 6.3 MB combined) with optimized WebP assets.
-- [ ] Lazy-load images below the first screen; prioritize the first visible hero image.
-- [ ] Limit recommendation queries instead of rendering every episode and discarding most cards in JavaScript. The original homepage HTML contained 110 image elements.
-- [ ] Validate theme templates, image URLs, and rendered pages; compare desktop and mobile screenshots after deployment.
+- [x] Remove the unused approximately 1.67 MB homepage cover-image preload.
+- [x] Serve compressed WebP hero and thumbnail images, with responsive sizes where useful.
+- [x] Replace the ten category PNG backgrounds (approximately 6.3 MB combined) with optimized WebP assets.
+- [x] Lazy-load images below the first screen; prioritize the first visible hero image.
+- [x] Limit recommendation queries instead of rendering every episode and discarding most cards in JavaScript. The original homepage HTML contained 110 image elements.
+- [x] Validate theme templates, image URLs, and rendered pages; compare desktop and mobile screenshots after deployment.
+
+Deployed October 30, 2026. The original theme was backed up before deployment. Category artwork went from 6,341,053 bytes to 288,174 bytes (about 95% smaller); original PNGs are retained. The first hero WebP was 46,124 bytes versus the previous 1,133,162-byte PNG. Homepage HTML decreased from 96,537 to 45,258 bytes, and initial image elements decreased from 110 to 16. These are asset and markup reductions, not measured whole-page loading-time improvements.
+
+Ghost 6 validation passed with no errors or warnings after removing unused inherited settings. Post-deployment checks passed for 116 published URLs, 33 representative WebP image URLs, and all ten category artwork files. Representative episode pages rendered four related cards and five recommendations. Desktop and phone screenshots were inspected, and search results plus video/audio player rendering were checked. Category pagination remains the next separate change.
 
 ### Browsing and navigation
 
@@ -33,7 +37,7 @@ Audit date: October 30, 2026. The audit checked 116 URLs directly through Ghost,
 - [ ] Add a main navigation menu: Inicio, Episodios, Categorías, Sobre mí; provide a usable mobile menu.
 - [ ] Make all categories discoverable. The alphabetical ten-category homepage limit omitted SCP.
 - [ ] Review and consolidate the two similar dark-cases/disappearances categories; preserve existing URLs with redirects when needed.
-- [ ] Provide genuine curated or measured popular episodes, or label recommendations honestly instead of calling randomly selected posts popular.
+- [x] Label recommendations honestly instead of calling randomly selected posts popular. The bounded lists are now titled “Descubre otros relatos”; measured popularity or editorial curation can be added later.
 
 ### Mobile design and readability
 
@@ -61,3 +65,7 @@ Audit date: October 30, 2026. The audit checked 116 URLs directly through Ghost,
 ## Verification required for every visual change
 
 Back up the active theme before deploying. Check the homepage, an episode page and its players, category archives and pagination, search, and informational pages at desktop and phone widths. Inspect screenshots for missing images, distorted proportions, clipped text, horizontal scrolling, and changes to spacing. Revert a deployment if it breaks the existing layout or key functionality. Keep verification evidence and private operational details outside this public repository.
+
+## Development checks
+
+Validate theme compatibility with `npx --yes gscan@5.4.3 theme/V64 --v6`. The `scripts/check-origin.cjs` script checks sitemap pages and representative optimized images using Node's built-in fetch. Run it where the Ghost origin is reachable (default `http://127.0.0.1:2368`), or set the `ORIGIN` environment variable. It requires no credentials and makes no website changes. Allow Ghost to finish startup before running the check. Browser inspection is still required because HTTP checks do not establish visual correctness or full media playback.

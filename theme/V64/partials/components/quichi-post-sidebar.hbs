@@ -85,16 +85,16 @@
     </section>
 
     <section class="quichi-post-sidebar-box quichi-post-popular">
-        <h3>Episodios populares</h3>
+        <h3>Descubre otros relatos</h3>
 
         <div class="quichi-post-popular-list">
-            {{#get "posts" limit="all" include="tags"}}
+            {{#get "posts" limit="5" filter="id:-{{id}}" include="tags" order="published_at desc"}}
                 {{#foreach posts}}
                     <a href="{{url}}" class="quichi-post-popular-item {{#unless feature_image}}no-image{{/unless}}">
-                        <span class="quichi-post-popular-number"></span>
+                        <span class="quichi-post-popular-number">{{@number}}</span>
 
                         {{#if feature_image}}
-                            <img src="{{img_url feature_image size="s"}}" alt="{{title}}">
+                            <img src="{{img_url feature_image size="s" format="webp"}}" alt="{{title}}" loading="lazy" decoding="async">
                         {{/if}}
 
                         <strong>{{title}}</strong>
@@ -103,50 +103,13 @@
             {{/get}}
         </div>
 
-        <script>
-            (function () {
-                var list = document.currentScript.previousElementSibling;
-
-                if (!list) {
-                    return;
-                }
-
-                var items = Array.prototype.slice.call(list.querySelectorAll(".quichi-post-popular-item")).filter(function (item) {
-                    var itemPath = new URL(item.href, window.location.origin).pathname.replace(/\/$/, "");
-                    var currentPath = window.location.pathname.replace(/\/$/, "");
-
-                    return itemPath !== currentPath;
-                });
-
-                list.innerHTML = "";
-
-                for (var index = items.length - 1; index > 0; index -= 1) {
-                    var randomIndex = Math.floor(Math.random() * (index + 1));
-                    var current = items[index];
-                    items[index] = items[randomIndex];
-                    items[randomIndex] = current;
-                }
-
-                items.forEach(function (item, index) {
-                    if (index < 5) {
-                        var number = item.querySelector(".quichi-post-popular-number");
-
-                        if (number) {
-                            number.textContent = index + 1;
-                        }
-
-                        list.appendChild(item);
-                    }
-                });
-            }());
-        </script>
     </section>
 
     <section class="quichi-post-sidebar-box quichi-post-categories">
         <h3>Categorias</h3>
 
         <div class="quichi-post-category-list">
-            {{#get "tags" include="count.posts" order="name asc" limit="all"}}
+            {{#get "tags" include="count.posts" order="name asc" limit="100"}}
                 {{#foreach tags}}
                     <a href="{{url}}" class="quichi-post-category-row quichi-category-{{slug}}">
                         <span>{{name}}</span>

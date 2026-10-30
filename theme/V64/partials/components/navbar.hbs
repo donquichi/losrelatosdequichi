@@ -10,7 +10,7 @@
             <div class="gh-head-brand-wrapper">
                 <a class="gh-head-logo" href="{{@site.url}}">
                     {{#if @site.logo}}
-                      <img class="quichi-main-logo" src="{{@site.logo}}" alt="{{@site.title}}">
+                      <img class="quichi-main-logo" src="{{img_url @site.logo size="m" format="webp"}}" decoding="async" alt="{{@site.title}}">
                     {{else}}
                         {{@site.title}}
                     {{/if}}
