@@ -1,0 +1,34 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+config.production.json
+config.development.json
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+.ssh/
+
+# Ghost runtime and user data
+content/data/
+content/images/
+content/media/
+content/files/
+content/logs/
+content/settings/
+content/adapters/
+versions/
+current
+*.db
+*.sqlite
+*.sqlite3
+*.sql
+*.sql.gz
+backups/
+*.log
+
+# Dependencies and local files
+node_modules/
+.DS_Store
+Thumbs.db
