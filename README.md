@@ -55,11 +55,15 @@ For future publishing, reuse the existing category with slug `casos-oscuros-desa
 
 ### Mobile design and readability
 
-- [ ] Reduce the mobile header and long hero-title footprint.
-- [ ] Bring recent episodes closer to the top and avoid repeating the same featured episode unnecessarily.
+- [x] Reduce the mobile header and long hero-title footprint, preserving the logo, colors, navigation, social icons, and 44-pixel menu/button targets.
+- [x] Bring recent episodes directly below the hero, ahead of categories, and remove the duplicate featured block. Hero, recent, and recommendation sections now show different episodes.
 - [ ] Improve dark-red text contrast against black, secondary text size, and link visibility while preserving the horror aesthetic.
 - [ ] Use left-aligned text for long informational pages.
 - [ ] Add carousel pause controls and reduced-motion support, or replace the carousel with one featured episode.
+
+The mobile homepage pass was deployed October 30, 2026 after backing up the active theme. In the same phone preview, header height decreased from 217 to 148 pixels, hero height from 520 to approximately 315 pixels, and the recent-episode heading moved from 2,220 to approximately 526 pixels down the page. The hero uses smaller full titles and a shared grid row that grows with the longest title, avoiding clipping and slide-to-slide height jumps. Desktop hero styling is unchanged.
+
+The homepage now shares one bounded query of the 13 most recent published episodes: three in the hero, five different episodes in the recent list, and five more in recommendations. This automatically refreshes when new episodes are published. The repeated standalone featured block was removed. Categories remain available through the navigation anchor, and the existing card grid, colors, and artwork are preserved. The new `scripts/check-homepage.cjs` check verifies distinct episode groups and content order; the existing page/image checks passed for 116 URLs, 43 representative WebP images, and all category artwork. Visual checks covered desktop and 320/390-pixel phone previews, all three hero titles and buttons, the expanded mobile menu, the category shortcut, About, and an episode page. No horizontal overflow was observed at either phone width.
 
 ### Content, language, and search presentation
 
@@ -82,4 +86,4 @@ Back up the active theme before deploying. Check the homepage, an episode page a
 
 ## Development checks
 
-Validate theme compatibility with `npx --yes gscan@5.4.3 theme/V64 --v6`. The `scripts/check-origin.cjs` script checks sitemap pages, the full episode archive, and representative optimized images using Node's built-in fetch. The `scripts/check-pagination.cjs` script follows episode, category, and author page links, checks page counters and previous links, and detects missing next links, loops, and duplicate episode cards. Run these scripts where the Ghost origin is reachable (default `http://127.0.0.1:2368`), or set the `ORIGIN` environment variable. They require no credentials and make no website changes. Allow Ghost to finish startup before running checks. Browser inspection is still required because HTTP checks do not establish visual correctness or full media playback.
+Validate theme compatibility with `npx --yes gscan@5.4.3 theme/V64 --v6`. The `scripts/check-origin.cjs` script checks sitemap pages, the full episode archive, and representative optimized images using Node's built-in fetch. The `scripts/check-pagination.cjs` script follows episode, category, and author page links, checks page counters and previous links, and detects missing next links, loops, and duplicate episode cards. The `scripts/check-homepage.cjs` script checks that featured, recent, and recommended episode groups do not repeat and that recent episodes precede categories. Run these scripts where the Ghost origin is reachable (default `http://127.0.0.1:2368`), or set the `ORIGIN` environment variable. They require no credentials and make no website changes. Allow Ghost to finish startup before running checks. Browser inspection is still required because HTTP checks do not establish visual correctness or full media playback.

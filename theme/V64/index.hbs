@@ -1,12 +1,13 @@
 {{!< default}}
 
+{{#get "posts" limit="13" include="tags" order="published_at desc" as |homepage_posts|}}
+
 <main class="gh-main">
 
     <section class="quichi-featured gh-outer">
         <div class="gh-inner quichi-featured-inner">
 
-            {{#get "posts" limit="3" include="tags"}}
-                {{#foreach posts}}
+                {{#foreach homepage_posts to="3"}}
 
                     <article class="quichi-slide {{#if feature_image}}has-image{{/if}}" style="{{#if feature_image}}background-image:url('{{img_url feature_image size="l" format="webp"}}'){{/if}}">
 
@@ -35,7 +36,7 @@
                     </article>
 
                 {{/foreach}}
-            {{/get}}
+
 
         </div>
     </section>
@@ -45,63 +46,12 @@
 
             <div class="quichi-home-main">
 
-                {{#get "posts" limit="1" include="tags"}}
-                    {{#foreach posts}}
-                        <section class="quichi-feature-block">
-                            <h2>Episodio destacado</h2>
-
-                            <article class="quichi-feature-episode">
-                                {{#if feature_image}}
-                                    <a href="{{url}}" class="quichi-feature-image">
-                                        <img src="{{img_url feature_image size="m" format="webp"}}" alt="{{title}}" loading="lazy" decoding="async">
-                                        <span class="quichi-play">Play</span>
-                                    </a>
-                                {{/if}}
-
-                                <div class="quichi-feature-info">
-                                    {{#primary_tag}}
-                                        <span class="quichi-tag">{{name}}</span>
-                                    {{/primary_tag}}
-
-                                    <h3><a href="{{url}}">{{title}}</a></h3>
-
-                                    <div class="quichi-meta">
-                                        <span>{{date format="D MMM, YYYY"}}</span>
-                                        {{#primary_tag}}<span>{{name}}</span>{{/primary_tag}}
-                                    </div>
-
-                                    <a href="{{url}}" class="quichi-outline-button">Leer mas</a>
-                                </div>
-                            </article>
-                        </section>
-                    {{/foreach}}
-                {{/get}}
-
-                <section id="categorias" class="quichi-category-block">
-                    <h2>Categorias</h2>
-
-                    <div class="quichi-category-grid">
-                        {{#get "tags" include="count.posts" order="name asc" limit="100"}}
-                            {{#foreach tags}}
-                                <a href="{{url}}" class="quichi-category-card quichi-category-{{slug}} {{#unless feature_image}}no-image{{/unless}}">
-                                    {{#if feature_image}}
-                                        <img src="{{img_url feature_image size="s" format="webp"}}" alt="{{name}}" loading="lazy" decoding="async">
-                                    {{/if}}
-
-                                    <span>{{name}}</span>
-                                    <small>Ver mas</small>
-                                </a>
-                            {{/foreach}}
-                        {{/get}}
-                    </div>
-                </section>
 
                 <section class="quichi-latest-block">
-                    <h2>Ultimos episodios</h2>
+                    <h2>Últimos episodios</h2>
 
                     <div class="quichi-episode-list">
-                        {{#get "posts" limit="5" include="tags" filter="featured:false"}}
-                            {{#foreach posts}}
+                            {{#foreach homepage_posts from="4" to="8"}}
                                 <article class="quichi-episode-row">
                                     {{#if feature_image}}
                                         <a href="{{url}}" class="quichi-row-image">
@@ -122,9 +72,30 @@
                                     <a href="{{url}}" class="quichi-row-button">Ver episodio</a>
                                 </article>
                             {{/foreach}}
+
+                    </div>
+                </section>
+
+                <section id="categorias" class="quichi-category-block">
+                    <h2>Categorias</h2>
+
+                    <div class="quichi-category-grid">
+                        {{#get "tags" include="count.posts" order="name asc" limit="100"}}
+                            {{#foreach tags}}
+                                <a href="{{url}}" class="quichi-category-card quichi-category-{{slug}} {{#unless feature_image}}no-image{{/unless}}">
+                                    {{#if feature_image}}
+                                        <img src="{{img_url feature_image size="s" format="webp"}}" alt="{{name}}" loading="lazy" decoding="async">
+                                    {{/if}}
+
+                                    <span>{{name}}</span>
+                                    <small>Ver mas</small>
+                                </a>
+                            {{/foreach}}
                         {{/get}}
                     </div>
                 </section>
+
+
 
             </div>
 
@@ -134,10 +105,9 @@
                     <h3>Descubre otros relatos</h3>
 
                     <div class="quichi-popular-list">
-                        {{#get "posts" limit="5" include="tags" order="published_at desc"}}
-                            {{#foreach posts}}
+                            {{#foreach homepage_posts from="9" to="13"}}
                                 <a href="{{url}}" class="quichi-popular-item {{#unless feature_image}}no-image{{/unless}}">
-                                    <span class="quichi-popular-number">{{@number}}</span>
+                                    <span class="quichi-popular-number" aria-hidden="true"></span>
 
                                     {{#if feature_image}}
                                         <img src="{{img_url feature_image size="s" format="webp"}}" alt="{{title}}" loading="lazy" decoding="async">
@@ -146,7 +116,6 @@
                                     <strong>{{title}}</strong>
                                 </a>
                             {{/foreach}}
-                        {{/get}}
                     </div>
 
                 </div>
@@ -157,3 +126,5 @@
     </section>
 
 </main>
+
+{{/get}}
