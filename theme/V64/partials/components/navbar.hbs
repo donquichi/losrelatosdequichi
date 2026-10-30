@@ -1,0 +1,57 @@
+{{!--
+    Parameters:
+    * navigationLayout ("Stacked", "Logo on the left", "Logo in the middle")
+--}}
+
+<header id="gh-head" class="gh-head gh-outer is-head-stacked{{#if isTransparent}} is-head-transparent{{/if}}">
+    <div class="gh-head-inner{{#unless fullWidth}} gh-inner{{/unless}}">
+
+        <div class="gh-head-brand">
+            <div class="gh-head-brand-wrapper">
+                <a class="gh-head-logo" href="{{@site.url}}">
+                    {{#if @site.logo}}
+                      <img class="quichi-main-logo" src="{{@site.logo}}" alt="{{@site.title}}">
+                    {{else}}
+                        {{@site.title}}
+                    {{/if}}
+                </a>
+            </div>
+
+            <button class="gh-search gh-icon-btn" aria-label="{{t 'Search this site'}}" data-ghost-search>
+                {{> "icons/search"}}
+            </button>
+
+        </div>
+
+        <nav class="gh-head-menu quichi-nav">
+            <ul class="nav"></ul>
+        </nav>
+
+        <div class="gh-head-actions">
+            <div class="quichi-social">
+
+                <a href="https://www.youtube.com/@LosRelatosdeQuichi" target="_blank" rel="noopener" aria-label="YouTube">
+                    {{> "icons/youtube"}}
+                </a>
+
+                <a href="https://www.facebook.com/losrelatosdequichi" target="_blank" rel="noopener" aria-label="Facebook">
+                    {{> "icons/facebook"}}
+                </a>
+
+                <a href="https://www.instagram.com/losrelatosdequichi" target="_blank" rel="noopener" aria-label="Instagram">
+                    {{> "icons/instagram"}}
+                </a>
+
+                <a href="https://www.tiktok.com/@losrelatosdequichi" target="_blank" rel="noopener" aria-label="TikTok">
+                    {{> "icons/tiktok"}}
+                </a>
+
+            </div>
+
+            <button class="gh-search gh-icon-btn" aria-label="{{t 'Search this site'}}" data-ghost-search>
+                {{> "icons/search"}}
+            </button>
+        </div>
+      
+    </div>
+</header>

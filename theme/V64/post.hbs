@@ -1,0 +1,174 @@
+{{!< default}}
+
+{{#post}}
+
+<main class="gh-main quichi-post-page">
+
+    <span hidden>{{@custom.email_signup_text}}</span>
+
+    <section class="quichi-post-hero gh-outer {{#if feature_image}}has-image{{/if}}">
+        {{#if feature_image}}
+            <img
+                class="quichi-post-hero-image"
+                src="{{img_url feature_image size="xl"}}"
+                alt="{{title}}"
+            >
+        {{/if}}
+
+        <div class="quichi-post-hero-overlay"></div>
+
+        <div class="gh-inner quichi-post-hero-inner">
+            <nav class="quichi-post-breadcrumb" aria-label="Breadcrumb">
+                <a href="{{@site.url}}">Inicio</a>
+                {{#primary_tag}}
+                    <span>/</span>
+                    <a href="{{url}}">{{name}}</a>
+                {{/primary_tag}}
+                <span>/</span>
+                <span>{{title}}</span>
+            </nav>
+
+            <div class="quichi-post-kicker">
+                {{#primary_tag}}
+                    <a href="{{url}}">{{name}}</a>
+                {{/primary_tag}}
+            </div>
+
+            <div class="quichi-post-classification">
+                <span data-quichi-hero-meta-label></span>
+                <strong data-quichi-hero-meta-value></strong>
+            </div>
+
+            <h1>{{title}}</h1>
+
+            {{#if custom_excerpt}}
+                <p class="quichi-hero-excerpt">{{custom_excerpt}}</p>
+            {{else}}
+                <p class="quichi-hero-excerpt">{{excerpt words="24"}}</p>
+            {{/if}}
+
+            <div class="quichi-post-meta">
+                <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+            </div>
+
+            <div class="quichi-post-hero-actions">
+                <a href="#quichi-platform-title" class="quichi-button">Ver episodio</a>
+                <a href="#quichi-audio" class="quichi-outline-button">Escuchar audio</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="quichi-post-layout gh-outer">
+        <div class="gh-inner quichi-post-grid">
+
+            <article class="quichi-post-main">
+
+                <section class="quichi-platform-section" aria-labelledby="quichi-platform-title">
+                    <div class="quichi-section-heading">
+                        <span aria-hidden="true">[]</span>
+                        <h2 id="quichi-platform-title">Episodio principal</h2>
+                    </div>
+
+                    <div class="quichi-platform-player" data-platform-player>
+                        <div class="quichi-platform-placeholder">
+                            Cargando episodio...
+                        </div>
+                    </div>
+
+                    <div class="quichi-section-heading quichi-platform-heading">
+                        <span aria-hidden="true">(o)</span>
+                        <h2>Ver en otras plataformas</h2>
+                    </div>
+
+                    <p class="quichi-platform-help">Elige tu plataforma preferida para ver este episodio.</p>
+
+                    <div class="quichi-platform-tabs" role="tablist" aria-label="Plataformas del episodio">
+                        <button class="is-active" type="button" role="tab" aria-selected="true" data-platform-tab="youtube">YouTube</button>
+                        <button type="button" role="tab" aria-selected="false" data-platform-tab="instagram">Instagram</button>
+                        <button type="button" role="tab" aria-selected="false" data-platform-tab="tiktok">TikTok</button>
+                        <button type="button" role="tab" aria-selected="false" data-platform-tab="facebook">Facebook</button>
+                    </div>
+                </section>
+
+                <section id="quichi-audio" class="quichi-audio-panel">
+                    <div class="quichi-section-heading">
+                        <span aria-hidden="true">( )</span>
+                        <h2>Escuchar narracion</h2>
+                    </div>
+                    <div class="quichi-audio-player" data-quichi-audio-player>
+                        Agrega un bloque de audio en el contenido de Ghost para mostrar la narracion aqui.
+                    </div>
+                </section>
+
+                <section class="quichi-post-content gh-content">
+                    {{content}}
+                </section>
+
+                <section class="quichi-related-panel">
+                    <div class="quichi-section-heading">
+                        <span aria-hidden="true">/</span>
+                        <h2>Archivos relacionados</h2>
+                    </div>
+                    <div class="quichi-related-grid">
+                        {{#primary_tag}}
+                            {{#get "posts" filter="tag:{{slug}}" limit="all" include="tags"}}
+                                {{#foreach posts}}
+                                    <a href="{{url}}" class="quichi-related-card">
+                                        {{#if feature_image}}
+                                            <img src="{{img_url feature_image size="s"}}" alt="{{title}}">
+                                        {{/if}}
+                                        <span>{{title}}</span>
+                                    </a>
+                                {{/foreach}}
+                            {{/get}}
+                        {{/primary_tag}}
+                    </div>
+                    <script>
+                        (function () {
+                            var grid = document.currentScript.previousElementSibling;
+                            if (!grid) {
+                                return;
+                            }
+
+                            var cards = Array.prototype.slice.call(grid.querySelectorAll(".quichi-related-card")).filter(function (card) {
+                                var cardPath = new URL(card.href, window.location.origin).pathname.replace(/\/$/, "");
+                                var currentPath = window.location.pathname.replace(/\/$/, "");
+
+                                return cardPath !== currentPath;
+                            });
+
+                            grid.innerHTML = "";
+
+                            for (var index = cards.length - 1; index > 0; index -= 1) {
+                                var randomIndex = Math.floor(Math.random() * (index + 1));
+                                var current = cards[index];
+                                cards[index] = cards[randomIndex];
+                                cards[randomIndex] = current;
+                            }
+
+                            cards.forEach(function (card, index) {
+                                if (index < 4) {
+                                    grid.appendChild(card);
+                                }
+                            });
+                        }());
+                    </script>
+                </section>
+
+                {{#if comments}}
+                    <section class="quichi-post-comments">
+                        <h2>{{comment_count empty="" singular=(t "comment") plural=(t "comments")}}</h2>
+                        {{comments title="" count=false}}
+                    </section>
+                {{/if}}
+
+            </article>
+
+            {{> "components/quichi-post-sidebar"}}
+
+        </div>
+    </section>
+
+</main>
+
+{{/post}}

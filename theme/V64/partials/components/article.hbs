@@ -1,0 +1,72 @@
+<article class="gh-article quichi-episode-page {{post_class}}">
+
+    {{#match @page.show_title_and_feature_image}}
+        <header class="quichi-episode-hero {{#if feature_image}}has-image{{/if}}">
+
+            {{#if feature_image}}
+                <img
+                    class="quichi-episode-hero-image"
+                    srcset="{{img_url feature_image size="s"}} 300w,
+                            {{img_url feature_image size="m"}} 720w,
+                            {{img_url feature_image size="l"}} 960w,
+                            {{img_url feature_image size="xl"}} 1200w,
+                            {{img_url feature_image size="xxl"}} 2000w"
+                    sizes="100vw"
+                    src="{{img_url feature_image size="xl"}}"
+                    alt="{{title}}"
+                >
+            {{/if}}
+
+            <div class="quichi-episode-hero-overlay"></div>
+
+            <div class="gh-inner quichi-episode-hero-inner">
+
+                <div class="quichi-episode-label">
+                    {{#if primary_tag}}
+                        <a href="{{primary_tag.url}}">{{primary_tag.name}}</a>
+                    {{else}}
+                        <span>Nuevo episodio</span>
+                    {{/if}}
+                </div>
+
+                <h1>{{title}}</h1>
+
+                {{#if custom_excerpt}}
+                    <p>{{custom_excerpt}}</p>
+                {{else}}
+                    <p>{{excerpt words="24"}}</p>
+                {{/if}}
+
+                <div class="quichi-episode-meta">
+                    {{#if showPublishedAt}}
+                        <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+                    {{else}}
+                        <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+                    {{/if}}
+
+                </div>
+
+            </div>
+        </header>
+    {{/match}}
+
+    <section class="gh-content gh-canvas quichi-episode-content">
+        {{content}}
+    </section>
+
+    <div class="gh-canvas quichi-episode-share-wrap">
+        <div class="gh-meta-share">
+            <a href="#/share" class="gh-button-share">{{t "Share"}} {{> "icons/share"}}</a>
+        </div>
+    </div>
+
+    {{#if showComments}}
+        {{#if comments}}
+            <div class="gh-article-comments gh-canvas quichi-episode-comments">
+                <h2 class="gh-article-comments-title">{{comment_count empty="" singular=(t "comment") plural=(t "comments")}}</h2>
+                {{comments title="" count=false}}
+            </div>
+        {{/if}}
+    {{/if}}
+
+</article>
