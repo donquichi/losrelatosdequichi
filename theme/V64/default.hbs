@@ -62,6 +62,8 @@
 
     {{{body}}}
 
+    {{> "components/support"}}
+
     <footer class="quichi-footer gh-outer">
         <div class="gh-inner quichi-footer-inner">
             <a class="quichi-footer-logo" href="{{@site.url}}">
@@ -80,9 +82,9 @@
             </nav>
 
             <nav class="quichi-footer-links" aria-label="Legal">
-                <a href="https://losrelatosdequichi.com/sobre-mi/">Sobre Mi</a>
-                <a href="https://losrelatosdequichi.com/privacy-policy/">Privacy Policy</a>
-                <a href="https://losrelatosdequichi.com/terms-of-service/">Terms of Service</a>
+                <a href="{{@site.url}}/sobre-mi/">Sobre mí</a>
+                <a href="{{@site.url}}/privacy-policy/">Política de privacidad</a>
+                <a href="{{@site.url}}/terms-of-service/">Términos del servicio</a>
             </nav>
 
             <p class="quichi-footer-copy">

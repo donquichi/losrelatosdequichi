@@ -42,6 +42,11 @@
         },
         "card_assets": true,
         "custom": {
+            "donation_url": {
+                "type": "text",
+                "default": "",
+                "description": "Enlace HTTPS público de donaciones. Déjalo vacío para ocultar el botón."
+            },
             "style": {
                 "type": "select",
                 "options": [

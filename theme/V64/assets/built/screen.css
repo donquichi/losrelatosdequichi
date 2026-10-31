@@ -9339,3 +9339,23 @@ body header#gh-head.is-head-stacked .quichi-mobile-menu summary:focus-visible {
     body .gh-site .quichi-category-card { min-height:112px !important; }
     body.page-template .gh-article .gh-content { font-size:1.7rem !important; line-height:1.75 !important; }
 }
+
+/* Archive discovery follows the existing black and red card palette. */
+body .gh-site .quichi-archive-discovery { margin:0 auto 32px; max-width:1200px; }
+body .gh-site .quichi-archive-search { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:44px; padding:10px 18px; border:1px solid #ff6b6b; background:#b30000; color:#fff; font-size:1.5rem; font-weight:600; text-decoration:none; }
+body .gh-site .quichi-archive-search svg { width:20px; height:20px; flex-shrink:0; }
+body .gh-site .quichi-archive-discovery p { margin:12px 0 16px; color:#c6c6c6; font-size:1.4rem; line-height:1.6; }
+body .gh-site .quichi-category-shortcuts { display:flex; flex-wrap:wrap; gap:8px; }
+body .gh-site .quichi-category-shortcuts a { display:inline-flex; align-items:center; gap:5px; min-height:44px; max-width:100%; padding:8px 12px; border:1px solid #555; background:#151515; color:#eee; font-size:1.3rem; line-height:1.5; overflow-wrap:anywhere; text-decoration:none; }
+body .gh-site .quichi-category-shortcuts a:hover,
+body .gh-site .quichi-category-shortcuts a[aria-current="page"] { border-color:#ff6b6b; background:#2b1111; color:#ff6b6b; }
+body .gh-site .quichi-category-shortcuts a[aria-current="page"] { text-decoration:underline; text-underline-offset:3px; }
+body .gh-site .quichi-support { margin:32px auto; padding:24px 20px; width:calc(100% - 40px); max-width:1160px; border:1px solid #555; background:#111; text-align:center; }
+body .gh-site .quichi-support h2 { margin:0 0 8px; color:#ff6b6b; font-size:2rem; }
+body .gh-site .quichi-support p { margin:0 0 16px; font-size:1.6rem; }
+body .gh-site .quichi-support .quichi-button { display:inline-flex; align-items:center; min-height:44px; }
+.quichi-sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+@media(max-width:767px) {
+    body .gh-site .quichi-archive-search { width:100%; }
+    body .gh-site .quichi-category-shortcuts a { flex:1 1 140px; }
+}
