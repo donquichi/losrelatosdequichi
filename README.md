@@ -6,7 +6,7 @@ Version control for the custom code used by the Los Relatos de Quichi Ghost webs
 
 - GitHub repository: https://github.com/donquichi/losrelatosdequichi
 - Active Ghost theme source: `theme/V64/`.
-- Automatic deployment: not configured yet.
+- Reliability work: private backup/recovery jobs installed; automatic theme deployment prepared and paused pending release verification. See [operations status](docs/reliability-operations.md).
 
 ## Repository scope
 
@@ -16,9 +16,17 @@ Before enabling deployment, back up the live theme, identify the deployment user
 
 ## Improvement roadmap
 
-The ordered implementation plan is in [Website feature and delivery roadmap](docs/website-roadmap.md). It gathers the strongest ideas from the ten-site comparison, with desktop/mobile behavior, publishing automation, dependencies, and release acceptance. It takes precedence over the order of the older audit lists below. First finish pending visual review, then add voluntary support and improve archive discovery. The owner will supply an existing donation link; the public URL is still pending. Features in that plan are proposals, not deployed changes.
+The ordered implementation plan is in [Website feature and delivery roadmap](docs/website-roadmap.md). It gathers the strongest ideas from the ten-site comparison, with desktop/mobile behavior, publishing automation, dependencies, and release acceptance. It takes precedence over the order of the older audit lists below. First finish pending visual review, then add voluntary support and improve archive discovery. A donation provider has not been chosen and no public donation URL is available yet. Features in that plan are proposals unless the progress notes explicitly identify installed work.
 
 Affiliate setup has begun with a [program shortlist, application preparation, and first-page specification](docs/affiliate-launch.md). Amazon Associates US is a candidate to assess, with Awin as an alternative; no account approval or live referral links are claimed. The first live recommendations page needs actual affiliate links and selected products, with desktop/mobile verification.
+
+### Verification, reliability, support and discovery: October 31 progress
+
+Work is isolated on `codex/reliability-discovery`. A private full database/content/runtime backup was created and verified through an isolated MariaDB import, matching all 99 published episodes, four published pages and four draft posts, plus content archive extraction and checksums. Daily full backups are scheduled at 03:17 UTC and weekly isolated restore checks on Sundays at 04:47 UTC. The five-minute deployment poll is installed but paused; it must not publish the unreviewed theme. Backups remain on the same server: off-server recovery coverage and a retention policy still need to be chosen. See [operations and recovery procedures](docs/reliability-operations.md).
+
+Production regression checks passed for 116 URLs, 43 representative WebP images, ten category artwork files, all archive pagination and distinct homepage groups. An HTTP baseline recorded 17–61 ms complete direct-origin responses across representative pages; this is not browser loading speed, Core Web Vitals, real-phone performance, or audience analytics.
+
+The candidate theme adds a visible native Ghost search control on episode/category archives, category shortcuts with dynamic counts, Spanish theme labels, and an optional donation setting. Isolated Ghost rendering tests passed for 116 URLs, all archive pagination and homepage groups, ten category shortcuts, selected-category marking, and a hidden donation area when no URL is configured. These interface changes are tested at the HTML level, not deployed. Desktop/mobile screenshot review remains blocked by unavailable browser capture. Full native-search interaction, publication-language settings, page metadata and repeated About content still need verification or completion; template label changes alone do not complete F07.
 
 ### Consolidated future-feature checklist
 
@@ -32,7 +40,7 @@ All items below are planned and unchecked. Feature IDs match the detailed roadma
 
 #### Release 1 — Support and episode discovery
 
-- [ ] **F04 — “Apoya el proyecto”:** a discreet donation link in navigation and after episodes/footer. Use the owner's existing public donation page; URL pending. Keep it separate from story submission and membership benefits.
+- [ ] **F04 — “Apoya el proyecto”:** a discreet donation link in navigation and after episodes/footer. Choose a provider and supply its public donation-page URL; the prepared section remains hidden until then. Keep it separate from story submission and membership benefits.
 - [ ] **F05 — Visible archive search:** search the full published catalog, including older episodes, accented titles, and SCP numbers; provide clear and empty-result states.
 - [ ] **F06 — Category shortcuts and archive navigation:** clear category selection, reliable counts where available, and numbered pagination where useful. Keep phone controls easy to tap.
 - [ ] **F07 — Spanish and search presentation:** correct publication language, consistent interface/footer labels, useful descriptions and headings, and removal of repeated About content.

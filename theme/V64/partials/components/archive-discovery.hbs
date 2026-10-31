@@ -1,0 +1,16 @@
+<section class="quichi-archive-discovery" aria-label="Buscar y explorar episodios">
+    <a class="quichi-archive-search" href="#/search" data-ghost-search>
+        {{> "icons/search"}} <span>Buscar episodios</span>
+    </a>
+    <p>Busca por título, tema o número SCP. La búsqueda incluye todas las categorías.</p>
+    <nav class="quichi-category-shortcuts" aria-label="Explorar episodios por categoría">
+        <a href="{{@site.url}}/episodios/"{{#if all}} aria-current="page"{{/if}}>Todos los episodios</a>
+        {{#get "tags" include="count.posts" filter="visibility:public" order="name asc" limit="100"}}
+            {{#foreach tags}}
+                {{#if count.posts}}
+                    <a href="{{url}}"{{#match slug ../../currentTag}} aria-current="page"{{/match}}>{{name}} <span>({{count.posts}})</span></a>
+                {{/if}}
+            {{/foreach}}
+        {{/get}}
+    </nav>
+</section>

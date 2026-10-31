@@ -2,3 +2,4 @@
 <li><a href="{{@site.url}}/episodios/"{{#is "episodios"}} aria-current="page"{{/is}}>Episodios</a></li>
 <li><a href="{{@site.url}}/#categorias">Categorías</a></li>
 <li><a href="{{@site.url}}/sobre-mi/">Sobre mí</a></li>
+{{#if @custom.donation_url}}<li><a href="{{@custom.donation_url}}" target="_blank" rel="noopener">Apoya el proyecto<span class="quichi-sr-only"> (abre una nueva pestaña)</span></a></li>{{/if}}

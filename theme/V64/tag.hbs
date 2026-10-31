@@ -5,6 +5,7 @@
         {{#tag}}
             {{> "components/tag-header"}}
         {{/tag}}
+        {{> "components/archive-discovery" currentTag=tag.slug}}
         {{> "components/list" layout="grid" column="4" showPrimaryTag=true showPublishedAt=true hasPagination=true}}
     </div>
 </main>

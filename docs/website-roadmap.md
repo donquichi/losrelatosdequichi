@@ -36,7 +36,7 @@ The donation task can be prepared while archive work proceeds. Do not show a pla
 | F06 | Category shortcuts and archive navigation | Compact category links with current selection and counts where reliable; numbered pagination if useful | Wrapped category shortcuts or a labeled category selector; retain clear previous/next controls | Categories/counts come from Ghost, with stable links and no hard-coded episode list. Category navigation and any combined search filters must have clear, honest behavior. |
 | F07 | Consistent Spanish and search presentation | Correct document language, page titles/descriptions, heading structure, footer and search labels; remove repeated About content | Same content and accessible labels | Reuse sensible templates for new episodes; leave intentional English content marked correctly. Review and preserve existing URLs and metadata; redirect changed URLs. |
 
-Donation text proposal: **“Apoya Los Relatos de Quichi”** with a short explanation such as **“Tu apoyo ayuda a crear nuevos relatos.”** Use the existing red button styling with clear focus and a generous touch target. Begin with a normal link to the owner's existing service to avoid adding a heavy payment widget to every page. Do not imply a charitable tax status.
+Donation text proposal: **“Apoya Los Relatos de Quichi”** with a short explanation such as **“Tu apoyo ayuda a crear nuevos relatos.”** Use the existing red button styling with clear focus and a generous touch target. Begin with a normal link to the owner's chosen service to avoid adding a heavy payment widget to every page. Do not imply a charitable tax status.
 
 ## Release 2: watch, listen, and read comfortably
 
