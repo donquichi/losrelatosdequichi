@@ -57,13 +57,35 @@ For future publishing, reuse the existing category with slug `casos-oscuros-desa
 
 - [x] Reduce the mobile header and long hero-title footprint, preserving the logo, colors, navigation, social icons, and 44-pixel menu/button targets.
 - [x] Bring recent episodes directly below the hero, ahead of categories, and remove the duplicate featured block. Hero, recent, and recommendation sections now show different episodes.
-- [ ] Improve dark-red text contrast against black, secondary text size, and link visibility while preserving the horror aesthetic.
-- [ ] Use left-aligned text for long informational pages.
+- [x] Improve dark-red text contrast against black, secondary text size, and link visibility while preserving the horror aesthetic. Screenshot review remains pending for this pass, as noted below.
+- [x] Use left-aligned text for long informational pages.
 - [ ] Add carousel pause controls and reduced-motion support, or replace the carousel with one featured episode.
 
 The mobile homepage pass was deployed October 30, 2026 after backing up the active theme. In the same phone preview, header height decreased from 217 to 148 pixels, hero height from 520 to approximately 315 pixels, and the recent-episode heading moved from 2,220 to approximately 526 pixels down the page. The hero uses smaller full titles and a shared grid row that grows with the longest title, avoiding clipping and slide-to-slide height jumps. Desktop hero styling is unchanged.
 
 The homepage now shares one bounded query of the 13 most recent published episodes: three in the hero, five different episodes in the recent list, and five more in recommendations. This automatically refreshes when new episodes are published. The repeated standalone featured block was removed. Categories remain available through the navigation anchor, and the existing card grid, colors, and artwork are preserved. The new `scripts/check-homepage.cjs` check verifies distinct episode groups and content order; the existing page/image checks passed for 116 URLs, 43 representative WebP images, and all category artwork. Visual checks covered desktop and 320/390-pixel phone previews, all three hero titles and buttons, the expanded mobile menu, the category shortcut, About, and an episode page. No horizontal overflow was observed at either phone width.
+
+The readability pass was deployed October 30, 2026 after a private theme backup. Text accents use a brighter red (`#ff6b6b`); dates and secondary labels use lighter gray and generally 13-pixel type. Ordinary article links are underlined, and interactive elements have a white keyboard-focus outline. Category cards allow more room for labels. Informational body text is left-aligned with a maximum reading width of 68 characters and 18-pixel desktop / 17-pixel mobile type. The black surfaces, artwork, and overall layout are retained.
+
+Ghost 6 theme validation passed, along with checks for 116 page URLs, 43 representative WebP images, ten category artwork files, and distinct homepage episode groups. Browser DOM checks confirmed the deployed colors and text sizes, left-aligned About text, an expandable mobile menu, and no homepage horizontal overflow at 320, 390, and 1280 pixels. Category cards had no horizontal overflow at those widths. **Screenshot review of this readability pass is pending:** the screenshot service failed, and the native browser could not be restored during the session. DOM and HTTP checks do not establish visual correctness; do not treat this pass as visually approved.
+
+### Next desktop recommendations
+
+- [ ] Add carousel pause and keyboard controls, plus reduced-motion support. This is the next recommended interface improvement and also benefits phones.
+- [ ] Make episode search easier to discover and add category shortcuts on the episode archive.
+- [ ] Review thumbnail proportions and long-title wrapping across archive cards.
+- [ ] Improve longer archive navigation with numbered page links where useful.
+- [ ] Review sidebar spacing and consider editorial selections or episode duration when reliable data is available.
+
+### Next mobile recommendations
+
+- [ ] Enlarge carousel touch targets and add an accessible pause control.
+- [ ] Load third-party players on demand using lightweight previews, preserving playback and platform links.
+- [ ] Review portrait video sizing and add quick access to watch, listen, or read on episode pages.
+- [ ] Add compact archive search and category shortcuts that work comfortably with touch.
+- [ ] Measure loading and layout stability on real phones and slower connections, alongside repeatable desktop measurements.
+
+Shared priorities remain automatic GitHub deployment with validation, private backups and rollback; verified database and media backups; consistent Spanish interface labels; and improved page descriptions. These are recommendations, not completed features.
 
 ### Content, language, and search presentation
 

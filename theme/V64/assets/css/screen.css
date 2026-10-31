@@ -3421,3 +3421,103 @@ body.home-template .quichi-popular-number::before { content:counter(quichi-disco
     body.home-template .quichi-roulette-dots { bottom:16px !important; }
     body.home-template .quichi-home-main { padding-top:20px !important; }
 }
+
+/* Readable accents and secondary text on the existing dark surfaces. */
+:root { --quichi-readable-red:#ff6b6b; --quichi-readable-muted:#c6c6c6; }
+body .gh-site .quichi-tag,
+body .gh-site .quichi-post-kicker a,
+body .gh-site .quichi-post-breadcrumb a,
+body .gh-site .quichi-post-tags a,
+body .gh-site .quichi-category-metadata a,
+body .gh-site .quichi-category-card small,
+body .gh-site .quichi-episode-card-tag,
+body .gh-site .quichi-episode-card-button,
+body .gh-site .quichi-feature-block h2,
+body .gh-site .quichi-category-block h2,
+body .gh-site .quichi-latest-block h2,
+body .gh-site .quichi-sidebar-box h3,
+body .gh-site .quichi-post-sidebar-box h3,
+body .gh-site .gh-archive-title,
+body .gh-site .quichi-footer-social svg,
+body.page-template .gh-article-title,
+body.page-template .quichi-episode-hero h1,
+body.page-template .gh-article .gh-content :is(h1,h2,h3,h4,h5,h6) {
+    color:var(--quichi-readable-red) !important;
+}
+body header#gh-head.is-head-stacked .quichi-nav-links a:hover,
+body header#gh-head.is-head-stacked .quichi-nav-links a[aria-current="page"],
+body header#gh-head.is-head-stacked .quichi-mobile-menu[open] summary { color:var(--quichi-readable-red) !important; }
+body .gh-site .quichi-dot.is-active { background:var(--quichi-readable-red) !important; }
+body .gh-site .quichi-meta,
+body .gh-site .quichi-post-meta,
+body .gh-site .quichi-episode-meta,
+body .gh-site .quichi-episode-card-meta,
+body .gh-site .quichi-footer-copy {
+    color:var(--quichi-readable-muted) !important;
+    font-size:1.3rem !important;
+    line-height:1.5 !important;
+}
+body .gh-site .quichi-post-metadata dt { color:var(--quichi-readable-muted) !important; font-size:1.2rem !important; line-height:1.5 !important; overflow-wrap:anywhere; }
+body .gh-site .quichi-post-metadata dd { font-size:1.3rem !important; line-height:1.5 !important; }
+body .gh-site .quichi-popular-item strong,
+body .gh-site .quichi-post-popular-item strong { font-size:1.3rem !important; line-height:1.45 !important; }
+body .gh-site .quichi-tag,
+body.home-template .quichi-content .quichi-tag { font-size:1.3rem !important; line-height:1.5 !important; }
+body .gh-site .quichi-category-block h2,
+body .gh-site .quichi-latest-block h2,
+body .gh-site .quichi-sidebar-box h3 { font-size:1.4rem !important; line-height:1.4 !important; }
+body .gh-site .quichi-category-card {
+    min-height:96px !important;
+}
+body .gh-site .quichi-category-card span {
+    color:#fff !important;
+    font-size:1.2rem !important;
+    line-height:1.35 !important;
+    overflow-wrap:anywhere;
+}
+body .gh-site .quichi-category-card small {
+    align-self:flex-start;
+    padding:2px 4px;
+    border-radius:2px;
+    background:#090909;
+    font-size:1.2rem !important;
+    line-height:1.4 !important;
+    text-decoration:underline;
+    text-underline-offset:3px;
+}
+body .gh-site .quichi-footer-social a,
+body .gh-site .quichi-footer-links a { color:var(--quichi-readable-muted) !important; font-size:1.3rem !important; line-height:1.6 !important; }
+body .gh-site .quichi-footer-links a { text-decoration:underline; text-underline-offset:3px; }
+body .gh-site .quichi-footer-social a:hover,
+body .gh-site .quichi-footer-links a:hover { color:#fff !important; }
+/* A non-color cue for ordinary article links, with button cards left intact. */
+body .gh-site .gh-content :is(p,li,blockquote) a {
+    color:var(--quichi-readable-red) !important;
+    text-decoration:underline !important;
+    text-underline-offset:3px;
+    text-decoration-thickness:1px;
+}
+/* Keep informational page titles centered; align long reading content to the left. */
+body.page-template .gh-article .gh-content {
+    width:100%;
+    max-width:68ch;
+    margin-inline:auto;
+    text-align:left !important;
+    font-size:1.8rem !important;
+    line-height:1.75 !important;
+}
+body.page-template .gh-article .gh-content :is(p,li,blockquote,strong,span,h1,h2,h3,h4,h5,h6) { text-align:left !important; }
+body.page-template .gh-article .gh-content :is(ul,ol) { display:block !important; text-align:left !important; padding-left:1.6em !important; }
+body.page-template .gh-article .gh-content a { color:var(--quichi-readable-red) !important; text-decoration:underline !important; text-underline-offset:3px; }
+/* Clear focus on dark panels, red buttons and image cards. */
+body .gh-site :is(a,button,summary,input,select,textarea):focus-visible,
+body header#gh-head.is-head-stacked .quichi-nav-links a:focus-visible,
+body header#gh-head.is-head-stacked .quichi-mobile-menu summary:focus-visible {
+    outline:3px solid #fff !important;
+    outline-offset:4px !important;
+    box-shadow:0 0 0 6px #111 !important;
+}
+@media(max-width:767px) {
+    body .gh-site .quichi-category-card { min-height:112px !important; }
+    body.page-template .gh-article .gh-content { font-size:1.7rem !important; line-height:1.75 !important; }
+}
