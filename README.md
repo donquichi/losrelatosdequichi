@@ -18,6 +18,8 @@ Before enabling deployment, back up the live theme, identify the deployment user
 
 The ordered implementation plan is in [Website feature and delivery roadmap](docs/website-roadmap.md). It gathers the strongest ideas from the ten-site comparison, with desktop/mobile behavior, publishing automation, dependencies, and release acceptance. It takes precedence over the order of the older audit lists below. First finish pending visual review, then add voluntary support and improve archive discovery. The owner will supply an existing donation link; the public URL is still pending. Features in that plan are proposals, not deployed changes.
 
+Affiliate setup has begun with a [program shortlist, application preparation, and first-page specification](docs/affiliate-launch.md). Amazon Associates US is a candidate to assess, with Awin as an alternative; no account approval or live referral links are claimed. The first live recommendations page needs actual affiliate links and selected products, with desktop/mobile verification.
+
 ### Consolidated future-feature checklist
 
 All items below are planned and unchecked. Feature IDs match the detailed roadmap. Apply changes in small releases, preserve the black-and-red identity and existing layout, and check desktop and mobile appearance before marking visual work complete. The older audit sections below record completed work and its history.
