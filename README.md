@@ -16,6 +16,8 @@ Before enabling deployment, back up the live theme, identify the deployment user
 
 ## Improvement roadmap
 
+The ordered implementation plan is in [Website feature and delivery roadmap](docs/website-roadmap.md). It gathers the strongest ideas from the ten-site comparison, with desktop/mobile behavior, publishing automation, dependencies, and release acceptance. It takes precedence over the order of the older audit lists below. First finish pending visual review, then add voluntary support and improve archive discovery. The owner will supply an existing donation link; the public URL is still pending. Features in that plan are proposals, not deployed changes.
+
 Audit date: October 30, 2026. The audit checked 116 URLs directly through Ghost, including 99 episodes, and reviewed representative desktop and mobile pages. All checked URLs returned HTTP 200 from Ghost. Direct homepage responses took 80–181 ms in three samples; these are not end-user loading times or Core Web Vitals. Some automated public requests received Cloudflare challenges while ordinary browser visits worked.
 
 ### First pass: performance while preserving the design
@@ -71,7 +73,7 @@ Ghost 6 theme validation passed, along with checks for 116 page URLs, 43 represe
 
 ### Next desktop recommendations
 
-- [ ] Add carousel pause and keyboard controls, plus reduced-motion support. This is the next recommended interface improvement and also benefits phones.
+- [ ] Add carousel pause and keyboard controls, plus reduced-motion support. See the ordered roadmap for its release alongside playback improvements.
 - [ ] Make episode search easier to discover and add category shortcuts on the episode archive.
 - [ ] Review thumbnail proportions and long-title wrapping across archive cards.
 - [ ] Improve longer archive navigation with numbered page links where useful.
