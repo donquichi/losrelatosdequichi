@@ -18,6 +18,67 @@ Before enabling deployment, back up the live theme, identify the deployment user
 
 The ordered implementation plan is in [Website feature and delivery roadmap](docs/website-roadmap.md). It gathers the strongest ideas from the ten-site comparison, with desktop/mobile behavior, publishing automation, dependencies, and release acceptance. It takes precedence over the order of the older audit lists below. First finish pending visual review, then add voluntary support and improve archive discovery. The owner will supply an existing donation link; the public URL is still pending. Features in that plan are proposals, not deployed changes.
 
+### Consolidated future-feature checklist
+
+All items below are planned and unchecked. Feature IDs match the detailed roadmap. Apply changes in small releases, preserve the black-and-red identity and existing layout, and check desktop and mobile appearance before marking visual work complete. The older audit sections below record completed work and its history.
+
+#### Release 0 — Verify and protect the site
+
+- [ ] **F01 — Finish visual review:** inspect the latest readability changes with fresh desktop and phone screenshots.
+- [ ] **F02 — Automatic deployment and recovery:** GitHub deployment with theme validation, private backups, health checks, rollback, and a verified database/media recovery procedure.
+- [ ] **F03 — Performance and audience baseline:** repeatable desktop/mobile loading and layout-stability measurements, playback checks, and actual audience figures when available.
+
+#### Release 1 — Support and episode discovery
+
+- [ ] **F04 — “Apoya el proyecto”:** a discreet donation link in navigation and after episodes/footer. Use the owner's existing public donation page; URL pending. Keep it separate from story submission and membership benefits.
+- [ ] **F05 — Visible archive search:** search the full published catalog, including older episodes, accented titles, and SCP numbers; provide clear and empty-result states.
+- [ ] **F06 — Category shortcuts and archive navigation:** clear category selection, reliable counts where available, and numbered pagination where useful. Keep phone controls easy to tap.
+- [ ] **F07 — Spanish and search presentation:** correct publication language, consistent interface/footer labels, useful descriptions and headings, and removal of repeated About content.
+
+#### Release 2 — Faster, more comfortable watching, listening, and reading
+
+- [ ] **F08 — Ver / Escuchar / Leer shortcuts:** place available formats near each episode title and hide formats that do not exist.
+- [ ] **F09 — Lightweight media players:** load heavy video/audio embeds on request, preserve working platform links, and size landscape/portrait media correctly.
+- [ ] **F10 — Better episode cards:** short synopsis, accurate duration when available, readable dates/categories, consistent thumbnails, long-title wrapping, and balanced card/sidebar spacing.
+- [ ] **F11 — Carousel accessibility:** pause/resume, keyboard controls, larger mobile touch targets, stable slide layout, and reduced-motion support.
+- [ ] **F12 — Reading tools and chapters:** optional reading progress/text-size controls, text-based reading time, and real chapter timestamps for longer episodes.
+- [ ] **F27 — Font and CSS cleanup:** review unused fonts/styles and accumulated overrides while preserving existing custom production styling.
+- [ ] **F28 — Caching and public delivery:** review caching and Cloudflare challenge behavior, then measure results without weakening existing protection.
+
+#### Release 3 — Collections and recommendations
+
+- [ ] **F13 — “Empieza aquí”:** five selected introductory episodes with short reasons to choose them.
+- [ ] **F14 — Relevant recommendations:** prioritize related categories, exclude the current episode and duplicates, and provide a bounded fallback automatically.
+- [ ] **F15 — Series and collection pages:** introductions, ordered lists for genuine series, and previous/next navigation within each series.
+- [ ] **F16 — Seasonal/editorial selections:** collections such as Halloween, SCP introductions, maritime horror, and disappearances.
+- [ ] **F17 — “Sorpréndeme”:** an optional random public story, secondary to search and categories.
+
+#### Release 4 — Community and returning visitors
+
+- [ ] **F18 — Free email updates:** verified signup/confirmation/unsubscribe and an agreed episode-update or digest workflow.
+- [ ] **F19 — Episode sharing:** copy link, supported native sharing on phones, and useful social previews.
+- [ ] **F20 — “Cuéntanos tu relato”:** invite visitors to submit stories for possible adaptation into narrated videos. Add a menu link and an invitation after episodes, with a responsive form and a private editorial review workflow.
+- [ ] **F21 — Save for later and reading position:** optional browser-local bookmarks/progress, with remove/reset controls and clear limits on cross-device support.
+- [ ] **F22 — Creator introduction and follow options:** concise project information, contact route, available listening platforms, and a sustainable publication schedule if established.
+- [ ] **F23 — Community feedback:** consider moderated comments or a lightweight feedback route when moderation capacity exists.
+
+The story form should request a name or pseudonym, an anonymous-credit choice, a private contact email, story title, and full written story. Include an explicit permission choice for adaptation and publication as a narrated video, separate from newsletter signup. Start with written submissions; optional voice submissions can follow later. Confirm receipt and handle validation/delivery errors. Keep submissions and contact details outside this public repository. Review submissions privately before selecting, adapting, producing, and publishing; sending a story does not trigger automatic video creation or publication.
+
+Proposed invitation: **“Tu historia podría convertirse en nuestro próximo video. ¿Viviste algo inexplicable? Cuéntanos lo que pasó. Seleccionaremos algunos relatos para narrarlos en Los Relatos de Quichi.”** Button: **“Enviar mi relato.”** Note: **“Revisamos todas las historias; el envío no garantiza su publicación.”** Choose the submission destination, storage, and reviewer before launch.
+
+#### Release 5 — Optional future revenue
+
+- [ ] **F24 — Supporter membership:** assess one sustainable paid benefit such as a monthly bonus story or early access, while retaining a useful free catalog.
+- [ ] **F25 — Digital collections and merchandise:** assess a curated anthology and a small merchandise range after validating audience interest.
+- [ ] **F26 — Sponsor/media kit:** verified audience figures, a contact route, and a limited sponsorship offer when demand supports it.
+
+#### Requirements shared by all releases
+
+- [ ] Apply template-driven features automatically to new episodes: listings, category links, available formats, related stories, sharing, and supported image handling.
+- [ ] Document publishing conventions for excerpts, canonical categories, verified media duration, timestamps, and genuine series order. Omit missing data cleanly.
+- [ ] Keep editorial selections, story review, email sends, paid benefits, and product decisions under deliberate owner/editor control.
+- [ ] Check desktop, tablet where relevant, and 320/390-pixel phone layouts for image distortion, clipped text, horizontal scrolling, touch/keyboard usability, and affected media playback. Save and inspect screenshots for every visual release.
+
 Audit date: October 30, 2026. The audit checked 116 URLs directly through Ghost, including 99 episodes, and reviewed representative desktop and mobile pages. All checked URLs returned HTTP 200 from Ghost. Direct homepage responses took 80–181 ms in three samples; these are not end-user loading times or Core Web Vitals. Some automated public requests received Cloudflare challenges while ordinary browser visits worked.
 
 ### First pass: performance while preserving the design
