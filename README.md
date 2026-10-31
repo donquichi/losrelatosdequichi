@@ -68,6 +68,11 @@ Proposed invitation: **“Tu historia podría convertirse en nuestro próximo vi
 
 #### Release 5 — Optional future revenue
 
+Revenue goal: earn from product payment links, website advertisements, and social media as well as voluntary support. These are active planning priorities; the product, provider, advertising account, and social monetization eligibility are not yet selected or verified. Start with product/audience research alongside the earlier releases rather than waiting to consider revenue until every interface feature is complete. No checkout, ad placement, or monetization enrollment is enabled by this documentation.
+
+- [ ] **F29 — Product sales through payment links:** choose a first offer, then add a small Tienda/catalog page with clear product details, currency/price, and Comprar buttons linking to the chosen provider's hosted checkout. Define fulfillment, customer support, and return/refund terms before launch. Payment collection and digital-file delivery are separate requirements; confirm provider-paid orders before fulfilling. Reuse product links in social profiles and posts where supported.
+- [ ] **F30 — Website advertising:** assess direct sponsor placements and an ad network such as AdSense. Verify account/site approval and content eligibility before integration. Begin with a limited labeled placement, reserve its dimensions, check desktop/mobile layout and load performance, and measure actual revenue. Never encourage visitors to click ads to support the site.
+- [ ] **F31 — Social media revenue:** audit current channels and their monetization dashboards, assess native creator revenue and sponsored posts, and connect relevant content to product links. Adapt original episode excerpts for each platform and track which posts produce visits and completed sales. Do not assume followers/views guarantee eligibility, payouts, or monetization on every platform.
 - [ ] **F24 — Supporter membership:** assess one sustainable paid benefit such as a monthly bonus story or early access, while retaining a useful free catalog.
 - [ ] **F25 — Digital collections and merchandise:** assess a curated anthology and a small merchandise range after validating audience interest.
 - [ ] **F26 — Sponsor/media kit:** verified audience figures, a contact route, and a limited sponsorship offer when demand supports it.

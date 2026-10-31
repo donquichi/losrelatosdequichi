@@ -17,7 +17,7 @@ Existing foundations include optimized images, a bounded homepage feed, distinct
 | 2 | Episode playback, lightweight players, carousel controls, richer cards | Improve the core watch/listen/read experience and loading | Confirm media sources and reliable duration data |
 | 3 | Beginner selections, related stories, series and seasonal collections | Help visitors explore more of the catalog | Initial editorial selections and consistent tags |
 | 4 | Email updates, sharing, story submissions, reading conveniences | Build repeat visits and community | Email delivery and submission handling configured |
-| 5 | Optional paid membership, products, sponsorships | Test revenue offers after understanding audience demand | Audience data, sustainable offer, and owner decisions |
+| 5 | Product payment links, website ads, social monetization; optional membership | Validate revenue offers and their effect on the audience experience | Product and fulfillment decisions, provider/account eligibility, and audience data |
 
 The donation task can be prepared while archive work proceeds. Do not show a placeholder or broken payment button. Work that depends on a missing service remains pending while independent work continues.
 
@@ -70,11 +70,19 @@ Donation text proposal: **“Apoya Los Relatos de Quichi”** with a short expla
 
 ## Release 5: later revenue experiments
 
+The owner wants revenue from product payment links, website ads, and social media and has not yet chosen a product or confirmed the relevant social accounts. Research and offer selection can proceed alongside earlier releases. The release number is not a requirement to delay commercial planning until every other feature ships. Launch only the selected, configured channel rather than enabling every revenue option at once.
+
+- [ ] **F29 — Product payment links.** Research audience interest in a digital story collection or other first offer before committing to inventory. Once selected, prepare a small responsive Tienda/catalog page with images, description, currency/price, and Comprar links to a reputable provider's hosted checkout. Define receipt, fulfillment, customer support, and return/refund behavior. A payment link alone does not establish automated file delivery or physical shipping. Verify paid order status through the provider before fulfillment; neither a click nor a success-page visit proves payment. Reuse public product links on supported social profiles/posts. Product, price, provider, and delivery method remain undecided.
+- [ ] **F30 — Website advertisements.** Compare direct sponsor placements with an ad network such as AdSense using actual traffic and content suitability. Review approval, applicable provider requirements, and any necessary consent integration before loading ad scripts. Test a limited labeled placement with reserved dimensions and phone-safe sizing. Measure revenue, load performance, and layout shifts. Do not ask visitors to click advertisements, place deceptive controls near ads, or predict earnings without data.
+- [ ] **F31 — Social monetization.** Identify the actual channels and inspect owner-provided account analytics/monetization status before choosing programs. Evaluate native creator revenue, branded posts, and product referrals separately. Adapt original episode excerpts for each channel, link to relevant full episodes or products where supported, and track source visits and provider-confirmed sales. Eligibility depends on account, region, content, and program; do not claim enrollment or promised payouts. Posting and commercial agreements need the owner's direction before publishing or accepting them.
+
 - [ ] **F24 — One supporter membership.** If donations and engagement show demand, define one sustainable benefit such as a monthly bonus story or early access. Assess native Ghost membership versus an existing audience platform before choosing. Payment setup, pricing, and benefits require owner decisions; retain a useful free catalog.
 - [ ] **F25 — Digital collections and merchandise.** Test interest in a curated digital anthology before a large store or inventory commitment. Consider a small print-on-demand range only after validating audience interest. These require product creation and fulfillment choices, not just a theme update.
 - [ ] **F26 — Sponsor/media kit.** Present verified audience and engagement figures, a clear contact route, and a limited sponsorship offer when evidence supports it. Do not claim guaranteed reach, estimated competitor earnings, or revenue without records.
 
-No advertising network, membership checkout, donation account, product store, or recurring charge is created by this roadmap. Heavy display advertising is not part of the first releases because loading speed remains a priority.
+No advertising network, membership checkout, donation account, product store, or recurring charge is created by this roadmap. Advertising implementation remains a separate measured release because loading speed is a priority; a limited placement can be considered after approval and baseline checks.
+
+Provider references: [Stripe Payment Links](https://docs.stripe.com/payment-links) can be shared on websites and social media; [AdSense eligibility](https://support.google.com/adsense/answer/9724) requires eligible original content and review; [YouTube Partner Program](https://support.google.com/youtube/answer/72851) has account and audience requirements; [Facebook Content Monetization](https://about.fb.com/news/2024/10/monetize-content-facebooks-new-streamlined-program/) is a separate platform program. These are research references, not selected services or evidence that this project's accounts qualify. Recheck current requirements before implementation.
 
 ## New-episode publishing rules
 
