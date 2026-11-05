@@ -7,7 +7,7 @@
     <section class="quichi-featured gh-outer">
         <div class="gh-inner quichi-featured-inner">
 
-                {{#foreach homepage_posts to="3"}}
+                {{#foreach homepage_posts from="6" to="8"}}
 
                     <article class="quichi-slide {{#if feature_image}}has-image{{/if}}" style="{{#if feature_image}}background-image:url('{{img_url feature_image size="l" format="webp"}}'){{/if}}">
 
@@ -51,7 +51,7 @@
                     <h2>Últimos episodios</h2>
 
                     <div class="quichi-episode-list">
-                            {{#foreach homepage_posts from="4" to="8"}}
+                            {{#foreach homepage_posts to="5"}}
                                 <article class="quichi-episode-row">
                                     {{#if feature_image}}
                                         <a href="{{url}}" class="quichi-row-image">
@@ -95,8 +95,17 @@
                     </div>
                 </section>
 
-
-
+                <section class="quichi-explore-block" aria-labelledby="quichi-explore-title">
+                    <h2 id="quichi-explore-title">Sigue explorando</h2>
+                    <p>Tu próximo relato te espera. Recorre el archivo o entra en el universo SCP.</p>
+                    <div class="quichi-explore-links">
+                        <a href="{{@site.url}}/episodios/">Todos los episodios <span aria-hidden="true">→</span></a>
+                        <a href="{{@site.url}}/tag/scp-foundation/">SCP en español <span aria-hidden="true">→</span></a>
+                        <a href="{{@site.url}}/sobre-mi/">Conoce a Quichi <span aria-hidden="true">→</span></a>
+                    </div>
+                </section>
+                {{! Future advertising belongs below this section, separate from episode links.
+                    No ad scripts or empty ad boxes are rendered until a real account is configured. }}
             </div>
 
             <aside class="quichi-home-sidebar">
