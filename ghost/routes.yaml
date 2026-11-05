@@ -1,5 +1,7 @@
 # Public route configuration. Existing episode URLs remain at /{slug}/.
 routes:
+  /tienda/:
+    template: tienda
   /episodios/:
     controller: channel
     template: episodios

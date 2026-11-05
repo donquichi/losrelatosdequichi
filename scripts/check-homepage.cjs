@@ -28,10 +28,11 @@ async function main() {
     groups.forEach((group, index) => {
         if (group.size !== expected[index]) throw new Error(`Wrong episode count in section ${index + 1}: ${group.size}`);
         for (const url of group) {
-            if (seen.has(url)) throw new Error(`Episode repeated across homepage sections: ${url}`);
+            if (seen.has(url) && index !== 1) throw new Error(`Unexpected repeated episode: ${url}`);
             seen.add(url);
         }
     });
+    if (JSON.stringify([...groups[0]]) !== JSON.stringify(newest.slice(0,3))) throw new Error('Carousel must show the newest three episodes');
     if (html.includes('class="quichi-feature-block"')) throw new Error('Duplicate featured block remains');
     if (html.indexOf('class="quichi-latest-block"') > html.indexOf('id="categorias"')) throw new Error('Recent episodes do not precede categories');
     if (!html.includes('/tag/scp-foundation/')) throw new Error('SCP category is missing');

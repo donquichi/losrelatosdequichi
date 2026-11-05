@@ -12,6 +12,9 @@ docker_candidate="/tmp/quichi-validate-${candidate##*-}"
 cleanup() { docker exec "$GHOST_CONTAINER" rm -rf -- "$docker_candidate" >/dev/null 2>&1 || true; rm -rf -- "$candidate"; }
 trap cleanup EXIT
 git --git-dir="$repo" archive "$revision" theme/V64 scripts | tar -x -C "$candidate"
+if [[ -f "$candidate/theme/V64/assets/data/shop-status.json" ]]; then
+    docker exec -i "$GHOST_CONTAINER" node -e 'let text="";process.stdin.on("data",chunk=>text+=chunk);process.stdin.on("end",()=>{const status=JSON.parse(text);if(status.ready!==true){console.error("Shop release blocked: product images are pending");process.exitCode=1;}});' < "$candidate/theme/V64/assets/data/shop-status.json"
+fi
 docker cp "$candidate/theme/V64" "$GHOST_CONTAINER:$docker_candidate" >/dev/null
 docker exec -w /tmp "$GHOST_CONTAINER" npx --yes gscan@5.4.3 "$docker_candidate" --v6
 release="$STATE_DIR/backups/theme-$(date -u +%Y%m%dT%H%M%SZ)-${revision:0:12}"

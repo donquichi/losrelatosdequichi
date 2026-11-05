@@ -26,6 +26,8 @@ AdSense verification was deployed November 5: the supplied asynchronous publishe
 
 ### Shared affiliate recommendations: November 5 release
 
+**Next design is a draft:** [Tienda de Quichi](docs/quichi-shop-draft.md) prepares an image-only homepage preview and a same-site product grid opening in a new tab, while removing cards from episodes. Product photos are pending: the owner's Amazon account does not yet have Creators API access. Release checks reject this draft until permitted photos are configured. The live sidebar described below remains active.
+
 Added Recomendaciones de Quichi to the homepage and shared episode sidebar, with Quichi recomienda in desktop/mobile navigation linking to the homepage section. The first card is an LED Halloween tree using the original affiliate URL supplied by the owner. Clear commission disclosures precede the merchant link, which uses sponsored-link markup and an accessible new-tab notice. The card has no copied product photo, price, stock claim, external widget or extra JavaScript.
 
 One list, `ghost/recommendations.json`, controls all cards. Run `node scripts/build-recommendations.cjs` after a reviewed list change; GitHub verifies that generated partials match the list. Once released, changes appear everywhere through shared templates, and new episodes inherit the sidebar automatically. Product selection and deployment remain reviewed steps. See [maintenance instructions](docs/affiliate-recommendations.md).
