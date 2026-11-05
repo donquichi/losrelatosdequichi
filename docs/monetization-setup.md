@@ -1,6 +1,6 @@
 # Advertising and affiliate setup
 
-The owner lives in the United States and confirmed on November 5, 2026 that no affiliate account exists. Audience shopping countries and traffic are unknown. Later that day, the owner supplied an AdSense account's public publisher code; the site status is Requires review. See the [AdSense verification and review guide](adsense-review.md). There is no claimed site approval, affiliate enrollment, live manual ad unit, referral URL, or revenue.
+The owner lives in the United States. Audience shopping countries and traffic are unknown. On November 5, 2026 the owner supplied an AdSense publisher code; the site is waiting for review. See the [AdSense verification guide](adsense-review.md). The owner subsequently reported creating an Amazon Associates account and supplied the [first verified product link](affiliate-recommendations.md). There is no claimed Google approval, Amazon account approval, live manual display-ad unit, or revenue.
 
 ## Two separate revenue sources
 
