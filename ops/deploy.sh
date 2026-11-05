@@ -34,7 +34,7 @@ activated=true
 rsync -a --delete "$candidate/theme/V64/" "$THEME_DIR/"
 docker restart "$GHOST_CONTAINER" >/dev/null
 wait_health
-for check in check-origin.cjs check-pagination.cjs check-homepage.cjs; do
+for check in check-origin.cjs check-pagination.cjs check-homepage.cjs check-adsense.cjs; do
     docker exec -i "$GHOST_CONTAINER" node < "$candidate/scripts/$check"
 done
 printf '%s\n' "$revision" > "$STATE_DIR/deployed-revision"
