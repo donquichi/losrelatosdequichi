@@ -4,10 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{meta_title page=(t " (Page %)")}}</title>
+    <title>{{{block "title_prefix"}}}{{meta_title page=(t " (Page %)")}}</title>
     <link rel="stylesheet" href="{{asset "built/screen.css"}}">
     {{#is "home"}}<link rel="stylesheet" href="{{asset "css/home-discovery.css"}}">{{/is}}
-    {{#is "home, post"}}<link rel="stylesheet" href="{{asset "css/recommendations.css"}}">{{/is}}
+    {{#is "home"}}<link rel="stylesheet" href="{{asset "css/recommendations.css"}}">{{/is}}
+    {{{block "styles"}}}
 
     {{#is "home"}}
         {{#get "posts" limit="8" order="published_at desc"}}

@@ -1,0 +1,14 @@
+{{!< default}}
+{{#contentFor "title_prefix"}}Tienda de Quichi | {{/contentFor}}
+{{#contentFor "styles"}}<link rel="stylesheet" href="{{asset "css/recommendations.css"}}">{{/contentFor}}
+
+<main class="gh-main gh-outer quichi-shop">
+    <div class="gh-inner">
+        <header class="quichi-shop-header">
+            <h1>Tienda de Quichi</h1>
+            <p>Una selección de productos para quienes disfrutan del terror y el misterio.</p>
+            <p>Las compras se realizan en Amazon.</p>
+        </header>
+        {{> "components/shop-products"}}
+    </div>
+</main>

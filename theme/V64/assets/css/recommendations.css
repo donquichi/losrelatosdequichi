@@ -1,13 +1,25 @@
-/* Shared affiliate recommendations: no widgets, product-image scraping or price polling. */
-body .gh-site .quichi-recommendations { margin:24px 0; padding:20px; border:1px solid #444; background:#111; scroll-margin-top:24px; }
-body .gh-site .quichi-recommendations h3 { margin:0 0 14px; color:#ff6b6b; font-size:1.8rem; line-height:1.4; letter-spacing:.06em; text-transform:uppercase; overflow-wrap:anywhere; }
-body .gh-site .quichi-recommendations .quichi-affiliate-disclosure,
-body .gh-site .quichi-recommendations .quichi-amazon-disclosure { margin:0 0 10px; color:#ccc; font-size:1.4rem; line-height:1.6; }
-body .gh-site .quichi-recommendation-item { padding:18px 0 0; margin-top:18px; border-top:1px solid #444; }
-body .gh-site .quichi-recommendation-item h4 { margin:0 0 10px; color:#fff; font-size:1.9rem; line-height:1.4; overflow-wrap:anywhere; }
-body .gh-site .quichi-recommendation-item p { margin:0 0 16px; color:#ccc; font-size:1.6rem; line-height:1.6; }
-body .gh-site .quichi-recommendation-item a { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:44px; padding:10px 14px; border:1px solid #ff6b6b; background:#b30000; color:#fff; font-size:1.5rem; line-height:1.5; text-decoration:none; }
-body .gh-site .quichi-recommendation-item a:hover { background:#8c0000; }
-body .gh-site .quichi-recommendation-item a:focus-visible { outline:3px solid #fff; outline-offset:3px; }
-.quichi-recommendations .quichi-newtab { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
-@media(max-width:767px) { body .gh-site .quichi-recommendations { padding:18px; } }
+/* Tienda de Quichi: scoped home preview and product grid. */
+.quichi-newtab { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+body .gh-site .quichi-shop-preview { margin:24px 0; padding:20px; border:1px solid #444; background:#111; }
+body .gh-site .quichi-shop-preview h3 { margin:0 0 16px; font-size:1.8rem; line-height:1.4; text-transform:uppercase; }
+body .gh-site .quichi-shop-preview h3 a { display:flex; align-items:center; justify-content:space-between; gap:8px; min-height:44px; color:#ff6b6b; text-decoration:none; }
+.quichi-shop-preview-images { display:grid; gap:12px; }
+.quichi-shop-preview-image, .quichi-shop-product-image { display:flex; align-items:center; justify-content:center; width:100%; aspect-ratio:1; overflow:hidden; border:1px solid #333; background:#fff; }
+.quichi-shop-preview-image img, .quichi-shop-product-image img { display:block; width:100%; height:100%; object-fit:contain; }
+body .gh-site .quichi-shop-preview-note { margin:12px 0 0; color:#ccc; font-size:1.4rem; line-height:1.6; }
+body .gh-site .quichi-shop { padding-top:40px; padding-bottom:56px; }
+body .gh-site .quichi-shop-header { max-width:720px; margin-bottom:32px; }
+body .gh-site .quichi-shop-header h1 { margin:0 0 16px; color:#ff6b6b; font-family:"EB Garamond",Georgia,serif; font-size:4rem; line-height:1.2; }
+body .gh-site .quichi-shop-header p { margin:0 0 12px; color:#eee; font-size:1.8rem; line-height:1.7; }
+body .gh-site .quichi-shop .quichi-affiliate-disclosure, body .gh-site .quichi-shop .quichi-amazon-disclosure { margin:0 0 12px; color:#ccc; font-size:1.4rem; line-height:1.6; }
+.quichi-shop-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:32px 24px; margin-top:32px; }
+.quichi-shop-product { min-width:0; text-align:center; }
+body .gh-site .quichi-shop-product-link { display:block; color:#fff; text-decoration:none; }
+body .gh-site .quichi-shop-product h2 { margin:18px 0 10px; color:#fff; font-family:"EB Garamond",Georgia,serif; font-size:2rem; line-height:1.4; overflow-wrap:anywhere; }
+body .gh-site .quichi-shop-product p { margin:0 0 16px; color:#ccc; font-size:1.6rem; line-height:1.6; }
+body .gh-site .quichi-shop-action { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:44px; color:#ff6b6b; text-decoration:underline; text-underline-offset:3px; }
+body .gh-site :is(.quichi-shop-preview,.quichi-shop) a:focus-visible { outline:3px solid #fff; outline-offset:4px; }
+.quichi-shop-image-pending { display:flex; align-items:center; justify-content:center; padding:24px; width:100%; height:100%; color:#ddd; background:#222; text-align:center; font-size:1.5rem; }
+@media(max-width:1023px) { .quichi-shop-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media(max-width:767px) { .quichi-shop-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } body .gh-site .quichi-shop-header h1 { font-size:3.2rem; } }
+@media(max-width:479px) { .quichi-shop-grid { grid-template-columns:1fr; } }
