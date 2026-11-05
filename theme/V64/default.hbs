@@ -11,8 +11,8 @@
     {{{block "styles"}}}
 
     {{#is "home"}}
-        {{#get "posts" limit="8" order="published_at desc"}}
-            {{#foreach posts from="6" to="6"}}
+        {{#get "posts" limit="1" order="published_at desc"}}
+            {{#foreach posts}}
                 {{#if feature_image}}
                     <link rel="preload" as="image" href="{{img_url feature_image size="l" format="webp"}}" fetchpriority="high">
                 {{/if}}

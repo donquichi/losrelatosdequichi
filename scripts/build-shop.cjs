@@ -24,7 +24,7 @@ const previewImage=item=>item.image||'<span class="quichi-shop-image-pending">Im
 const warning='{{! Generated from ghost/recommendations.json by scripts/build-shop.cjs. }}\n';
 const notice='<p class="quichi-affiliate-disclosure">Enlaces de afiliado: puedo recibir una comisión si compras a través de estos enlaces.</p>\n<p class="quichi-amazon-disclosure" lang="en">As an Amazon Associate I earn from qualifying purchases.</p>';
 const preview=items.length?`<section id="quichi-recomendaciones" class="quichi-shop-preview" aria-labelledby="quichi-shop-preview-title">
-    <h3 id="quichi-shop-preview-title"><a href="{{@site.url}}/tienda/" target="_blank" rel="noopener">Tienda de Quichi <span aria-hidden="true">↗</span><span class="quichi-newtab"> (abre una nueva pestaña)</span></a></h3>
+    <h3 id="quichi-shop-preview-title"><a href="{{@site.url}}/tienda/" target="_blank" rel="noopener">La tienda de Quichi <span aria-hidden="true">↗</span><span class="quichi-newtab"> (abre una nueva pestaña)</span></a></h3>
     <div class="quichi-shop-preview-images">
 ${items.slice(0,4).map(item=>`        <a class="quichi-shop-preview-image" href="{{@site.url}}/tienda/" target="_blank" rel="noopener" aria-label="Ver ${item.title} en Tienda de Quichi (nueva pestaña)">${previewImage(item)}</a>`).join('\n')}
     </div>
@@ -40,7 +40,7 @@ const products=notice+'\n<div class="quichi-shop-grid">\n'+items.map(item=>`    
     </article>`).join('\n')+'\n</div>\n';
 const outputs={
  'partials/components/amazon-recommendations.hbs':warning+preview,
- 'partials/components/recommendations-link.hbs':items.length?'<li><a href="{{@site.url}}/tienda/" target="_blank" rel="noopener">Tienda de Quichi<span class="quichi-newtab"> (abre una nueva pestaña)</span></a></li>\n':'',
+ 'partials/components/recommendations-link.hbs':items.length?'<li><a href="{{@site.url}}/tienda/" target="_blank" rel="noopener">La tienda de Quichi<span class="quichi-newtab"> (abre una nueva pestaña)</span></a></li>\n':'',
  'partials/components/shop-products.hbs':warning+products,
  'assets/data/shop-status.json':JSON.stringify({activeProducts:items.length,missingImages:missing,ready:missing===0},null,2)+'\n'
 };
