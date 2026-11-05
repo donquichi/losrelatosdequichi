@@ -1,6 +1,6 @@
 # Affiliate launch: first setup
 
-Status: preparation only. No affiliate account has been created, no program has approved the site, and no commission-generating links are live. The owner confirmed there is no existing affiliate account. Do not publish personal application, banking, or tax details in this repository.
+Status update, November 5, 2026: the owner reports creating an Amazon Associates account and supplied the first tracked product link. See the [shared recommendation sidebar](affiliate-recommendations.md) for verified destination details, implementation and maintenance. Account review/approval and commission payments have not been established. The original preparation guidance below remains reference material. Do not publish personal application, banking, or tax details in this repository.
 
 ## Program shortlist
 

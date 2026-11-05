@@ -1,9 +1,9 @@
 name: Validate Ghost theme
 on:
   push:
-    paths: ['theme/**', 'scripts/**', 'ops/**', '.github/workflows/validate-theme.yml']
+    paths: ['theme/**', 'scripts/**', 'ops/**', 'ghost/recommendations.json', '.github/workflows/validate-theme.yml']
   pull_request:
-    paths: ['theme/**', 'scripts/**', 'ops/**', '.github/workflows/validate-theme.yml']
+    paths: ['theme/**', 'scripts/**', 'ops/**', 'ghost/recommendations.json', '.github/workflows/validate-theme.yml']
 permissions:
   contents: read
 jobs:
@@ -14,6 +14,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: node scripts/build-recommendations.cjs --check
       - run: npx --yes gscan@5.4.3 theme/V64 --v6
       - run: for script in scripts/*.cjs; do node --check "$script"; done
       - run: for script in ops/*.sh; do bash -n "$script"; done
