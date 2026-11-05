@@ -37,7 +37,7 @@ docker run -d --pull=never --memory=768m --network "$network" --name "$app" --en
 original_container=$GHOST_CONTAINER
 GHOST_CONTAINER=$app
 wait_health
-for check in check-origin.cjs check-pagination.cjs check-homepage.cjs check-discovery.cjs; do
+for check in check-origin.cjs check-pagination.cjs check-homepage.cjs check-discovery.cjs check-adsense.cjs; do
     docker exec -i "$app" node < "$STATE_DIR/scripts/$check"
 done
 GHOST_CONTAINER=$original_container

@@ -20,7 +20,9 @@ The ordered implementation plan is in [Website feature and delivery roadmap](doc
 
 Affiliate setup has begun with a [program shortlist, application preparation, and first-page specification](docs/affiliate-launch.md). Amazon Associates US is a candidate to assess, with Awin as an alternative; no account approval or live referral links are claimed. The first live recommendations page needs actual affiliate links and selected products, with desktop/mobile verification.
 
-The [advertising and affiliate setup guide](docs/monetization-setup.md) explains the two separate revenue sources, official signup destinations, required public account details, and proposed homepage ad placement. No ad or affiliate account is configured.
+The [advertising and affiliate setup guide](docs/monetization-setup.md) explains the two separate revenue sources, official signup destinations, required public account details, and proposed homepage ad placement. The owner has now supplied an AdSense publisher code; the site requires review. Affiliate enrollment is still pending. See [AdSense verification and next steps](docs/adsense-review.md); actual ad placements and earnings are not established.
+
+AdSense verification was deployed November 5: the supplied asynchronous publisher script is included once in the shared page head, and the theme-root seller file is publicly served at [ads.txt](https://losrelatosdequichi.com/ads.txt). Ghost 6 validation, isolated rendering and production checks passed, including 117 public page URLs and 44 representative WebP images. Desktop and phone screenshots were checked without layout distortion. No manual ad units were added; account-side ownership verification/review, ads.txt recognition, and future placement setup remain pending. The change preserves existing routes and keeps automatic whole-theme deployment paused.
 
 ### Homepage latest episodes: November 5 release
 
