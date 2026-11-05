@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{meta_title page=(t " (Page %)")}}</title>
     <link rel="stylesheet" href="{{asset "built/screen.css"}}">
+    {{#is "home"}}<link rel="stylesheet" href="{{asset "css/home-discovery.css"}}">{{/is}}
 
     {{#is "home"}}
-        {{#get "posts" limit="1"}}
-            {{#foreach posts}}
+        {{#get "posts" limit="8" order="published_at desc"}}
+            {{#foreach posts from="6" to="6"}}
                 {{#if feature_image}}
                     <link rel="preload" as="image" href="{{img_url feature_image size="l" format="webp"}}" fetchpriority="high">
                 {{/if}}

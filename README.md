@@ -20,6 +20,18 @@ The ordered implementation plan is in [Website feature and delivery roadmap](doc
 
 Affiliate setup has begun with a [program shortlist, application preparation, and first-page specification](docs/affiliate-launch.md). Amazon Associates US is a candidate to assess, with Awin as an alternative; no account approval or live referral links are claimed. The first live recommendations page needs actual affiliate links and selected products, with desktop/mobile verification.
 
+The [advertising and affiliate setup guide](docs/monetization-setup.md) explains the two separate revenue sources, official signup destinations, required public account details, and proposed homepage ad placement. No ad or affiliate account is configured.
+
+### Homepage latest episodes: November 5 release
+
+Fixed Últimos episodios skipping the newest three posts. The latest list now receives positions 1–5 in descending publication order, the carousel positions 6–8, and recommendations positions 9–13. Future published episodes automatically enter the latest list according to their publication date. The shared query still returns thirteen different posts. The hero image preload now matches the first carousel episode.
+
+Added Sigue explorando below Categorías, linking to the existing full episode archive, SCP archive and creator introduction with the current black/red palette. No advertising script, affiliate link or empty ad box was added; real account details and approval are pending.
+
+This scoped change was deployed after a fresh private full backup and isolated Ghost testing. Ghost 6 theme validation passed. Post-deployment checks passed for 118 public page URLs, 44 representative WebP images, ten category images, all archive pagination, and all 101 episodes. The regression check verifies that the newest five homepage links match the episode archive in order and that the three homepage episode groups remain distinct. La Niebla Negra and Paciente Cero were confirmed as the first two latest episodes through the public browser.
+
+Screenshots were inspected at desktop width and 320/390-pixel phone widths. The new cards and discovery links showed no horizontal overflow. The live desktop and 390-pixel phone views were checked again after publication. Deployment updated only the homepage template, its stylesheet, and the default template's home-only stylesheet/preload references. Earlier unfinished media, collections, community and archive-discovery changes remain separate; automatic whole-theme deployment remains paused.
+
 ### Verification, reliability, support and discovery: October 31 progress
 
 Work is isolated on `codex/reliability-discovery`. A private full database/content/runtime backup was created and verified through an isolated MariaDB import, matching all 99 published episodes, four published pages and four draft posts, plus content archive extraction and checksums. Daily full backups are scheduled at 03:17 UTC and weekly isolated restore checks on Sundays at 04:47 UTC. The five-minute deployment poll is installed but paused; it must not publish the unreviewed theme. Backups remain on the same server: off-server recovery coverage and a retention policy still need to be chosen. See [operations and recovery procedures](docs/reliability-operations.md).
