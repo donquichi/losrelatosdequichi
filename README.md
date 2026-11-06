@@ -16,6 +16,8 @@ Before enabling deployment, back up the live theme, identify the deployment user
 
 ## Improvement roadmap
 
+The two new Ghost categories and their owner-supplied artwork are recorded in [the category-card draft](docs/new-categories-draft.md). Working “Ver más” links for empty categories are prepared and pass isolated Ghost checks; publishing is pending desktop/mobile visual review. The existing category grid remains live until that review is completed.
+
 The ordered implementation plan is in [Website feature and delivery roadmap](docs/website-roadmap.md). It gathers the strongest ideas from the ten-site comparison, with desktop/mobile behavior, publishing automation, dependencies, and release acceptance. It takes precedence over the order of the older audit lists below. First finish pending visual review, then add voluntary support and improve archive discovery. A donation provider has not been chosen and no public donation URL is available yet. Features in that plan are proposals unless the progress notes explicitly identify installed work.
 
 Amazon affiliate recommendations are now live in a shared homepage/episode sidebar. The owner-provided first link was verified on Amazon with tracking tag `relatosquichi-20`. The original [affiliate launch notes](docs/affiliate-launch.md) remain reference material; a separate recommendations website or page is not required. Account approval, qualifying sales and paid commissions have not been verified.

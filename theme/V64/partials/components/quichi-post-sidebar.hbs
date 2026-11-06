@@ -1,4 +1,8 @@
 <aside class="quichi-post-sidebar">
+    <style>
+        .quichi-post-category-row.quichi-category-mitos-rurales { background-image:url('{{img_url "https://losrelatosdequichi.com/content/images/2026/11/mitos-rurales.png" size="s" format="webp"}}') !important; }
+        .quichi-post-category-row.quichi-category-objetos-malditos { background-image:url('{{img_url "https://losrelatosdequichi.com/content/images/2026/11/objetos-malditos.png" size="s" format="webp"}}') !important; }
+    </style>
 
     <section class="quichi-post-sidebar-box quichi-post-metadata-card">
         <h3>Metadata</h3>
@@ -116,6 +120,12 @@
                         <small>{{count.posts}} episodios</small>
                     </a>
                 {{/foreach}}
+            {{/get}}
+            {{#get "posts" filter="tag:mitos-rurales" limit="1"}}
+                {{#unless posts}}<a href="{{@site.url}}/categorias/mitos-rurales/" class="quichi-post-category-row quichi-category-mitos-rurales"><span>Mitos Rurales</span><small>Ver más</small></a>{{/unless}}
+            {{/get}}
+            {{#get "posts" filter="tag:objetos-malditos" limit="1"}}
+                {{#unless posts}}<a href="{{@site.url}}/categorias/objetos-malditos/" class="quichi-post-category-row quichi-category-objetos-malditos"><span>Objetos Malditos</span><small>Ver más</small></a>{{/unless}}
             {{/get}}
         </div>
     </section>

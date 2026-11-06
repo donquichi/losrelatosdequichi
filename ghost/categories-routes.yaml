@@ -1,0 +1,19 @@
+routes:
+  /categorias/mitos-rurales/:
+    controller: channel
+    filter: tag:mitos-rurales
+    template: category-mitos-rurales
+  /categorias/objetos-malditos/:
+    controller: channel
+    filter: tag:objetos-malditos
+    template: category-objetos-malditos
+  /episodios/:
+    controller: channel
+    template: episodios
+collections:
+  /:
+    permalink: /{slug}/
+    template: index
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/
