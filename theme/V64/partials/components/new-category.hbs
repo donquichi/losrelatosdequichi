@@ -1,0 +1,9 @@
+<main class="gh-main gh-outer quichi-episodes-archive">
+    <div class="gh-inner">
+        <section class="gh-archive gh-outer"><div class="gh-archive-inner gh-inner"><header class="gh-archive-header">
+            <h1 class="gh-archive-title">{{title}}</h1>
+            {{#unless posts}}<p class="gh-archive-description">Aún no hay episodios publicados en esta categoría.</p>{{/unless}}
+        </header></div></section>
+        {{> "components/list" layout="grid" column="4" showPrimaryTag=true showPublishedAt=true hasPagination=true}}
+    </div>
+</main>
