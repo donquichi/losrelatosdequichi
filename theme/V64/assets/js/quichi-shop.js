@@ -1,0 +1,24 @@
+(function(){
+'use strict';
+const app=document.getElementById('qshop-app');if(!app)return;
+const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text)n.textContent=text;return n;};
+function amazon(value){try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&!u.port&&['www.amazon.com','amazon.com'].includes(u.hostname)&&u.searchParams.get('tag')==='relatosquichi-20'?u.href:null;}catch{return null;}}
+function image(value){try{const u=new URL(value,'https://losrelatosdequichi.com');return u.protocol==='https:'&&!u.username&&!u.password&&!u.port&&['losrelatosdequichi.com','www.losrelatosdequichi.com'].includes(u.hostname)&&u.pathname.startsWith('/content/images/')?u.href:null;}catch{return null;}}
+function reel(value){try{const u=new URL(value);return u.protocol==='https:'&&['www.instagram.com','instagram.com'].includes(u.hostname)?u.href:null;}catch{return null;}}
+const link=(href,cls,label)=>{const a=el('a',cls,label);a.href=href;a.target='_blank';a.rel='sponsored noopener noreferrer';a.setAttribute('aria-label',label+' (abre una nueva pestaña)');return a;};
+try{
+const records=[...document.querySelectorAll('.qshop-record')];
+const products=records.map(record=>{const body=record.querySelector('.qshop-source');const anchors=[...body.querySelectorAll('a[href]')];const url=anchors.map(a=>amazon(a.href)).find(Boolean);const tags=(record.dataset.tags||'').split('|').filter(x=>x.toLowerCase().startsWith('#shop ')).map(x=>x.slice(6).trim()).filter(Boolean);return {id:record.dataset.id,title:record.dataset.title,url,image:image(record.dataset.image||''),categories:tags,reel:anchors.map(a=>reel(a.href)).find(Boolean)};}).filter(p=>p.title&&p.url);
+app.replaceChildren();
+if(!products.length){app.append(el('p','qshop-empty',records.length?'No se pudieron cargar los productos. Inténtalo de nuevo más tarde.':'Aún no hay productos disponibles. Vuelve pronto.'));return;}
+function section(title){const s=el('section','qshop-section'),h=el('h2','',title);s.append(h);app.append(s);return s;}
+function shortTitle(title){if(title.length<=55)return title;const part=title.slice(0,55).replace(/\s+\S*$/,'');return (part||title.slice(0,55))+'…';}
+function card(p){const a=el('article','qshop-card');a.id='producto-'+p.id;const media=link(p.url,'qshop-card-image','Ver '+p.title+' en Amazon');if(p.image){const img=el('img');img.src=p.image;img.alt=p.title;img.loading='lazy';img.decoding='async';media.replaceChildren(img);}else media.textContent='Imagen del producto pendiente';const body=el('div','qshop-card-content');if(p.categories.length)body.append(el('div','qshop-category',p.categories[0]));const h=el('h3'),title=link(p.url,'',shortTitle(p.title));title.setAttribute('aria-label',p.title+' (abre Amazon en una nueva pestaña)');title.title=p.title;h.append(title);body.append(h,link(p.url,'qshop-button','Ver en Amazon'));const share=el('a','qshop-share','Enlace al producto');share.href='/shop/?producto='+encodeURIComponent(p.id);share.setAttribute('aria-label','Enlace para compartir '+p.title);body.append(share);if(p.reel){const r=el('a','qshop-reel','Ver en Instagram');r.href=p.reel;r.target='_blank';r.rel='noopener noreferrer';body.append(r);}a.append(media,body);return a;}
+const gallery=section('Explora por categoría'),chips=el('div','qshop-chips');gallery.id='qshop-gallery';gallery.append(chips);const grid=el('div','qshop-grid');gallery.append(grid);const categories=[...new Set(products.flatMap(p=>p.categories))];let selected='';
+for(const label of ['Todas',...categories]){const b=el('button','qshop-chip',label);b.type='button';b.setAttribute('aria-pressed',String(label==='Todas'));b.addEventListener('click',()=>{selected=label==='Todas'?'':label;for(const c of chips.children)c.setAttribute('aria-pressed',String(c===b));render();});chips.append(b);}
+function render(){grid.replaceChildren();products.filter(p=>!selected||p.categories.includes(selected)).forEach(p=>grid.append(card(p)));}render();
+const insta=products.filter(p=>p.reel);if(insta.length){const instagram=section('Instagram Finds'),row=el('div','qshop-grid');insta.forEach(p=>row.append(card(p)));instagram.append(row);}
+if(products.length!==records.length)app.prepend(el('p','qshop-error','Algunos productos no están disponibles en este momento.'));
+const requested=new URL(location.href).searchParams.get('producto');if(requested){const product=products.find(p=>p.id===requested);if(product){const target=document.getElementById('producto-'+product.id);if(target){target.classList.add('qshop-card-selected');requestAnimationFrame(()=>target.scrollIntoView({block:'center'}));}}else app.prepend(el('p','qshop-error','Este producto no está disponible. Explora las demás recomendaciones.'));}
+}catch(error){app.replaceChildren(el('p','qshop-error','No se pudieron cargar los productos. Inténtalo de nuevo más tarde.'));console.error('Shop rendering failed',error);}
+})();

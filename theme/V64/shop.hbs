@@ -1,0 +1,28 @@
+{{!< default}}
+{{#contentFor "title_prefix"}}Quichi Shop | {{/contentFor}}
+{{#contentFor "styles"}}<link rel="stylesheet" href="{{asset "css/quichi-shop.css"}}&amp;shop=20261113b">{{/contentFor}}
+{{#contentFor "body_class"}} quichi-shop-view{{/contentFor}}
+<main class="quichi-shop-page gh-outer"><div class="gh-inner">
+  <header class="qshop-hero"><a class="qshop-avatar" href="{{@site.url}}/" aria-label="Ir al inicio de Los Relatos de Quichi">{{#if @site.logo}}<img src="{{@site.logo}}" alt="">{{else}}<span aria-hidden="true">Q</span>{{/if}}</a><p class="qshop-kicker">LOS RELATOS DE QUICHI</p><h1>Quichi Shop</h1><p>Productos para los amantes del terror y lo paranormal</p>
+    <nav class="qshop-social" aria-label="Redes sociales">
+      <a href="https://www.youtube.com/@LosRelatosdeQuichi" aria-label="YouTube" target="_blank" rel="noopener noreferrer">{{> "icons/youtube"}}</a>
+      <a href="https://www.facebook.com/losrelatosdequichi" aria-label="Facebook" target="_blank" rel="noopener noreferrer">{{> "icons/facebook"}}</a>
+      <a href="https://www.instagram.com/losrelatosdequichi" aria-label="Instagram" target="_blank" rel="noopener noreferrer">{{> "icons/instagram"}}</a>
+      <a href="https://www.tiktok.com/@losrelatosdequichi" aria-label="TikTok" target="_blank" rel="noopener noreferrer">{{> "icons/tiktok"}}</a>
+    </nav>
+    <a class="qshop-discover" href="{{@site.url}}/">Ver todos los episodios <span aria-hidden="true">↑</span></a>
+    <a class="qshop-discover" href="#qshop-app">Explorar recomendaciones <span aria-hidden="true">↓</span></a>
+  </header>
+  <p class="qshop-disclosure">Enlaces de afiliado: podemos recibir una comisión por compras que califiquen, sin costo adicional para ti.</p>
+  <p class="qshop-disclosure" lang="en">As an Amazon Associate I earn from qualifying purchases.</p>
+  <div id="qshop-app" aria-live="polite"><p class="qshop-loading">Cargando productos…</p></div>
+  <noscript><p>Activa JavaScript para consultar los productos de Quichi Shop.</p></noscript>
+  <div id="qshop-records" hidden>
+  {{#get "pages" filter="tag:hash-quichi-shop" include="tags" order="published_at desc" limit="100"}}
+    {{#foreach pages}}
+      <article class="qshop-record" data-id="{{id}}" data-title="{{title}}" data-featured="{{featured}}" data-image="{{feature_image}}" data-date="{{date published_at format="YYYY-MM-DD"}}" data-tags="{{#foreach tags visibility="all"}}{{name}}|{{/foreach}}"><div class="qshop-source">{{content}}</div></article>
+    {{/foreach}}
+  {{/get}}
+  </div>
+</div></main>
+<script defer src="{{asset "js/quichi-shop.js"}}&amp;shop=20261113a"></script>

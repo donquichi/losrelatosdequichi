@@ -1,0 +1,19 @@
+<section class="quichi-post-sidebar-box quichi-post-shop" aria-labelledby="quichi-post-shop-title">
+    <h3 id="quichi-post-shop-title">Quichi Shop</h3>
+    <p class="quichi-post-shop-disclosure">Enlaces de afiliado: puedo recibir una comisión.</p>
+    <div class="quichi-post-shop-controls" aria-label="Navegación de productos">
+        <button type="button" class="quichi-post-shop-prev" aria-label="Ver productos anteriores" aria-controls="quichi-post-shop-grid">←</button>
+        <button type="button" class="quichi-post-shop-next" aria-label="Ver más productos" aria-controls="quichi-post-shop-grid">→</button>
+    </div>
+    <div id="quichi-post-shop-grid" class="quichi-post-shop-grid" aria-label="Productos recomendados" tabindex="0"></div>
+    <a class="quichi-post-shop-all" href="{{@site.url}}/shop/">Ver toda la tienda →</a>
+    <div class="quichi-post-shop-records" hidden>
+      {{#get "pages" filter="tag:hash-quichi-shop" include="tags" order="published_at desc" limit="100"}}
+        {{#foreach pages}}{{#if feature_image}}
+          <div class="quichi-post-shop-record" data-title="{{title}}" data-image="{{img_url feature_image size="s" format="webp"}}"><div class="quichi-post-shop-source">{{content}}</div></div>
+        {{/if}}{{/foreach}}
+      {{/get}}
+    </div>
+</section>
+<link rel="stylesheet" href="{{asset "css/shop-post-sidebar.css"}}">
+<script defer src="{{asset "js/shop-post-sidebar.js"}}"></script>

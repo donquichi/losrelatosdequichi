@@ -9,7 +9,7 @@
         .quichi-category-card.quichi-category-objetos-malditos img { transform:scale(1.45); transform-origin:center top; }
     </style>
 
-    <section class="quichi-featured gh-outer">
+    <section id="featured-start" class="quichi-featured gh-outer">
         <div class="gh-inner quichi-featured-inner">
 
                 {{#foreach homepage_posts to="3"}}
@@ -150,6 +150,7 @@
 
                 </div>
 
+                {{> "components/shop-post-sidebar"}}
                 {{> "components/amazon-recommendations"}}
             </aside>
 

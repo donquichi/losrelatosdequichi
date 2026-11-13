@@ -68,7 +68,13 @@
 
     {{> "components/support"}}
 
-    <footer class="quichi-footer gh-outer">
+    <style>
+        #quichi-footer .quichi-footer-social a {font-size:0!important;min-width:44px;min-height:44px;gap:0!important;color:#fff!important}
+        #quichi-footer .quichi-footer-social a + a::before {content:none!important}
+        #quichi-footer .quichi-footer-social svg {width:18px!important;height:18px!important;color:#fff!important}
+        #quichi-footer .quichi-footer-social a:hover svg,#quichi-footer .quichi-footer-social a:focus-visible svg {color:#f36a6a!important}
+    </style>
+    <footer id="quichi-footer" class="quichi-footer gh-outer">
         <div class="gh-inner quichi-footer-inner">
             <a class="quichi-footer-logo" href="{{@site.url}}">
                 {{#if @site.logo}}

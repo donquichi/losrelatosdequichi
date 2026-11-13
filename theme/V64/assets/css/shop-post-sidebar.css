@@ -1,0 +1,16 @@
+.quichi-post-shop-intro{color:#ddd;font-size:1.4rem;line-height:1.5;margin:0 0 12px}
+.quichi-post-shop-disclosure{color:#c7c7c7;font-size:1.15rem;line-height:1.5;margin:0 0 8px}
+.quichi-post-shop-controls{display:none}
+.quichi-post-shop-grid{display:flex;flex-direction:column;align-items:center;gap:16px;margin:18px 0}
+.quichi-post-shop-item{display:block;width:min(100%,200px);aspect-ratio:1;overflow:hidden}
+.quichi-post-shop-item img{display:block;width:100%;height:100%;object-fit:contain}
+.quichi-post-shop-item:hover,.quichi-post-shop-item:focus-visible{outline:2px solid #ff7777;outline-offset:2px}
+.quichi-post-shop-all{display:inline-flex;align-items:center;min-height:44px;color:#ff7474;font-weight:700;text-decoration:underline}
+@media(max-width:767px){
+ .quichi-post-shop-controls{display:flex;justify-content:flex-end;gap:8px}
+ .quichi-post-shop-controls button{display:grid;place-items:center;width:44px;height:44px;border:1px solid #a2515d;border-radius:50%;background:#24171c;color:#fff;font-size:2.2rem;cursor:pointer}
+ .quichi-post-shop-controls button:disabled{opacity:.4;cursor:default}
+ .quichi-post-shop-grid{flex-direction:row;align-items:stretch;gap:12px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-left:2px;scrollbar-width:none;padding:2px 2px 10px}
+ .quichi-post-shop-grid::-webkit-scrollbar{display:none}
+ .quichi-post-shop-item{flex:0 0 min(70%,200px);width:auto;scroll-snap-align:start}
+}

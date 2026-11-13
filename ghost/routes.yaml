@@ -1,5 +1,7 @@
 # Public route configuration. Existing episode URLs remain at /{slug}/.
 routes:
+  /shop/:
+    template: shop
   /categorias/mitos-rurales/:
     controller: channel
     filter: tag:mitos-rurales

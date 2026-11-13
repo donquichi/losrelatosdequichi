@@ -1,0 +1,57 @@
+.quichi-shop-page{padding:48px 0 80px;color:#eee}.qshop-hero{padding:42px 28px;border:1px solid #51313c;border-radius:20px;background:radial-gradient(circle at 80% 0,#351323,#111 60%);text-align:center}.qshop-kicker{color:#ff6b6b;letter-spacing:.2em;font-size:1.3rem;font-weight:700}.qshop-hero h1{font-size:clamp(4rem,8vw,6.8rem);line-height:1.1;margin:12px 0;color:#fff}.qshop-hero>p:not(.qshop-kicker){font-size:1.8rem;color:#ddd}.qshop-social{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:18px}.qshop-social a{color:#ff9393;min-height:44px;display:inline-flex;align-items:center}.qshop-disclosure{font-size:1.4rem;line-height:1.6;color:#ccc;margin:18px 0}.qshop-section{margin-top:45px}.qshop-section h2{color:#ff7474;font-size:2.5rem;margin:0 0 18px}.qshop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:18px}.qshop-featured{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(230px,300px);gap:18px;overflow-x:auto;padding:4px 4px 14px}.qshop-card{background:#171316;border:1px solid #49333e;border-radius:16px;overflow:hidden;min-width:0}.qshop-card-image{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#221a23,#110e12);color:#ddd;text-align:center;padding:18px}.qshop-card-image img{width:100%;height:100%;object-fit:contain}.qshop-card-content{padding:18px}.qshop-category{font-size:1.2rem;color:#ff8787;letter-spacing:.04em}.qshop-card h3{font-size:2rem;line-height:1.35;margin:10px 0;color:#fff}.qshop-card h3 a{color:inherit;text-decoration:none}.qshop-card p{color:#ccc;line-height:1.6;font-size:1.5rem}.qshop-button{display:flex;justify-content:center;align-items:center;min-height:44px;margin-top:16px;padding:10px;border:1px solid #ff7777;border-radius:8px;background:#a80013;color:white;text-decoration:none;font-weight:700}.qshop-chips{display:flex;flex-wrap:wrap;gap:8px}.qshop-chip{min-height:44px;padding:8px 14px;border:1px solid #725261;border-radius:999px;background:#211921;color:#fff;cursor:pointer}.qshop-chip[aria-pressed=true]{background:#9b1022;border-color:#ff8b8b}.qshop-empty,.qshop-error,.qshop-loading{padding:20px;color:#ddd;border:1px solid #49333e;border-radius:12px}.quichi-shop-page a:focus-visible,.quichi-shop-page button:focus-visible{outline:3px solid white;outline-offset:3px}@media(max-width:480px){.quichi-shop-page{padding-top:24px}.qshop-hero{padding:30px 18px}.qshop-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.qshop-card-content{padding:12px}.qshop-card h3{font-size:1.7rem}.qshop-button{font-size:1.4rem}}
+
+/* A compact, image-led profile inspired by link-in-bio storefronts. */
+body.quichi-shop-view #gh-head{display:none!important}
+.qshop-hero{max-width:760px;margin:0 auto 30px;padding:34px 22px;border:0;background:radial-gradient(ellipse at top,#2a111b 0,transparent 65%)}
+.qshop-avatar{width:112px;height:112px;margin:0 auto 22px;display:grid;place-items:center;overflow:hidden;border:3px solid #9e2536;border-radius:50%;background:#191317;box-shadow:0 0 0 7px #24161c;color:#ff7474;font-size:5rem;font-weight:700}
+.qshop-avatar img{width:100%;height:100%;object-fit:contain}
+.qshop-hero h1{font-size:clamp(3.8rem,7vw,6rem)}
+.qshop-social a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;color:#fff;text-decoration:none}
+.qshop-social a svg{width:20px;height:20px}
+.qshop-social a:hover{color:#ff7474}
+.qshop-discover{display:flex;justify-content:center;align-items:center;gap:12px;max-width:460px;min-height:58px;margin:24px auto 0;padding:12px 20px;border:1px solid #dc5060;border-radius:12px;background:#8f1020;color:#fff;text-decoration:none;font-weight:700}
+.qshop-discover + .qshop-discover{margin-top:12px}
+.qshop-discover:hover,.qshop-button:hover{background:#b3192d;color:#fff}
+.qshop-chips{flex-wrap:nowrap;overflow-x:auto;padding:2px 2px 14px;scrollbar-width:thin}
+.qshop-chip{flex:0 0 auto}
+.qshop-card-image{padding:0}
+.qshop-card-image img{object-fit:contain}
+@media(max-width:480px){.qshop-avatar{width:88px;height:88px;font-size:4rem}.qshop-hero{padding:26px 12px}.qshop-card-image{padding:8px}}
+
+/* Featured products can be swiped or navigated with large arrow buttons. */
+.qshop-section:has(.qshop-featured){position:relative}
+.qshop-featured-controls{display:flex;justify-content:flex-end;gap:8px;float:right;margin:-2px 0 10px 12px}
+.qshop-arrow{display:grid;place-items:center;width:48px;height:48px;border:1px solid #a2515d;border-radius:50%;background:#24171c;color:#fff;font-size:2.4rem;cursor:pointer}
+.qshop-arrow:disabled{opacity:.4;cursor:default}
+.qshop-featured{clear:both;grid-template-columns:none!important;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scroll-padding-left:4px}
+.qshop-featured .qshop-card{scroll-snap-align:start}
+@media(max-width:480px){.qshop-featured{grid-auto-columns:80%!important}.qshop-section h2{font-size:2.2rem}.qshop-discover{width:100%}.qshop-card p{font-size:1.4rem}}
+@media(max-width:350px){.qshop-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.qshop-featured{scroll-behavior:auto}}
+
+/* Compact storefront and consistently aligned product actions. */
+.qshop-card{display:flex;flex-direction:column}
+.qshop-card-content{display:flex;flex:1;flex-direction:column}
+.qshop-card h3{flex:1}
+.qshop-share,.qshop-reel{display:block;margin-top:10px;color:#ffb0b0;font-size:1.3rem;text-align:center}
+.qshop-card-selected{outline:3px solid #ff7474;outline-offset:2px}
+@media(max-width:480px){
+  .quichi-shop-page{padding-top:12px}
+  .qshop-hero{padding:8px 8px 0;margin-bottom:12px}
+  .qshop-avatar{width:64px;height:64px;margin-bottom:10px}
+  .qshop-hero h1{font-size:3.2rem;margin:4px 0}
+  .qshop-kicker{font-size:1.1rem}
+  .qshop-hero>p:not(.qshop-kicker){font-size:1.5rem;line-height:1.3}
+  .qshop-social{margin-top:4px;gap:8px}
+  .qshop-discover{min-height:44px;margin-top:8px;padding:8px}
+  .qshop-discover + .qshop-discover{margin-top:6px}
+  .qshop-disclosure{margin:8px 0;font-size:1.2rem;line-height:1.35}
+  .qshop-section{margin-top:18px}
+  .qshop-section h2{margin-bottom:8px}
+  .qshop-card h3{font-size:1.6rem;line-height:1.25}
+  .qshop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* Keep each product image in the same square, regardless of its source shape. */
+.qshop-card-image{position:relative;flex:0 0 auto;width:100%;min-height:0;aspect-ratio:1/1;overflow:hidden;padding:0}
+.qshop-card-image img{position:absolute;inset:0;display:block;width:100%;height:100%;padding:8px;box-sizing:border-box;object-fit:contain}
