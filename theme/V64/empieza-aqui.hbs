@@ -1,0 +1,31 @@
+{{!< default}}
+{{#contentFor "title_prefix"}}Empieza aquí | {{/contentFor}}
+{{#contentFor "styles"}}<link rel="stylesheet" href="{{asset "css/empieza-aqui.css"}}&amp;rev=contrast1">{{/contentFor}}
+<main class="qe-page">
+  <section class="qe-hero" id="featured-start">
+    <div class="qe-hero-inner">
+      <p class="qe-eyebrow" id="qe-category">Relato destacado</p>
+      <h1 id="qe-title">Descubre una historia</h1>
+      <p id="qe-description">Un relato de terror te espera.</p>
+      <div class="qe-player"><h2>Escuchar narración</h2><div id="qe-player-slot"><p class="qe-status">Buscando un relato para ti…</p></div></div>
+    </div>
+    <div class="qe-continue"><p>Hay más historias esperando...</p><a href="#quien-es-quichi" class="qe-button">Descubre más <span aria-hidden="true">↓</span></a></div>
+  </section>
+  <div class="qe-wrap">
+    <section class="qe-intro" id="quien-es-quichi">
+      {{#if @site.logo}}<a class="qe-avatar" href="{{@site.url}}/"><img src="{{img_url @site.logo size="s" format="webp"}}" alt="Los Relatos de Quichi"></a>{{/if}}
+      <div><p class="qe-eyebrow">Una voz para tus noches</p><h2>¿Quién es Quichi?</h2><p>Soy Quichi. Te invito a descubrir relatos de terror, expedientes SCP y misterios que se quedan contigo mucho después de terminar la historia.</p><a class="qe-text-link" href="{{@site.url}}/sobre-mi/">Conoce más sobre Quichi →</a></div>
+    </section>
+    <section class="qe-start" id="historias-para-empezar"><p class="qe-eyebrow">Tu primera visita al archivo</p><h2>Empieza aquí</h2><p>¿No sabes por dónde comenzar? Elige una de estas cinco historias y adéntrate en el mundo de Quichi.</p>
+      <div class="qe-cards">
+        <article><a href="{{@site.url}}/la-niebla-negra-los-barcos-que-entraban-nunca-volvian-a-aparecer/"><img src="{{@site.url}}/content/images/size/w300/format/webp/2026/11/feature-3.jpg" alt="" loading="lazy"><div><small>Horror marítimo</small><h3>La Niebla Negra</h3><p>Una niebla en el océano y barcos que nunca regresan.</p><span>Ver episodio →</span></div></a></article>
+        <article><a href="{{@site.url}}/la-epidemia-del-silencio-dejaban-de-escuchar-antes-de-desaparecer-3/"><img src="{{@site.url}}/content/images/size/w300/format/webp/2026/11/feature-5.jpg" alt="" loading="lazy"><div><small>Archivo de contagios</small><h3>La Epidemia del Silencio</h3><p>Un extraño silencio precede a una desaparición.</p><span>Ver episodio →</span></div></a></article>
+        <article><a href="{{@site.url}}/paciente-cero-nadie-debio-tocar-al-hombre-encontrado-en-el-oceano-4/"><img src="{{@site.url}}/content/images/size/w300/format/webp/2026/11/feature-2.jpg" alt="" loading="lazy"><div><small>Archivo de contagios</small><h3>Paciente Cero</h3><p>Un hombre encontrado en el océano guarda un misterio.</p><span>Ver episodio →</span></div></a></article>
+        <article><a href="{{@site.url}}/el-proyecto-de-las-sombras-el-experimento-que-cambiaba-lo-que-las-personas-veian/"><img src="{{@site.url}}/content/images/size/w300/format/webp/2026/07/Ep-0099.png" alt="" loading="lazy"><div><small>Expedientes clasificados</small><h3>El Proyecto de las Sombras</h3><p>Un experimento cambia lo que las personas ven.</p><span>Ver episodio →</span></div></a></article>
+        <article><a href="{{@site.url}}/scp-020-el-hongo-que-solo-aparece-en-las-grabaciones/"><img src="{{@site.url}}/content/images/size/w300/format/webp/2026/07/Ep-0091.png" alt="" loading="lazy"><div><small>SCP en español</small><h3>SCP-020: El Hongo</h3><p>Un hongo misterioso aparece en las grabaciones.</p><span>Ver episodio →</span></div></a></article>
+      </div><a class="qe-text-link" href="{{@site.url}}/episodios/">Ver todos los episodios →</a>
+    </section>
+  </div>
+  <noscript><p class="qe-status">Para escuchar un relato, visita <a href="{{@site.url}}/episodios/">todos los episodios</a>.</p></noscript>
+</main>
+<script defer src="{{asset "js/empieza-aqui.js"}}"></script>
