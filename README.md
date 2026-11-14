@@ -93,14 +93,14 @@ All items below are planned and unchecked. Feature IDs match the detailed roadma
 
 - [ ] **F18 — Free email updates:** verified signup/confirmation/unsubscribe and an agreed episode-update or digest workflow.
 - [ ] **F19 — Episode sharing:** copy link, supported native sharing on phones, and useful social previews.
-- [ ] **F20 — “Cuéntanos tu relato”:** invite visitors to submit stories for possible adaptation into narrated videos. Add a menu link and an invitation after episodes, with a responsive form and a private editorial review workflow.
+- [ ] **F20 — “Cuéntame tu relato”:** the homepage and episodes now invite visitors to send stories privately by email for possible video adaptation. The page explains permission and anonymous credit. Verify inbox delivery with a test email; a dedicated web form and menu link remain future options.
 - [ ] **F21 — Save for later and reading position:** optional browser-local bookmarks/progress, with remove/reset controls and clear limits on cross-device support.
 - [ ] **F22 — Creator introduction and follow options:** concise project information, contact route, available listening platforms, and a sustainable publication schedule if established.
 - [ ] **F23 — Community feedback:** consider moderated comments or a lightweight feedback route when moderation capacity exists.
 
 The story form should request a name or pseudonym, an anonymous-credit choice, a private contact email, story title, and full written story. Include an explicit permission choice for adaptation and publication as a narrated video, separate from newsletter signup. Start with written submissions; optional voice submissions can follow later. Confirm receipt and handle validation/delivery errors. Keep submissions and contact details outside this public repository. Review submissions privately before selecting, adapting, producing, and publishing; sending a story does not trigger automatic video creation or publication.
 
-Proposed invitation: **“Tu historia podría convertirse en nuestro próximo video. ¿Viviste algo inexplicable? Cuéntanos lo que pasó. Seleccionaremos algunos relatos para narrarlos en Los Relatos de Quichi.”** Button: **“Enviar mi relato.”** Note: **“Revisamos todas las historias; el envío no garantiza su publicación.”** Choose the submission destination, storage, and reviewer before launch.
+Proposed invitation: **“Tu historia podría convertirse en nuestro próximo video. ¿Viviste algo inexplicable? Cuéntanos lo que pasó. Seleccionaremos algunos relatos para narrarlos en Los Relatos de Quichi.”** Button: **“Enviar mi relato.”** Note: **“Revisamos todas las historias; el envío no garantiza su publicación.”** The current email-based invitation sends visitors to their own email app; the owner reviews submissions privately. Test delivery to the project inbox before relying on it.
 
 #### Release 5 — Optional future revenue
 
