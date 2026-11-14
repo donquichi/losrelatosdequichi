@@ -6,6 +6,9 @@
 <style>
 body.home-template header#gh-head.is-head-stacked .quichi-nav-links a[aria-current="page"]{color:#fff!important}
 header#gh-head .quichi-start-link{position:relative;isolation:isolate}
+@property --quichi-start-color{syntax:"<color>";inherits:false;initial-value:#fff}
+@media(min-width:768px){body header#gh-head.is-head-stacked .quichi-desktop-menu .quichi-start-link{color:var(--quichi-start-color)!important;animation:quichi-desktop-red 5s ease-in-out infinite}header#gh-head .quichi-desktop-menu .quichi-start-link::before{animation:quichi-desktop-bolt 5s ease-in-out infinite}@keyframes quichi-desktop-bolt{0%,100%{opacity:.12}50%{opacity:.65}}@keyframes quichi-desktop-red{0%,100%{--quichi-start-color:#fff;text-shadow:none}50%{--quichi-start-color:#ff3038;text-shadow:0 0 8px #ff30388c}}}
+@media(prefers-reduced-motion:reduce) and (min-width:768px){body header#gh-head.is-head-stacked .quichi-desktop-menu .quichi-start-link{animation:none;color:#fff!important;text-shadow:none}header#gh-head .quichi-desktop-menu .quichi-start-link::before{animation:none;opacity:.3}}
 header#gh-head .quichi-start-link::before{content:"";position:absolute;z-index:-1;pointer-events:none;left:50%;top:50%;width:36px;height:47px;opacity:0;transform:translate(-50%,-50%);background:linear-gradient(145deg,#fff5f0,#ff8383 45%,#e50013);clip-path:polygon(54% 0,25% 47%,48% 45%,32% 100%,80% 34%,56% 38%,74% 0);filter:drop-shadow(0 0 7px #e50013)}
 header#gh-head .quichi-start-link:hover::before,header#gh-head .quichi-start-link:focus-visible::before{animation:quichi-menu-bolt 1s ease-out}
 @keyframes quichi-menu-bolt{0%,25%,45%,100%{opacity:0}12%,34%{opacity:.8}}
