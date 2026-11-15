@@ -59,6 +59,30 @@
                 <a href="#quichi-platform-title" class="quichi-button">Ver episodio</a>
                 <a href="#quichi-audio" class="quichi-outline-button">Escuchar audio</a>
             </div>
+            <div class="quichi-share-wrap" hidden>
+                <button class="quichi-outline-button quichi-share-button" type="button">Compartir relato</button>
+                <p class="quichi-share-status" role="status" aria-live="polite"></p>
+                <label class="quichi-share-manual" hidden>Enlace del episodio<input type="text" readonly aria-label="Enlace del episodio"></label>
+            </div>
+            <style>
+                .quichi-share-wrap{margin-top:12px}.quichi-share-button{cursor:pointer;font-family:inherit}.quichi-share-status{margin:8px 0 0;color:#fff;font:14px/1.4 system-ui,sans-serif}.quichi-share-status:empty{display:none}.quichi-share-manual{display:block;color:#fff;font:14px system-ui,sans-serif;margin-top:10px}.quichi-share-manual[hidden]{display:none}.quichi-share-manual input{display:block;width:min(100%,440px);margin-top:6px;padding:9px;color:#fff;background:#111;border:1px solid #999;font:14px system-ui,sans-serif}.quichi-share-button:focus-visible,.quichi-share-manual input:focus-visible{outline:3px solid #fff;outline-offset:3px}@media(max-width:767px){.quichi-share-button{width:100%}}
+            </style>
+            <script>
+            (function(){
+              var wrap=document.querySelector('.quichi-share-wrap'); if(!wrap)return;
+              var button=wrap.querySelector('button'), status=wrap.querySelector('.quichi-share-status'), manual=wrap.querySelector('.quichi-share-manual'), input=manual.querySelector('input');
+              var canonical=document.querySelector('link[rel="canonical"]');
+              var url=canonical ? canonical.href : location.origin+location.pathname;
+              var title=document.querySelector('.quichi-post-hero h1');
+              wrap.hidden=false;
+              button.addEventListener('click',async function(){
+                status.textContent=''; manual.hidden=true;
+                if(navigator.share){try{await navigator.share({title:title?title.textContent.trim():document.title,url:url});return;}catch(error){if(error.name==='AbortError')return;}}
+                try{if(!navigator.clipboard || !navigator.clipboard.writeText)throw new Error('Clipboard unavailable');await navigator.clipboard.writeText(url);status.textContent='Enlace copiado.';}
+                catch(error){input.value=url;manual.hidden=false;status.textContent='Copia el enlace del episodio:';input.focus();input.select();}
+              });
+            })();
+            </script>
         </div>
     </section>
 
