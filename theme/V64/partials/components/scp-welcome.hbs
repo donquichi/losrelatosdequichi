@@ -17,3 +17,25 @@
   </div>
 </section>
 <h2 id="todos-los-expedientes" class="scp-all-heading">Todos los expedientes</h2>
+
+<script>
+(function(){
+  function chooseStories(){
+    var target=document.querySelector('.scp-recommended');
+    var entries=Array.from(document.querySelectorAll('.gh-list-feed .gh-list-item')).map(function(card){var link=card.querySelector('a[href]'),title=card.querySelector('.gh-list-item-title'),img=card.querySelector('img');return link&&title?{href:link.href,title:title.textContent.trim(),image:img}:null;}).filter(Boolean);
+    if(!target||entries.length<2)return;
+    var last=[];try{last=JSON.parse(sessionStorage.getItem('quichi-scp-last')||'[]');if(!Array.isArray(last))last=[];}catch(error){}
+    var pool=entries.filter(function(entry){return last.indexOf(entry.href)<0;});if(pool.length<2)pool=entries.slice();
+    for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),tmp=pool[i];pool[i]=pool[j];pool[j]=tmp;}
+    var selected=pool.slice(0,2),fragment=document.createDocumentFragment();
+    selected.forEach(function(story){
+      var link=document.createElement('a');link.className='scp-recommended-card';link.href=story.href;
+      if(story.image){var img=story.image.cloneNode(false);img.alt='';img.loading='lazy';link.appendChild(img);}
+      var content=document.createElement('div'),label=document.createElement('small'),title=document.createElement('h3'),action=document.createElement('span');
+      label.textContent='EXPEDIENTE SCP';title.textContent=story.title;action.textContent='Ver episodio →';content.append(label,title,action);link.appendChild(content);fragment.appendChild(link);
+    });
+    target.replaceChildren(fragment);try{sessionStorage.setItem('quichi-scp-last',JSON.stringify(selected.map(function(story){return story.href;})));}catch(error){}
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',chooseStories,{once:true});else chooseStories();
+})();
+</script>
