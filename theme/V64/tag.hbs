@@ -2,15 +2,8 @@
 
 <main class="gh-main gh-outer">
     <div class="gh-inner">
-        {{#tag}}
-            {{#match slug "scp-foundation"}}{{else}}{{> "components/tag-header"}}{{/match}}
-        {{/tag}}
         {{> "components/archive-discovery" currentTag=tag.slug}}
-        {{#tag}}{{#match slug "scp-foundation"}}{{> "components/scp-welcome"}}{{/match}}{{/tag}}
-        {{#match tag.slug "scp-foundation"}}
-            {{> "components/list" layout="grid" column="4" slug="scp-foundation" count="all" showPrimaryTag=true showPublishedAt=true}}
-        {{else}}
-        {{> "components/list" layout="grid" column="4" showPrimaryTag=true showPublishedAt=true hasPagination=true}}
-        {{/match}}
+        {{#tag}}{{#match slug "scp-foundation"}}{{> "components/scp-welcome"}}{{else}}{{> "components/category-welcome"}}{{/match}}{{/tag}}
+        {{> "components/list" layout="grid" column="4" slug=tag.slug count="all" showPrimaryTag=true showPublishedAt=true}}
     </div>
 </main>
