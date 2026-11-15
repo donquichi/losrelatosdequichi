@@ -2,8 +2,6 @@
 
 <main class="gh-main gh-outer quichi-episodes-archive">
     <div class="gh-inner">
-        {{#is "paged"}}
-        {{else}}
         <section class="gh-archive gh-outer">
             <div class="gh-archive-inner gh-inner">
                 <header class="gh-archive-header">
@@ -12,7 +10,6 @@
                 </header>
             </div>
         </section>
-        {{/is}}
         {{> "components/episodes-discovery"}}
         {{> "components/list" layout="grid" column="4" showPrimaryTag=true showPublishedAt=true hasPagination=true}}
     </div>
