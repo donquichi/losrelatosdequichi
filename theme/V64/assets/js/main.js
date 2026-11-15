@@ -421,7 +421,21 @@
     }
 
     if (isSpreakerUrl(audioUrl)) {
-        renderSpreakerPlayer(audioData.node, audioUrl);
+        if ('IntersectionObserver' in window) {
+            player.innerHTML = '';
+            const fallback = document.createElement('a');
+            fallback.href = audioUrl;
+            fallback.textContent = 'Escuchar en Spreaker';
+            player.appendChild(fallback);
+            const observer = new IntersectionObserver(function (entries) {
+                if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
+                observer.disconnect();
+                renderSpreakerPlayer(audioData.node, audioUrl);
+            }, {rootMargin: '600px 0px'});
+            observer.observe(player);
+        } else {
+            renderSpreakerPlayer(audioData.node, audioUrl);
+        }
         return;
     }
 

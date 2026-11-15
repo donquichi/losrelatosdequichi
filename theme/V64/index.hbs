@@ -5,6 +5,8 @@
 <main class="gh-main">
 
     <style>
+        .quichi-story-jump { display:inline-block; margin:0 0 18px; color:#ff8888 !important; font:700 14px/1.4 system-ui,sans-serif; text-decoration:underline; text-underline-offset:3px; }
+        .quichi-story-jump:focus-visible { outline:2px solid #fff; outline-offset:4px; }
         /* Homepage carousel: brighter artwork and a deeper mobile image. */
         .quichi-carousel-arrow { position:absolute; z-index:6; bottom:4px; width:44px; height:44px; padding:0; border:0; border-radius:50%; color:#fff; background:rgba(0,0,0,.5); font:36px/1 sans-serif; cursor:pointer; }
         .quichi-carousel-arrow.is-previous { left:8px; }
@@ -71,6 +73,7 @@
 
                 <section class="quichi-latest-block">
                     <h2>Últimos episodios</h2>
+                    <a class="quichi-story-jump" href="#cuenta-tu-relato">¿Quieres contar un relato? Envíanoslo ↓</a>
 
                     <div class="quichi-episode-list">
                             {{#foreach homepage_posts to="5"}}
