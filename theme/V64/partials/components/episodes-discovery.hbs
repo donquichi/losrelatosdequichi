@@ -12,6 +12,18 @@
   body .quichi-episodes-archive .gh-list-feed .quichi-episode-card-meta{font:12px/1.3 Georgia,serif!important;margin:0!important}
   body .quichi-episodes-archive .gh-list-feed .quichi-episode-card-button{grid-column:2!important;grid-row:2!important;justify-self:start!important;align-self:end!important;margin:0!important;font:700 12px/1.3 Georgia,serif!important}
 }
+
+.qe-category{background-position:center;background-size:cover;background-repeat:no-repeat}
+.qe-category-archivo-contagios{background-image:url('{{asset "png/1.webp"}}')}
+.qe-category-casos-oscuros-desapariciones{background-image:url('{{asset "png/9.webp"}}')}
+.qe-category-encuentros-extraterrestres{background-image:url('{{asset "png/10.webp"}}')}
+.qe-category-espacios-liminales{background-image:url('{{asset "png/5.webp"}}')}
+.qe-category-expedientes-clasificados{background-image:url('{{asset "png/7.webp"}}')}
+.qe-category-expedientes-paranormales{background-image:url('{{asset "png/3.webp"}}')}
+.qe-category-horror-analogico{background-image:url('{{asset "png/2.webp"}}')}
+.qe-category-horror-maritimo{background-image:url('{{asset "png/4.webp"}}')}
+.qe-category-horror-psicologico{background-image:url('{{asset "png/6.webp"}}')}
+.qe-category-scp-foundation{background-image:url('{{asset "png/8.webp"}}')}
 </style>
 <section class="qe-discover" aria-labelledby="qe-discover-title">
   <p class="qe-kicker">Historias de terror y misterio</p><h2 id="qe-discover-title">Encuentra tu próximo relato</h2>
@@ -23,7 +35,7 @@
   </div>
 </section>
 <section class="qe-categories" aria-labelledby="qe-categories-title"><h2 id="qe-categories-title">Explora por categoría</h2><div class="qe-category-grid">
-  {{#get "tags" include="count.posts" filter="visibility:public" order="name asc" limit="all"}}{{#foreach tags}}{{#if count.posts}}<a class="qe-category" href="{{url}}">{{#if feature_image}}<img src="{{img_url feature_image size="s" format="webp"}}" alt="" loading="lazy">{{/if}}<span>{{name}} →</span></a>{{/if}}{{/foreach}}{{/get}}
+  {{#get "tags" include="count.posts" filter="visibility:public" order="name asc" limit="all"}}{{#foreach tags}}{{#if count.posts}}<a class="qe-category qe-category-{{slug}}" href="{{url}}">{{#if feature_image}}<img src="{{img_url feature_image size="s" format="webp"}}" alt="" loading="lazy">{{/if}}<span>{{name}} →</span></a>{{/if}}{{/foreach}}{{/get}}
 </div></section>
 <h2 class="qe-all-title" id="todos-los-episodios">Todos los episodios</h2>
 <script>
