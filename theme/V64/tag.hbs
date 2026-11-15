@@ -3,7 +3,7 @@
 <main class="gh-main gh-outer">
     <div class="gh-inner">
         {{#tag}}
-            {{> "components/tag-header"}}
+            {{#match slug "scp-foundation"}}{{else}}{{> "components/tag-header"}}{{/match}}
         {{/tag}}
         {{> "components/archive-discovery" currentTag=tag.slug}}
         {{#tag}}{{#match slug "scp-foundation"}}{{> "components/scp-welcome"}}{{/match}}{{/tag}}
