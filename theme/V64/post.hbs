@@ -60,31 +60,34 @@
                 <a href="#quichi-audio" class="quichi-outline-button">Escuchar audio</a>
             </div>
             <div class="quichi-share-wrap" hidden>
-                <button class="quichi-outline-button quichi-share-button" type="button" aria-expanded="false" aria-controls="quichi-share-menu">Compartir relato</button>
-                <div id="quichi-share-menu" class="quichi-share-menu" hidden>
-                    <p>Comparte este relato</p>
+                <button class="quichi-outline-button quichi-share-button" type="button" aria-haspopup="dialog" aria-controls="quichi-share-menu">Compartir relato</button>
+                <dialog id="quichi-share-menu" class="quichi-share-menu" aria-labelledby="quichi-share-title">
+                    <div class="quichi-share-heading"><h2 id="quichi-share-title">Comparte este relato</h2><button class="quichi-share-close" type="button" aria-label="Cerrar">×</button></div>
                     <a class="quichi-share-option" data-share-facebook target="_blank" rel="noopener noreferrer">Facebook <span aria-hidden="true">↗</span></a>
                     <button class="quichi-share-option" type="button" data-share-app="Instagram">Instagram <span aria-hidden="true">↗</span></button>
                     <button class="quichi-share-option" type="button" data-share-app="TikTok">TikTok <span aria-hidden="true">↗</span></button>
                     <button class="quichi-share-option" type="button" data-share-app="YouTube">YouTube <span aria-hidden="true">↗</span></button>
                     <button class="quichi-share-option" type="button" data-share-copy>Copiar enlace <span aria-hidden="true">⧉</span></button>
-                </div>
-                <p class="quichi-share-status" role="status" aria-live="polite"></p>
-                <label class="quichi-share-manual" hidden>Enlace del episodio<input type="text" readonly aria-label="Enlace del episodio"></label>
+                    <p class="quichi-share-status" role="status" aria-live="polite"></p>
+                    <label class="quichi-share-manual" hidden>Enlace del episodio<input type="text" readonly aria-label="Enlace del episodio"></label>
+                </dialog>
             </div>
             <style>
-                .quichi-share-wrap{margin-top:12px}.quichi-share-button{cursor:pointer;font-family:inherit}.quichi-share-menu{width:min(100%,360px);margin-top:10px;padding:14px;background:#151112;border:1px solid #583037}.quichi-share-menu[hidden]{display:none}.quichi-share-menu p{margin:0 0 9px;color:#f0e7e7;font:700 14px system-ui,sans-serif}.quichi-share-option{display:flex;width:100%;justify-content:space-between;align-items:center;min-height:44px;padding:9px 10px;border:0;border-top:1px solid #3a292b;background:transparent;color:#fff!important;text-decoration:none;text-align:left;font:14px system-ui,sans-serif;cursor:pointer}.quichi-share-option:hover,.quichi-share-option:focus-visible{background:#2a1719}.quichi-share-option span{color:#ff7777}.quichi-share-status{margin:8px 0 0;color:#fff;font:14px/1.4 system-ui,sans-serif}.quichi-share-status:empty{display:none}.quichi-share-manual{display:block;color:#fff;font:14px system-ui,sans-serif;margin-top:10px}.quichi-share-manual[hidden]{display:none}.quichi-share-manual input{display:block;width:min(100%,440px);margin-top:6px;padding:9px;color:#fff;background:#111;border:1px solid #999;font:14px system-ui,sans-serif}.quichi-share-button:focus-visible,.quichi-share-option:focus-visible,.quichi-share-manual input:focus-visible{outline:3px solid #fff;outline-offset:3px}@media(max-width:767px){.quichi-share-button,.quichi-share-menu{width:100%}}
+                .quichi-share-wrap{margin-top:12px}.quichi-share-button{cursor:pointer;font-family:inherit}.quichi-share-menu{box-sizing:border-box;width:min(420px,calc(100vw - 36px));max-height:calc(100dvh - 36px);overflow:auto;margin:auto;padding:22px;background:#151112;color:#fff;border:1px solid #713b40;border-radius:8px;box-shadow:0 18px 60px #000b}.quichi-share-menu::backdrop{background:rgba(0,0,0,.78)}.quichi-share-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.quichi-share-heading h2{margin:0;color:#f5f1ef!important;font:700 21px/1.2 Georgia,serif}.quichi-share-close{flex:none;width:44px;height:44px;border:1px solid #73444a;border-radius:50%;background:#211719;color:#fff;font:24px system-ui;cursor:pointer}.quichi-share-option{display:flex;width:100%;justify-content:space-between;align-items:center;min-height:44px;padding:9px 10px;border:0;border-top:1px solid #3a292b;background:transparent;color:#fff!important;text-decoration:none;text-align:left;font:14px system-ui,sans-serif;cursor:pointer}.quichi-share-option:hover,.quichi-share-option:focus-visible{background:#2a1719}.quichi-share-option span{color:#ff7777}.quichi-share-status{margin:8px 0 0;color:#fff;font:14px/1.4 system-ui,sans-serif}.quichi-share-status:empty{display:none}.quichi-share-manual{display:block;color:#fff;font:14px system-ui,sans-serif;margin-top:10px}.quichi-share-manual[hidden]{display:none}.quichi-share-manual input{display:block;box-sizing:border-box;width:100%;margin-top:6px;padding:9px;color:#fff;background:#111;border:1px solid #999;font:14px system-ui,sans-serif}.quichi-share-button:focus-visible,.quichi-share-option:focus-visible,.quichi-share-close:focus-visible,.quichi-share-manual input:focus-visible{outline:3px solid #fff;outline-offset:3px}@media(max-width:767px){.quichi-share-button{width:100%}}
             </style>
             <script>
             (function(){
               var wrap=document.querySelector('.quichi-share-wrap'); if(!wrap)return;
               var button=wrap.querySelector('.quichi-share-button'), menu=wrap.querySelector('.quichi-share-menu'), status=wrap.querySelector('.quichi-share-status'), manual=wrap.querySelector('.quichi-share-manual'), input=manual.querySelector('input');
+              if(typeof menu.showModal!=='function')return;
               var canonical=document.querySelector('link[rel="canonical"]'), url=canonical ? canonical.href : location.origin+location.pathname;
               var heading=document.querySelector('.quichi-post-hero h1'), title=heading?heading.textContent.trim():document.title;
               wrap.querySelector('[data-share-facebook]').href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url);
               wrap.hidden=false;
-              button.addEventListener('click',function(){menu.hidden=!menu.hidden;button.setAttribute('aria-expanded',String(!menu.hidden));status.textContent='';manual.hidden=true;});
-              wrap.addEventListener('keydown',function(event){if(event.key==='Escape'&&!menu.hidden){menu.hidden=true;button.setAttribute('aria-expanded','false');button.focus();}});
+              button.addEventListener('click',function(){status.textContent='';manual.hidden=true;menu.showModal();});
+              menu.querySelector('.quichi-share-close').addEventListener('click',function(){menu.close();});
+              menu.addEventListener('click',function(event){if(event.target===menu)menu.close();});
+              menu.addEventListener('close',function(){button.focus();});
               async function copyLink(app){
                 try{if(!navigator.clipboard || !navigator.clipboard.writeText)throw new Error('Clipboard unavailable');await navigator.clipboard.writeText(url);status.textContent=app?'Enlace copiado. Pégalo en '+app+'.':'Enlace copiado.';}
                 catch(error){input.value=url;manual.hidden=false;status.textContent=app?'Copia el enlace y pégalo en '+app+'.':'Copia el enlace del episodio:';input.focus();input.select();}
