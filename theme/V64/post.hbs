@@ -176,9 +176,13 @@
                 {{/if}}
 
                 <style>
-                    .post-template .quichi-related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+                    .post-template .quichi-related-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
                     .post-template .quichi-related-card img { aspect-ratio: 16 / 15.87 !important; }
-                    .post-template .quichi-related-card:nth-child(n+3) { display: none !important; }
+                    .post-template .quichi-related-card:nth-child(n+5) { display: none !important; }
+                    @media (max-width: 767px) {
+                        .post-template .quichi-related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+                        .post-template .quichi-related-card:nth-child(n+3) { display: none !important; }
+                    }
                     .post-template .quichi-related-card:focus-visible { outline: 2px solid #ff626a; outline-offset: 3px; }
                 </style>
 
@@ -192,7 +196,7 @@
                         let kept = 0;
                         panel.querySelectorAll('.quichi-related-card').forEach(card => {
                             const key = normalize(card.textContent);
-                            if (!key || seen.has(key) || kept >= 2) card.remove();
+                            if (!key || seen.has(key) || kept >= 4) card.remove();
                             else { seen.add(key); kept++; }
                         });
                         if (!kept) panel.remove();
