@@ -152,26 +152,52 @@
                     {{content}}
                 </section>
 
-                <section class="quichi-related-panel">
-                    <div class="quichi-section-heading">
-                        <span aria-hidden="true">/</span>
-                        <h2>Archivos relacionados</h2>
-                    </div>
-                    <div class="quichi-related-grid">
-                        {{#if primary_tag}}
-                            {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" limit="4" include="tags"}}
-                                {{#foreach posts}}
-                                    <a href="{{url}}" class="quichi-related-card">
-                                        {{#if feature_image}}
-                                            <img src="{{img_url feature_image size="s" format="webp"}}" alt="{{title}}" loading="lazy" decoding="async">
-                                        {{/if}}
-                                        <span>{{title}}</span>
-                                    </a>
-                                {{/foreach}}
-                            {{/get}}
+                {{#if primary_tag}}
+                    {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" limit="30" include="tags"}}
+                        {{#if posts}}
+                            <section class="quichi-related-panel" aria-labelledby="related-stories-title">
+                                <div class="quichi-section-heading">
+                                    <span aria-hidden="true">/</span>
+                                    <h2 id="related-stories-title">Archivos relacionados</h2>
+                                </div>
+                                <div class="quichi-related-grid">
+                                    {{#foreach posts}}
+                                        <a href="{{url}}" class="quichi-related-card">
+                                            {{#if feature_image}}
+                                                <img src="{{img_url feature_image size="s" format="webp"}}" alt="" loading="lazy" decoding="async">
+                                            {{/if}}
+                                            <span>{{title}}</span>
+                                        </a>
+                                    {{/foreach}}
+                                </div>
+                            </section>
                         {{/if}}
-                    </div>
-                </section>
+                    {{/get}}
+                {{/if}}
+
+                <style>
+                    .post-template .quichi-related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+                    .post-template .quichi-related-card img { aspect-ratio: 16 / 10 !important; }
+                    .post-template .quichi-related-card:nth-child(n+3) { display: none !important; }
+                    .post-template .quichi-related-card:focus-visible { outline: 2px solid #ff626a; outline-offset: 3px; }
+                </style>
+
+                <script>
+                    (() => {
+                        const panel = document.querySelector('.quichi-related-panel');
+                        if (!panel) return;
+                        const normalize = text => text.normalize('NFKC').trim().replace(/\s+/g, ' ').toLocaleLowerCase('es');
+                        const title = document.querySelector('.quichi-post-hero h1');
+                        const seen = new Set(title ? [normalize(title.textContent)] : []);
+                        let kept = 0;
+                        panel.querySelectorAll('.quichi-related-card').forEach(card => {
+                            const key = normalize(card.textContent);
+                            if (!key || seen.has(key) || kept >= 2) card.remove();
+                            else { seen.add(key); kept++; }
+                        });
+                        if (!kept) panel.remove();
+                    })();
+                </script>
 
                 {{#if comments}}
                     <section class="quichi-post-comments">
