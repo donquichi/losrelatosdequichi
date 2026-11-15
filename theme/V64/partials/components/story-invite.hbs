@@ -1,6 +1,7 @@
 <style>
 .quichi-story-invite{margin:38px 0;padding:27px;border:1px solid #583037;background:#160f10;color:#eee}.home-template .quichi-story-invite{max-width:360px;padding:20px;margin:28px 0}.home-template .quichi-story-invite h2{font-size:24px}.quichi-story-invite h2{margin:0 0 10px;color:#f5f1ef!important;font:700 clamp(24px,3vw,32px)/1.15 Georgia,serif}.quichi-story-invite p{margin:0 0 17px;color:#d7cbca;font:16px/1.5 Georgia,serif}.quichi-story-invite a{display:inline-flex;align-items:center;min-height:44px;padding:11px 19px;background:#a90013;border:1px solid #d15158;color:#fff!important;font:700 12px system-ui,sans-serif;letter-spacing:.05em;text-decoration:none;text-transform:uppercase}.quichi-story-invite a:focus-visible{outline:3px solid #fff;outline-offset:3px}@media(max-width:560px){.quichi-story-invite{padding:22px;margin:28px 0}}
 .quichi-story-form textarea{display:block;box-sizing:border-box;width:100%;min-height:135px;resize:vertical;margin:12px 0;background:#090909;border:1px solid #735456;color:#fff;padding:11px;font:16px/1.45 system-ui,sans-serif}.quichi-story-form button{min-height:44px;padding:11px 20px;background:#a90013;border:1px solid #d15158;color:#fff;font:700 12px system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;cursor:pointer}.quichi-story-form textarea:focus-visible,.quichi-story-form button:focus-visible{outline:3px solid #fff;outline-offset:3px}.quichi-story-form .quichi-story-label{display:block;font:14px system-ui,sans-serif;color:#ded4d3}.quichi-story-form .quichi-story-result{font:14px/1.45 system-ui,sans-serif;color:#fff;margin:12px 0 0}.quichi-story-form button:disabled{opacity:.65;cursor:wait}.quichi-story-form .quichi-story-note{font:12px/1.45 system-ui,sans-serif;color:#c2b5b5;margin:10px 0 0}
+@media(min-width:768px){.home-template .quichi-home-sidebar .quichi-story-invite{box-sizing:border-box;width:calc(100% - 48px);max-width:none;margin:0 24px}}
 </style>
 <section class="quichi-story-invite" aria-labelledby="quichi-story-invite-title">
   {{#is "home"}}
@@ -15,7 +16,18 @@
   <script>
   (function(){
     var form=document.querySelector(".quichi-story-form");
-    if(!form || !window.fetch || !window.FormData) return;
+    if(!form) return;
+    var box=form.closest(".quichi-story-invite"), original=box.parentNode, marker=document.createComment("story form position");
+    original.insertBefore(marker,box);
+    var desktop=window.matchMedia("(min-width:768px)");
+    function placeStoryBox(){
+      var popular=document.querySelector(".quichi-home-sidebar .quichi-home-popular");
+      if(desktop.matches && popular) popular.insertAdjacentElement("afterend",box);
+      else if(marker.parentNode) marker.parentNode.insertBefore(box,marker.nextSibling);
+    }
+    if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",placeStoryBox,{once:true}); else placeStoryBox();
+    if(desktop.addEventListener) desktop.addEventListener("change",placeStoryBox); else desktop.addListener(placeStoryBox);
+    if(!window.fetch || !window.FormData) return;
     var button=form.querySelector("button"), status=form.querySelector(".quichi-story-result");
     form.addEventListener("submit",async function(event){
       event.preventDefault();
