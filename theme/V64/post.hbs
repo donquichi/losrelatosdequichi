@@ -73,6 +73,7 @@
                     <label class="quichi-share-manual" hidden>Enlace del episodio<input type="text" readonly aria-label="Enlace del episodio"></label>
                 </dialog>
             </div>
+            {{> "components/saved-episode-control"}}
             <style>
                 .quichi-share-wrap{margin-top:12px}.quichi-share-button{cursor:pointer;font-family:inherit}.quichi-share-menu{box-sizing:border-box;width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;margin:auto;padding:32px;background:#120f10;color:#fff;border:1px solid #713b40;border-radius:10px;box-shadow:0 18px 60px #000b}.quichi-share-menu::backdrop{background:rgba(0,0,0,.82)}.quichi-share-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.quichi-share-heading .quichi-share-eyebrow{margin:0 0 12px;color:#ff7777;font:700 11px/1.4 system-ui,sans-serif;letter-spacing:.15em}.quichi-share-heading h2{margin:0;color:#f5f1ef!important;font:400 clamp(28px,4vw,36px)/1.12 Georgia,serif}.quichi-share-close{flex:none;width:44px;height:44px;border:1px solid #73444a;border-radius:50%;background:#211719;color:#fff;font:24px system-ui;cursor:pointer}.quichi-share-intro{margin:12px 0 23px;color:#cdbfc0;font:16px/1.45 Georgia,serif}.quichi-share-option{box-sizing:border-box;display:flex;width:100%;justify-content:space-between;align-items:center;gap:12px;min-height:57px;margin-top:9px;padding:12px 16px;border:1px solid #54343a;border-radius:6px;background:#1d1719;color:#fff!important;text-decoration:none;text-align:left;font:700 14px system-ui,sans-serif;cursor:pointer}.quichi-share-option:hover,.quichi-share-option:focus-visible{background:#2a1a1d}.quichi-share-option-label{display:flex;align-items:center;gap:16px}.quichi-share-icon{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;color:#f4e9e9;font-size:23px}.quichi-share-icon svg{width:22px;height:22px}.quichi-share-arrow{color:#ff7777;font-size:18px}.quichi-share-copy{background:#a30d1c;border-color:#da414e}.quichi-share-copy:hover,.quichi-share-copy:focus-visible{background:#bf182a}.quichi-share-status{margin:12px 0 0;color:#fff;font:14px/1.4 system-ui,sans-serif}.quichi-share-status:empty{display:none}.quichi-share-manual{display:block;color:#fff;font:14px system-ui,sans-serif;margin-top:10px}.quichi-share-manual[hidden]{display:none}.quichi-share-manual input{display:block;box-sizing:border-box;width:100%;margin-top:6px;padding:9px;color:#fff;background:#111;border:1px solid #999;font:14px system-ui,sans-serif}.quichi-share-button:focus-visible,.quichi-share-option:focus-visible,.quichi-share-close:focus-visible,.quichi-share-manual input:focus-visible{outline:3px solid #fff;outline-offset:3px}@media(max-width:767px){.quichi-share-button{width:100%}.quichi-share-menu{padding:22px}.quichi-share-intro{margin-bottom:15px}.quichi-share-option{min-height:50px}}
             </style>
@@ -188,5 +189,7 @@
     </section>
 
 </main>
+
+{{> "components/saved-stories-script"}}
 
 {{/post}}

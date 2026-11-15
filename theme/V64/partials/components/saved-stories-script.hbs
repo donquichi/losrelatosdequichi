@@ -1,0 +1,23 @@
+<script>
+(function(){
+  'use strict';
+  var key='quichi-saved-episodes-v1',control=document.querySelector('[data-save-episode]'),list=document.querySelector('[data-saved-list]');
+  if(!control&&!list)return;
+  function safeUrl(value){if(!value)return '';try{var url=new URL(value,location.origin);return url.origin===location.origin&&/^https?:$/.test(url.protocol)?url.href:'';}catch(error){return '';}}
+  function read(){var raw=localStorage.getItem(key);if(!raw)return [];var items=JSON.parse(raw);if(!Array.isArray(items))throw new Error('Invalid saved list');return items.filter(function(item){return item&&typeof item.title==='string'&&safeUrl(item.url);}).map(function(item){return {url:safeUrl(item.url),title:item.title.slice(0,500),image:safeUrl(item.image||'')};});}
+  function write(items){localStorage.setItem(key,JSON.stringify(items));}
+  function showStatus(el,text){if(el)el.textContent=text;}
+  if(control){
+    var button=control.querySelector('button'),status=control.querySelector('[role="status"]'),url=safeUrl(control.dataset.url),title=control.dataset.title,image=safeUrl(control.dataset.image||'');
+    function update(){try{var saved=read().some(function(item){return item.url===url;});button.textContent=saved?'Guardado ✓':'Guardar para después';button.setAttribute('aria-pressed',String(saved));}catch(error){button.disabled=true;showStatus(status,'No se puede acceder a los relatos guardados en este navegador.');}}
+    if(!url||!title){control.hidden=true;}else{control.hidden=false;update();}
+    button.addEventListener('click',function(){try{var items=read(),exists=items.some(function(item){return item.url===url;});if(exists){items=items.filter(function(item){return item.url!==url;});}else{items.unshift({url:url,title:title,image:image});}write(items);update();showStatus(status,exists?'Relato quitado de guardados.':'Relato guardado en este navegador.');}catch(error){showStatus(status,'No se pudo guardar. Revisa el almacenamiento de tu navegador.');}});
+    window.addEventListener('storage',function(event){if(event.key===key)update();});
+  }
+  if(list){
+    var message=document.querySelector('[data-saved-message]');
+    function render(){list.replaceChildren();var items;try{items=read();}catch(error){showStatus(message,'No se pueden leer los relatos guardados en este navegador.');return;}if(!items.length){showStatus(message,'Aún no has guardado relatos. Explora los episodios y guarda uno para verlo aquí.');return;}showStatus(message,'');items.forEach(function(item){var article=document.createElement('article');article.className='qsave-card';var link=document.createElement('a');link.href=item.url;link.className='qsave-card-link';if(item.image){var img=document.createElement('img');img.src=item.image;img.alt='';img.loading='lazy';link.appendChild(img);}var text=document.createElement('span');text.textContent=item.title;link.appendChild(text);var remove=document.createElement('button');remove.type='button';remove.textContent='Quitar';remove.setAttribute('aria-label','Quitar '+item.title+' de guardados');remove.addEventListener('click',function(){try{write(read().filter(function(saved){return saved.url!==item.url;}));render();}catch(error){showStatus(message,'No se pudo quitar el relato.');}});article.append(link,remove);list.appendChild(article);});}
+    render();window.addEventListener('storage',function(event){if(event.key===key)render();});
+  }
+})();
+</script>

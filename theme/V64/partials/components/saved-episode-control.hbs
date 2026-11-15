@@ -1,0 +1,6 @@
+<div class="qsave-control" data-save-episode data-url="{{url absolute="true"}}" data-title="{{title}}" data-image="{{#if feature_image}}{{img_url feature_image size="s" format="webp"}}{{/if}}" hidden>
+  <button class="quichi-outline-button qsave-toggle" type="button" aria-pressed="false">Guardar para después</button>
+  <a class="qsave-list-link" href="{{@site.url}}/guardados/">Mis relatos guardados →</a>
+  <p class="qsave-status" role="status" aria-live="polite"></p>
+</div>
+<style>.qsave-control{margin-top:12px}.qsave-toggle{cursor:pointer;font-family:inherit}.qsave-list-link{display:inline-flex;align-items:center;min-height:44px;margin-left:12px;color:#ff9a9a!important;font:700 12px system-ui,sans-serif;text-decoration:underline}.qsave-status{color:#fff;font:14px/1.4 system-ui,sans-serif;margin:6px 0 0}.qsave-status:empty{display:none}.qsave-toggle:focus-visible,.qsave-list-link:focus-visible{outline:3px solid white;outline-offset:3px}@media(max-width:767px){.qsave-toggle{width:100%}.qsave-list-link{margin-left:0}}</style>

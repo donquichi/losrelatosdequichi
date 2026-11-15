@@ -1,0 +1,12 @@
+{{!< default}}
+{{#contentFor "title_prefix"}}Mis relatos guardados | {{/contentFor}}
+<main class="qsave-page gh-outer"><div class="gh-inner qsave-inner">
+  <p class="qsave-eyebrow">Tu archivo personal</p><h1>Mis relatos guardados</h1>
+  <p>Los relatos se guardan solo en este navegador y dispositivo. Si borras los datos del navegador, podrían desaparecer.</p>
+  <p class="qsave-message" data-saved-message role="status" aria-live="polite"></p>
+  <div class="qsave-list" data-saved-list></div>
+  <noscript>Activa JavaScript para ver tus relatos guardados en este navegador.</noscript>
+  <a class="qsave-explore" href="{{@site.url}}/episodios/">Explorar episodios →</a>
+</div></main>
+<style>.qsave-page{background:#0b0b0c;color:#eee;min-height:45vh}.qsave-inner{max-width:840px;padding:50px 24px 70px}.qsave-eyebrow{color:#ff7777;font:700 12px system-ui,sans-serif;letter-spacing:.13em;text-transform:uppercase}.qsave-inner h1{color:#f5f1ef;font:400 clamp(32px,5vw,48px)/1.1 Georgia,serif;margin:12px 0}.qsave-inner>p:not(.qsave-eyebrow){color:#d2c8c8;font:16px/1.55 Georgia,serif}.qsave-list{display:grid;gap:12px;margin:25px 0}.qsave-card{display:flex;gap:14px;align-items:center;padding:12px;background:#151011;border:1px solid #513238}.qsave-card-link{display:flex;align-items:center;gap:14px;flex:1;min-width:0;color:#fff!important;text-decoration:none;font:700 16px/1.35 system-ui,sans-serif}.qsave-card-link img{width:70px;height:78px;object-fit:cover;flex:none}.qsave-card button{flex:none;min-height:44px;padding:8px 12px;border:1px solid #875058;background:#1d1516;color:#fff;font:700 12px system-ui,sans-serif;cursor:pointer}.qsave-explore{display:inline-flex;align-items:center;min-height:44px;color:#ff8888!important;font:700 13px system-ui,sans-serif}.qsave-page a:focus-visible,.qsave-page button:focus-visible{outline:3px solid #fff;outline-offset:3px}@media(max-width:560px){.qsave-inner{padding:35px 18px 55px}.qsave-card{gap:8px}.qsave-card-link{font-size:14px}.qsave-card-link img{width:58px;height:68px}}</style>
+{{> "components/saved-stories-script"}}

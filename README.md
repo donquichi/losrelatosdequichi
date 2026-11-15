@@ -94,7 +94,7 @@ All items below are planned and unchecked. Feature IDs match the detailed roadma
 - [ ] **F18 — Free email updates:** verified signup/confirmation/unsubscribe and an agreed episode-update or digest workflow.
 - [ ] **F19 — Episode sharing:** copy link, supported native sharing on phones, and useful social previews.
 - [ ] **F20 — “Cuéntame tu relato”:** the homepage and episodes now invite visitors to send stories privately by email for possible video adaptation. The page explains permission and anonymous credit. Verify inbox delivery with a test email; a dedicated web form and menu link remain future options.
-- [ ] **F21 — Save for later and reading position:** optional browser-local bookmarks/progress, with remove/reset controls and clear limits on cross-device support.
+- [ ] **F21 — Save for later and reading position:** browser-local episode bookmarks and individual removal are live; reading position and a clear-all control remain future options. Saved stories do not sync across devices.
 - [ ] **F22 — Creator introduction and follow options:** concise project information, contact route, available listening platforms, and a sustainable publication schedule if established.
 - [ ] **F23 — Community feedback:** consider moderated comments or a lightweight feedback route when moderation capacity exists.
 

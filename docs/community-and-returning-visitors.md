@@ -18,7 +18,7 @@ The owner should review messages privately and obtain clear affirmative permissi
 
 ## Save for later and reading position
 
-Offer opt-in bookmarks stored locally in the current browser, plus a saved-episodes page. Store only episode slug/title/URL, timestamp, and reading position; no full story or contact data. Explain that bookmarks do not sync between devices and may disappear when browser data is cleared. Handle disabled storage and invalid stored values without breaking the page. Offer remove and clear actions. Show a resume action rather than jumping the reader automatically. Save bounded reading positions on a throttle and page exit; ignore informational pages, unpublished episodes, and completed stories when suggesting resume.
+The live episode button stores a title, same-site episode URL and optional same-site image URL in the current browser only. The /guardados/ page lists saved episodes and allows individual removal. It explains device and browser-data limitations; no story text or personal data is stored. Invalid or unavailable storage produces a message. Reading position, resume and a clear-all action are not implemented.
 
 ## Creator and contact
 

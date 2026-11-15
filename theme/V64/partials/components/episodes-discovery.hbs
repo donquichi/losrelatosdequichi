@@ -29,6 +29,7 @@
   <p class="qe-kicker">Historias de terror y misterio</p><h2 id="qe-discover-title">Encuentra tu próximo relato</h2>
   <a class="qe-all" href="#todos-los-episodios">Ver todos los episodios ↓</a>
   <a class="qe-search" href="#/search" data-ghost-search>Buscar episodios</a>
+  <a class="qe-search" href="{{@site.url}}/guardados/">Mis relatos guardados</a>
   <h2>Dos relatos para empezar</h2>
   <div class="qe-featured">
     {{#get "posts" limit="2" include="tags"}}{{#foreach posts}}<a href="{{url}}">{{#if feature_image}}<img src="{{img_url feature_image size="s" format="webp"}}" alt="" loading="lazy">{{/if}}<div><small>RELATO DESTACADO</small><h3>{{title}}</h3><span>Ver episodio →</span></div></a>{{/foreach}}{{/get}}
