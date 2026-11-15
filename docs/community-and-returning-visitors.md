@@ -12,9 +12,7 @@ Use the device's native share sheet when supported, with a copy-link fallback an
 
 ## Cuéntanos tu relato
 
-The homepage accepts a story through Formspree (form endpoint https://formspree.io/f/xnpdjekp). It asks only for the story; submitters are anonymous unless they include contact details. Submission is not permission to adapt or publish. Formspree receives and stores submissions and its free plan has a monthly quota. The live /cuentame-tu-relato/ page also invites written submissions to the publicly displayed project email, losrelatosdequichi@gmail.com. Visitors use their own email app to compose and send; the site does not collect, store, publish, or automatically send the story. Episode pages link to the email invitation. The page asks for a title, full story, public credit choice, and explicit indication of permission for editing, narration and publication, including monetized adaptations. It explains that anonymous credit is public-facing, that the email sender remains visible to the reviewer, and that submission does not guarantee selection, publication, payment, or a response. The sender retains ownership and is not subscribed to marketing.
-
-The owner should review messages privately and obtain clear affirmative permission before adapting or publishing. Email delivery depends on the sender's mail app and provider; the mailto link does not confirm sending or delivery. The owner should run a test from a separate email account and define retention and deletion practices. Do not put submissions or private contact details in this repository. If a dedicated web form is added later, configure private delivery, validation, rate limits, spam protection, and truthful delivery errors before enabling it.
+The homepage accepts stories through Formspree (https://formspree.io/f/xnpdjekp). The form asks only for the story; submitters are anonymous unless they include contact details. Formspree receives and stores submissions and its plan has a monthly quota. The owner should review stories privately and obtain clear permission before adapting or publishing them.
 
 ## Save for later and reading position
 

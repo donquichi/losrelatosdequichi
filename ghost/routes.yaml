@@ -2,8 +2,6 @@
 routes:
   /guardados/:
     template: guardados
-  /cuentame-tu-relato/:
-    template: cuentame-tu-relato
   /empieza-aqui/:
     template: empieza-aqui
   /shop/:
