@@ -1,0 +1,19 @@
+<style>
+.quichi-scp-welcome{padding:28px 0 38px;border-bottom:1px solid #3b292c}.quichi-scp-welcome .scp-eyebrow{margin:0 0 10px;color:#ff7379;font:700 12px/1.4 system-ui,sans-serif;letter-spacing:.15em;text-transform:uppercase}.quichi-scp-welcome h2{margin:0 0 12px;color:#f5f1ef;font:400 clamp(30px,4vw,46px)/1.1 Georgia,serif}.quichi-scp-welcome>p:not(.scp-eyebrow){max-width:720px;margin:0 0 20px;color:#d6cccc;font:18px/1.55 Georgia,serif}.scp-all-link{display:inline-flex;min-height:44px;align-items:center;justify-content:center;padding:12px 20px;border:1px solid #d15158;background:#a60013;color:#fff!important;text-decoration:none;font:700 12px system-ui,sans-serif;text-transform:uppercase;letter-spacing:.04em}.scp-recommended-heading{margin:34px 0 14px;color:#f5f1ef;font:400 25px Georgia,serif}.scp-recommended{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.scp-recommended-card{display:flex;gap:16px;min-width:0;padding:16px;border:1px solid #513238;background:#151011;color:#f5f1ef!important;text-decoration:none}.scp-recommended-card img{width:90px;height:108px;object-fit:cover;flex:none}.scp-recommended-card small{color:#ff7777;font:700 11px system-ui,sans-serif;letter-spacing:.08em}.scp-recommended-card h3{margin:9px 0;color:#fff;font:700 19px/1.25 Georgia,serif}.scp-recommended-card span{color:#ff7777;font:700 12px system-ui,sans-serif}.quichi-scp-welcome a:focus-visible{outline:3px solid white;outline-offset:3px}.scp-all-heading{margin:40px 0 0;color:#ff7777;font:700 14px system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;scroll-margin-top:20px}@media(max-width:600px){.quichi-scp-welcome{padding:24px 0 30px}.quichi-scp-welcome>p:not(.scp-eyebrow){font-size:16px}.scp-all-link{width:100%}.scp-recommended{grid-template-columns:1fr}.scp-recommended-card img{width:76px;height:90px}.scp-recommended-card h3{font-size:17px}}
+</style>
+<section class="quichi-scp-welcome" aria-labelledby="scp-intro-title">
+  <p class="scp-eyebrow">Archivos clasificados · SCP en español</p>
+  <h2 id="scp-intro-title">Entra al mundo SCP</h2>
+  <p>Objetos imposibles, criaturas inexplicables y expedientes que nunca debieron salir a la luz. Descubre los relatos SCP narrados por Quichi.</p>
+  <a class="scp-all-link" href="#todos-los-expedientes">Ver todos los expedientes ↓</a>
+  <h3 class="scp-recommended-heading">Dos relatos para empezar</h3>
+  <div class="scp-recommended">
+    {{#get "posts" filter="slug:scp-020-el-hongo-que-solo-aparece-en-las-grabaciones+tag:scp-foundation" limit="1"}}
+      {{#foreach posts}}<a class="scp-recommended-card" href="{{url}}">{{#if feature_image}}<img src="{{img_url feature_image size="s" format="webp"}}" alt="" loading="lazy">{{/if}}<div><small>EXPEDIENTE SCP-020</small><h3>{{title}}</h3><span>Ver episodio →</span></div></a>{{/foreach}}
+    {{/get}}
+    {{#get "posts" filter="slug:scp-426-soy-una-tostadora-y-no-puedes-hablar-de-mi-normalmente+tag:scp-foundation" limit="1"}}
+      {{#foreach posts}}<a class="scp-recommended-card" href="{{url}}">{{#if feature_image}}<img src="{{img_url feature_image size="s" format="webp"}}" alt="" loading="lazy">{{/if}}<div><small>EXPEDIENTE SCP-426</small><h3>{{title}}</h3><span>Ver episodio →</span></div></a>{{/foreach}}
+    {{/get}}
+  </div>
+</section>
+<h2 id="todos-los-expedientes" class="scp-all-heading">Todos los expedientes</h2>
