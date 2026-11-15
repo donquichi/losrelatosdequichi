@@ -18,7 +18,7 @@ The owner should review messages privately and obtain clear affirmative permissi
 
 ## Save for later and reading position
 
-The live episode button stores a title, same-site episode URL and optional same-site image URL in the current browser only. The /guardados/ page lists saved episodes and allows individual removal. It explains device and browser-data limitations; no story text or personal data is stored. Invalid or unavailable storage produces a message. Reading position, resume and a clear-all action are not implemented.
+The live episode button stores a title, same-site episode URL and optional same-site image URL in the current browser only. The /guardados/ page lists saved episodes and allows individual removal. It explains device and browser-data limitations; no story text or personal data is stored. Invalid or unavailable storage produces a message. Long episode pages now store a local reading position and offer an explicit resume button on return; positions clear near the end of a story. This tracks reading, not audio or video playback, and stays in the same browser. A clear-all action is not implemented.
 
 ## Creator and contact
 

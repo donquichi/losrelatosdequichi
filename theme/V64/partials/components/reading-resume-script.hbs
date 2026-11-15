@@ -1,0 +1,19 @@
+<script>
+(function(){
+  'use strict';
+  var story=document.querySelector('.quichi-post-content'),box=document.querySelector('.qresume');
+  if(!story||!box)return;
+  var key='quichi-reading-positions-v1',canonical=document.querySelector('link[rel="canonical"]'),path;
+  try{var page=new URL(canonical?canonical.href:location.href,location.origin);if(page.origin!==location.origin)return;path=page.pathname;}catch(error){return;}
+  var button=box.querySelector('button'),previous=null,timer=null,reading=false;
+  function read(){try{var value=JSON.parse(localStorage.getItem(key)||'{}');return value&&typeof value==='object'&&!Array.isArray(value)?value:{};}catch(error){return {};}}
+  function write(data){try{localStorage.setItem(key,JSON.stringify(data));}catch(error){}}
+  function measure(){var rect=story.getBoundingClientRect();return {top:rect.top+window.scrollY,height:rect.height};}
+  var saved=read()[path];
+  if(saved&&typeof saved.ratio==='number'&&isFinite(saved.ratio)&&saved.ratio>0&&saved.ratio<1){previous=saved;box.hidden=false;}
+  button.addEventListener('click',function(){if(previous===null)return;var m=measure(),top=m.top+previous.ratio*m.height;var child=Number.isInteger(previous.index)?story.children[previous.index]:null;if(child&&typeof previous.within==='number'&&isFinite(previous.within)){var rect=child.getBoundingClientRect();top=rect.top+window.scrollY+Math.max(0,Math.min(1,previous.within))*rect.height-80;}top=Math.max(0,top);var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;window.scrollTo({top:top,behavior:reduced?'auto':'smooth'});box.hidden=true;});
+  function capture(){timer=null;var m=measure(),y=window.scrollY;if(m.height<window.innerHeight*1.25)return;if(y<m.top+50)return;var data=read();if(y+window.innerHeight>=m.top+m.height-60){if(data[path]){delete data[path];write(data);}box.hidden=true;return;}if(y>=m.top+m.height)return;var ratio=Math.max(0,Math.min(.99,(y-m.top)/m.height));if(ratio<=0)return;var entry={ratio:ratio,updated:Date.now()};var children=Array.from(story.children);for(var i=0;i<children.length;i++){var part=children[i].getBoundingClientRect();if(part.bottom>80&&part.height>0){entry.index=i;entry.within=Math.max(0,Math.min(1,(80-part.top)/part.height));break;}}data[path]=entry;var paths=Object.keys(data).sort(function(a,b){return (data[b].updated||0)-(data[a].updated||0);});paths.slice(50).forEach(function(item){delete data[item];});write(data);reading=true;}
+  window.addEventListener('scroll',function(){if(!timer)timer=setTimeout(capture,600);},{passive:true});
+  window.addEventListener('pagehide',function(){if(timer){clearTimeout(timer);capture();}});
+})();
+</script>
