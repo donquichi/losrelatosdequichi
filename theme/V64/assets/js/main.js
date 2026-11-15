@@ -3,47 +3,30 @@
 })();
 
 (function () {
-    const slides = Array.from(document.querySelectorAll(".quichi-slide"));
-
-    if (!slides.length) {
-        return;
+    const slides = Array.from(document.querySelectorAll('.quichi-slide'));
+    if (slides.length < 2) return;
+    const stage = slides[0].parentNode;
+    let current = 0, timer, startX, startY;
+    const dots = document.createElement('div');
+    dots.className = 'quichi-roulette-dots';
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function show(index) {
+        current = (index + slides.length) % slides.length;
+        slides.forEach((slide, i) => { slide.classList.toggle('is-active', i === current); slide.setAttribute('aria-hidden', String(i !== current)); });
+        dots.querySelectorAll('.quichi-dot').forEach((dot, i) => { dot.classList.toggle('is-active', i === current); if (i === current) dot.setAttribute('aria-current', 'true'); else dot.removeAttribute('aria-current'); });
     }
-
-    let current = 0;
-    const dotsWrapper = document.createElement("div");
-    dotsWrapper.className = "quichi-roulette-dots";
-
-    const showSlide = function (index) {
-        slides.forEach(function (slide, slideIndex) {
-            slide.classList.toggle("is-active", slideIndex === index);
-        });
-
-        dotsWrapper.querySelectorAll(".quichi-dot").forEach(function (dot, dotIndex) {
-            dot.classList.toggle("is-active", dotIndex === index);
-        });
-    };
-
-    slides.forEach(function (slide, index) {
-        const dot = document.createElement("button");
-        dot.className = "quichi-dot";
-        dot.type = "button";
-        dot.setAttribute("aria-label", "Ver episodio destacado " + (index + 1));
-
-        dot.addEventListener("click", function () {
-            current = index;
-            showSlide(current);
-        });
-
-        dotsWrapper.appendChild(dot);
-    });
-
-    slides[0].parentNode.appendChild(dotsWrapper);
-    showSlide(current);
-
-    window.setInterval(function () {
-        current = (current + 1) % slides.length;
-        showSlide(current);
-    }, 5500);
+    function restart() { window.clearInterval(timer); if (!reduced.matches) timer = window.setInterval(() => show(current + 1), 5500); }
+    function move(index) { show(index); restart(); }
+    slides.forEach((slide, i) => { const dot = document.createElement('button'); dot.className = 'quichi-dot'; dot.type = 'button'; dot.setAttribute('aria-label', 'Ver episodio destacado ' + (i + 1)); dot.addEventListener('click', () => move(i)); dots.appendChild(dot); });
+    stage.appendChild(dots);
+    for (const [direction, label, symbol] of [[-1, 'Episodio anterior', '‹'], [1, 'Episodio siguiente', '›']]) {
+        const button = document.createElement('button'); button.type = 'button'; button.className = 'quichi-carousel-arrow ' + (direction < 0 ? 'is-previous' : 'is-next'); button.setAttribute('aria-label', label); button.textContent = symbol; button.addEventListener('click', () => move(current + direction)); stage.appendChild(button);
+    }
+    stage.addEventListener('touchstart', event => { if (event.touches.length !== 1) return; startX = event.touches[0].clientX; startY = event.touches[0].clientY; }, {passive:true});
+    stage.addEventListener('touchend', event => { if (startX === undefined || !event.changedTouches.length) return; const dx = event.changedTouches[0].clientX - startX, dy = event.changedTouches[0].clientY - startY; startX = undefined; if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3) move(current + (dx < 0 ? 1 : -1)); }, {passive:true});
+    stage.addEventListener('touchcancel', () => { startX = undefined; }, {passive:true});
+    stage.addEventListener('keydown', event => { if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); move(current + (event.key === 'ArrowLeft' ? -1 : 1)); } });
+    show(0); restart();
 })();
 
 (function () {
