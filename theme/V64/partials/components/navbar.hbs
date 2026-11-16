@@ -23,6 +23,7 @@ header#gh-head .quichi-mobile-start{display:none!important}
 header#gh-head .quichi-saved-icon{position:relative;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none;color:#fff!important;text-decoration:none}header#gh-head .quichi-saved-icon svg{width:21px;height:21px}header#gh-head .quichi-saved-icon:focus-visible{outline:3px solid #fff;outline-offset:2px}header#gh-head .quichi-saved-count{position:absolute;top:1px;right:1px;display:flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 4px;border-radius:9px;background:#b00017;color:#fff;font:700 11px/1 system-ui,sans-serif}header#gh-head .quichi-saved-count[hidden]{display:none}header#gh-head .gh-head-brand>.quichi-saved-icon{display:none}@media(max-width:767px){header#gh-head.is-head-stacked .gh-head-brand>.quichi-saved-icon{display:inline-flex;position:absolute;right:60px;top:50%;transform:translateY(-50%)}header#gh-head.is-head-stacked .gh-head-actions>.quichi-saved-icon{display:none}}
 @media(max-width:360px){header#gh-head.is-head-stacked .gh-head-brand>.quichi-saved-icon{right:39px}header#gh-head.is-head-stacked .gh-head-brand>.gh-search{right:0!important}}
 @media(min-width:768px){body header#gh-head.is-head-stacked .quichi-desktop-menu .quichi-start-link{color:var(--quichi-start-color,#fff)!important;font-weight:800;letter-spacing:.08em}header#gh-head .quichi-desktop-menu .quichi-start-link::before{width:28px;height:38px;background:linear-gradient(145deg,#ffdbd4,#f04a51 55%,#a60010);filter:drop-shadow(0 0 7px #cf1420)}}
+@media(min-width:768px){header#gh-head.is-head-stacked .quichi-desktop-menu .quichi-nav-links{gap:18px}header#gh-head.is-head-stacked .quichi-nav-saved .quichi-saved-icon{width:44px;height:44px;padding:0;justify-content:center}header#gh-head.is-head-stacked .quichi-nav-search .gh-search{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;color:#fff}header#gh-head.is-head-stacked .quichi-nav-search .gh-search svg{width:18px;height:18px}header#gh-head.is-head-stacked .quichi-nav-search .gh-search:focus-visible{outline:2px solid #fff;outline-offset:2px}}
 </style>
 <header id="gh-head" class="gh-head gh-outer is-head-stacked quichi-has-navigation{{#if isTransparent}} is-head-transparent{{/if}}">
     <div class="gh-head-inner{{#unless fullWidth}} gh-inner{{/unless}}">
@@ -57,7 +58,12 @@ header#gh-head .quichi-saved-icon{position:relative;display:inline-flex;align-it
         </details>
 
         <nav class="gh-head-menu quichi-nav quichi-desktop-menu" aria-label="Navegación principal">
-            <ul class="quichi-nav-links">{{> "components/navigation-links"}}</ul>
+            <ul class="quichi-nav-links">{{> "components/navigation-links"}}
+                <li class="quichi-nav-saved"><a class="quichi-saved-icon" href="{{@site.url}}/guardados/" aria-label="Mis relatos guardados"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h12l4 4v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v6h10V3M7 21v-8h10v8"/><path d="M14 5v2"/></svg><span class="quichi-saved-count" aria-hidden="true" hidden></span></a></li>
+                <li class="quichi-nav-search"><a href="#/search" class="gh-search gh-icon-btn" aria-label="Buscar en el sitio" data-ghost-search>
+                {{> "icons/search"}}
+            </a></li>
+            </ul>
         </nav>
 
         <div class="gh-head-actions">
@@ -81,11 +87,7 @@ header#gh-head .quichi-saved-icon{position:relative;display:inline-flex;align-it
 
             </div>
 
-            <a class="quichi-saved-icon" href="{{@site.url}}/guardados/" aria-label="Mis relatos guardados"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h12l4 4v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v6h10V3M7 21v-8h10v8"/><path d="M14 5v2"/></svg><span class="quichi-saved-count" aria-hidden="true" hidden></span></a>
 
-            <button class="gh-search gh-icon-btn" aria-label="Buscar en el sitio" data-ghost-search>
-                {{> "icons/search"}}
-            </button>
         </div>
         <a class="quichi-mobile-start" href="{{@site.url}}/empieza-aqui/"><span class="quichi-mobile-start-text">Empieza aquí</span></a>
 
